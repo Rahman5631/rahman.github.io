@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    
+    <!-- سئو -->
+    <title>راهنمای کامل بازسازی حمام و سرویس بهداشتی</title>
+    <meta name="description" content="با ۱۰ ایده خلاقانه و کم‌هزینه برای نورپردازی داخلی ساختمان آشنا شوید. از نورپردازی مخفی و خطی تا هوشمند، خانه خود را متحول کنید." />
+    
+    <!-- فونت -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+    
+      <style>
+        /* ===== همان متغیرها و استایل‌های اصلی سایت ===== */
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5A52D5;
+            --secondary: #FF6584;
+            --accent: #00D2FF;
+            --bg: #bfcdf7;
+            --card-bg: #bfcdf7;
+            --text: #1e1e2f;
+            --text-light: #555;
+            --shadow: 0 12px 30px rgba(108, 99, 255, 0.15);
+            --radius: 20px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-header: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+            --gradient-btn: linear-gradient(135deg, #6C63FF, #00D2FF);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        body.dark-mode {
+            --bg: #12121a;
+            --card-bg: #1e1e2a;
+            --text: #eaeaf0;
+            --text-light: #aaa;
+            --shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(30, 30, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color var(--transition), color var(--transition);
+            padding-top: 80px;
+            line-height: 1.8;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--gradient-header); padding: 12px 20px;
+            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.3);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+        .container1 {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .title {
+            font-size: 1.3rem; font-weight: 700; color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2); letter-spacing: 1px;
+        }
+        .logo {
+            width: 48px; height: 48px; object-fit: contain; border-radius: 50%;
+            background: rgba(255,255,255,0); padding: 4px;
+        }
+        #toggleBtn {
+            background: rgba(255,255,255,0); backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0); border-radius: 50%;
+            width: 44px; height: 44px; font-size: 24px; cursor: pointer;
+            color: #585858; display: flex; align-items: center; justify-content: center;
+        }
+        .hamburger-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger { width: 28px; height: 3px; background: #585858; border-radius: 6px; }
+
+        .menu-popup {
+            display: none; position: fixed; top: 80px; right: 16px;
+            background: var(--card-bg); backdrop-filter: blur(20px); border-radius: var(--radius);
+            padding: 20px; min-width: 200px; z-index: 999; opacity: 0;
+            transition: all 0.3s; border: 1px solid var(--glass-border);
+        }
+        .menu-popup.show { display: block; opacity: 1; transform: translateY(0); }
+        .menu-popup a {
+            display: block; padding: 10px; margin: 4px 0; border-radius: 12px;
+            font-weight: 600; color: var(--text);
+        }
+        .menu-popup a:hover { background: var(--primary); color: #fff; }
+
+        nav {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px;
+            padding: 16px; background: var(--card-bg); margin: 8px 16px 0;
+            border-radius: var(--radius); box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+        }
+        nav a {
+            font-weight: 600; color: var(--text-light); padding: 6px 12px;
+            border-radius: 30px; transition: all 0.2s;
+        }
+        nav a:hover { color: var(--primary); background: rgba(108,99,255,0.08); }
+        nav a.active { color: #fff; background: var(--primary); }
+
+        /* ===== صفحه مقاله ===== */
+        .article-container {
+            max-width: 860px; margin: 20px auto; padding: 0 16px;
+            background: var(--card-bg); border-radius: var(--radius);
+            box-shadow: var(--shadow); border: 1px solid var(--glass-border);
+            padding: 32px 24px;
+        }
+
+        .article-container h1 {
+            font-size: 1.8rem; color: var(--primary); margin-bottom: 16px;
+        }
+        .article-container h2 {
+            font-size: 1.3rem; color: var(--primary-dark); margin: 32px 0 12px;
+            border-right: 4px solid var(--secondary); padding-right: 12px;
+        }
+        .article-container h3 {
+            font-size: 1.1rem; color: var(--primary); margin: 20px 0 10px;
+        }
+        .article-container p {
+            color: var(--text-light); margin-bottom: 16px; text-align: justify;
+        }
+        .article-container ul, .article-container ol {
+            margin-right: 24px; margin-bottom: 20px; color: var(--text-light);
+        }
+        .article-container li { margin-bottom: 8px; }
+
+        .spec-table {
+            width: 100%; border-collapse: collapse; margin: 24px 0;
+            background: var(--bg); border-radius: 12px; overflow: hidden;
+        }
+        .spec-table th, .spec-table td {
+            padding: 12px 16px; text-align: right; border-bottom: 1px solid var(--glass-border);
+        }
+        .spec-table th {
+            background: var(--gradient-header); color: #fff; font-weight: 700;
+        }
+        .spec-table td { color: var(--text-light); }
+
+        .article-image {
+            width: 100%; border-radius: 16px; margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* ===== فوتر ===== */
+        footer {
+            background: var(--card-bg); margin: 20px 16px; border-radius: var(--radius);
+            padding: 20px; text-align: center; box-shadow: var(--shadow);
+        }
+        footer h2 { color: var(--primary); margin-bottom: 16px; }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .social-icons img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(108, 99, 255, 0.08);
+            padding: 6px;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+            background: rgba(108, 99, 255, 0.15);
+        }
+        footer small {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 8px;
+        }
+
+        /* دکمه شناور */
+        .floating-button {
+            position: fixed; bottom: 28px; right: 28px; width: 64px; height: 64px;
+            border-radius: 50%; background: var(--gradient-btn); border: none;
+            box-shadow: 0 8px 30px rgba(108,99,255,0.4); cursor: pointer;
+            background-image: url('https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=');
+            background-size: 60%; background-position: center; background-repeat: no-repeat;
+            animation: pulse 2s infinite; z-index: 998;
+        }
+        @keyframes pulse {
+            0%,100%{ box-shadow: 0 8px 30px rgba(108,99,255,0.4); }
+            50%{ box-shadow: 0 8px 50px rgba(108,99,255,0.7); }
+        }
+
+        .popup {
+            display: none; position: fixed; bottom: 100px; right: 28px;
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+            z-index: 999;
+        }
+        .popup.show { display: block; }
+        .popup img { width: 44px; height: 44px; border-radius: 50%; padding: 4px; }
+
+        @media (max-width: 768px) {
+            .hamburger-menu { display: flex; }
+            nav { display: none; }
+            .article-container h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container1">
+        <img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگو" />
+        <h1 class="title">خدمات فنی احمدی</h1>
+        <div style="display:flex; gap:12px;">
+            <button id="toggleBtn"><span id="themeIcon">☽</span></button>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <div class="hamburger"></div><div class="hamburger"></div><div class="hamburger"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="menu-popup" id="menuPopup">
+    <a href="Index.html">🏠 خانه</a>
+    <a href="about.html">👤 درباره من</a>
+    <a href="contact.html">📞 تماس با ما</a>
+    <a href="blog.html">📝 وبلاگ</a>
+    <a href="videos.html">🎥 ویدیوها</a>
+    <a href="gallery.html">🖼️ تصاویر</a>
+    <a href="membership.html">📋 عضویت</a>
+</div>
+
+<nav>
+    <a href="Index.html">صفحه اصلی</a>
+    <a href="about.html">درباره من</a>
+    <a href="contact.html">تماس با ما</a>
+    <a href="blog.html" class="active">وبلاگ</a>
+    <a href="videos.html">ویدیوها</a>
+    <a href="gallery.html">گالری تصاویر</a>
+    <a href="membership.html">عضویت</a>
+</nav>
+
+
+
+
+<!-- ===== محتوای مقاله ===== -->
+<main class="article-container">
+    <article>
+        <h1>راهنمای کامل بازسازی حمام و سرویس بهداشتی</h1>
+
+        <p>
+            بازسازی حمام و سرویس بهداشتی یکی از تأثیرگذارترین پروژه‌های نوسازی منزل است که نه‌تنها زیبایی و کارایی فضا را افزایش می‌دهد، بلکه ارزش ملک را نیز به‌طور چشمگیری بالا می‌برد. از انتخاب کاشی و سرامیک گرفته تا تعویض شیرآلات، لوله‌کشی و عایق‌بندی، هر مرحله نیازمند برنامه‌ریزی دقیق و رعایت استانداردهای فنی است. در این راهنما، صفر تا صد بازسازی یک حمام مدرن، ایمن و بادوام را به شما آموزش می‌دهیم.
+        </p>
+
+        <img src="https://maaneno.com/Uploads/14021108-14111750.jpg" alt="بازسازی حمام مدرن" class="article-image" />
+
+        <h2>۱. برنامه‌ریزی و بودجه‌بندی</h2>
+        <p>
+            پیش از هر اقدامی، باید طرح کلی، سبک طراحی، متریال مصرفی و مهم‌تر از همه، بودجه خود را مشخص کنید. هزینه بازسازی حمام بسته به مساحت، جنس مواد و میزان تغییرات زیرساختی می‌تواند متغیر باشد. پیشنهاد می‌کنیم ۲۰٪ از کل بودجه را برای هزینه‌های پیش‌بینی‌نشده کنار بگذارید.
+        </p>
+        <ul>
+            <li>مشخص کردن سبک طراحی (مدرن، کلاسیک، مینیمال)</li>
+            <li>تعیین متراژ دقیق کاشی، سرامیک و کفپوش</li>
+            <li>بررسی وضعیت لوله‌کشی و سیم‌کشی موجود</li>
+            <li>برآورد هزینه نیروی کار و مصالح</li>
+        </ul>
+
+        <h2>۲. انتخاب کاشی و سرامیک</h2>
+        <p>
+            کاشی و سرامیک حمام باید علاوه بر زیبایی، مقاومت بالایی در برابر رطوبت، سایش و مواد شوینده داشته باشند. امروزه کاشی‌های پرسلان مات، طرح سنگ و طرح چوب بسیار پرطرفدار هستند. استفاده از کاشی‌های ضد لغزش (ضریب اصطکاک بالا) برای کف حمام یک الزام ایمنی است.
+        </p>
+        <ul>
+            <li>کاشی بدنه: بهتر است لعاب براق یا مات با طرح‌های ساده انتخاب شود.</li>
+            <li>کاشی کف: حتماً از سرامیک پرسلان ضدلغزش با جذب آب زیر ۰٫۵٪ استفاده کنید.</li>
+            <li>نکته: استفاده از دوغاب ضدقارچ و ضدباکتری عمر مفید بندکشی را افزایش می‌دهد.</li>
+        </ul>
+
+        <h2>۳. شیرآلات و سرویس‌های بهداشتی مدرن</h2>
+        <p>
+            شیرآلات بهداشتی امروزی علاوه بر طراحی ارگونومیک، به فناوری‌های کاهنده مصرف آب نیز مجهز هستند. شیرهای لمسی یا چشمی، فلاش تانک‌های توکار و توالت فرنگی یکپارچه از جمله انتخاب‌های هوشمندانه‌ای هستند که ضمن افزایش رفاه، مصرف آب را کاهش می‌دهند.
+        </p>
+
+        <img src="https://khanestore.com/wp-content/uploads/2024/08/44.jpg" alt="شیرآلات مدرن حمام" class="article-image" />
+
+        <h2>۴. نورپردازی و تهویه</h2>
+        <p>
+            دو عاملی که اغلب در بازسازی حمام نادیده گرفته می‌شوند، اما تأثیر فوق‌العاده‌ای دارند. ترکیبی از نور سقفی ضدبخار (IP44 به بالا) و نور آینه‌ای خطی، فضا را دلبازتر و کاربردی‌تر می‌کند. همچنین نصب یک فن تهویه قوی (هواکش) با تایمر، از تجمع رطوبت و کپک‌زدگی جلوگیری می‌کند.
+        </p>
+
+        <h2>۵. لوله‌کشی و سیستم فاضلاب</h2>
+        <p>
+            بازسازی بهترین فرصت برای تعویض لوله‌های فرسوده فلزی با لوله‌های پلیمری نسل جدید (PEX یا PP-R) است. این لوله‌ها رسوب نمی‌گیرند، زنگ نمی‌زنند و نصب آسان‌تری دارند. همچنین شیب‌بندی صحیح کف به سمت کف‌شوی و اتصال اصولی به شتر گلویی فاضلاب باید با دقت انجام شود.
+        </p>
+
+        <h2>۶. عایق‌بندی رطوبتی (ایزوگام و عایق مایع)</h2>
+        <p>
+            مهم‌ترین بخش یک بازسازی استاندارد، جلوگیری از نفوذ رطوبت به دیوارها و طبقات پایین است. قبل از نصب کاشی، باید یک لایه عایق رطوبتی (عایق مایع پلیمری یا ایزوگام مخصوص) روی سطح اجرا شود. درزهای گوشه‌ها و محل عبور لوله‌ها نیز باید با نوار آب‌بندی تقویت شوند.
+        </p>
+
+        <h2>۷. نصب وان یا دوش</h2>
+        <p>
+            انتخاب بین وان ایستاده، جکوزی، دوش‌های سرامیکی راه‌رو (Walk-in Shower) یا پنل‌های دوش LED کاملاً به سلیقه و فضای موجود بستگی دارد. دوش‌های بدون درب شیشه‌ای با کف شیب‌دار، حس یک حمام لوکس و باز را القا می‌کنند و نظافت آن‌ها نیز ساده‌تر است.
+        </p>
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlXd_ZzyM09OIgk1tue3dNW78-h3nEDApjlWg2kPhjBg&s=10" alt="دوش مدرن بدون درب" class="article-image" />
+
+        <h2>۸. کابینت روشویی و آینه</h2>
+        <p>
+            استفاده از کابینت‌های MDF ضدآب یا PVC برای زیر روشویی، فضای ذخیره‌سازی مناسبی فراهم می‌کند. آینه‌های بزرگ با نورپردازی مخفی، عمق فضا را چند برابر نشان می‌دهند و کاربردی بودن محیط را افزایش می‌دهند.
+        </p>
+
+        <h2>۹. مراحل اجرایی بازسازی</h2>
+        <ol>
+            <li><strong>تخریب:</strong> جمع‌آوری کاشی‌های قدیمی، شیرآلات و لوازم.</li>
+            <li><strong>لوله‌کشی و سیم‌کشی:</strong> اجرای تأسیسات جدید و تست فشار.</li>
+            <li><strong>عایق‌بندی:</strong> اجرای لایه‌های رطوبتی روی تمام سطوح.</li>
+            <li><strong>کاشی‌کاری:</strong> نصب کاشی بدنه و کف با چسب مخصوص.</li>
+            <li><strong>نصب سقف کاذب و نورپردازی:</strong> اجرای سقف PVC یا پانل‌های ضد رطوبت.</li>
+            <li><strong>نصب شیرآلات و سرویس‌ها:</strong> پس از خشک شدن کامل چسب‌ها و دوغاب.</li>
+            <li><strong>نظافت نهایی و راه‌اندازی.</strong></li>
+        </ol>
+
+        <h2>۱۰. اشتباهات رایج در بازسازی حمام</h2>
+        <ul>
+            <li>نادیده گرفتن شیب‌بندی کف (ماندن آب روی زمین)</li>
+            <li>استفاده از کاشی‌های لغزنده</li>
+            <li>عدم نصب هواکش قوی یا دریچه تهویه</li>
+            <li>آب‌بندی نکردن اطراف وان یا دوش</li>
+            <li>عدم توجه به ارتفاع استاندارد شیرها و روشویی</li>
+            <li>استفاده از مصالح نامرغوب برای کاهش هزینه</li>
+        </ul>
+
+        <h2>۱۱. هزینه‌های تقریبی بازسازی حمام</h2>
+        <p>
+            هزینه‌ها به عوامل متعددی از جمله متراژ، کیفیت مصالح و دستمزد منطقه‌ای بستگی دارد. به‌طور میانگین در سال جاری، هزینه بازسازی کامل یک حمام ۴ تا ۶ متری با مصالح درجه یک، بین ۵۰ تا ۱۲۰ میلیون تومان متغیر است. برای اطلاع از قیمت دقیق و دریافت مشاوره رایگان، می‌توانید با تیم ما تماس بگیرید.
+        </p>
+
+        <h2>جمع‌بندی</h2>
+        <p>
+            بازسازی سرویس بهداشتی یک سرمایه‌گذاری بلندمدت است که راحتی و سلامت خانواده را تضمین می‌کند. با رعایت اصول فنی، استفاده از مصالح باکیفیت و کمک گرفتن از متخصصان مجرب، می‌توانید حمامی زیبا، ایمن و کارآمد داشته باشید. خدمات فنی احمدی با سال‌ها تجربه در بازسازی ساختمان، آماده است پروژه شما را از طراحی تا اجرا با بهترین کیفیت و در زمان مقرر تحویل دهد. همین امروز برای مشاوره رایگان تماس بگیرید.
+        </p>
+    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+ <footer>
+        <h2>راه‌های ارتباطی</h2>
+        <div class="social-icons">
+            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
+            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
+            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
+            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%D9%BE%D8%A7%D8%B1%D8%A7%D8%AA%201.png?versionId=" alt="آپارات" /></a>
+        </div>
+        <small>حق نشر محفوظ است / رحمان احمدی</small>
+    </footer>
+
+     <!-- ===== دکمه شناور ===== -->
+    <button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
+
+    <!-- ===== پاپ‌آپ شبکه‌های اجتماعی ===== -->
+    <div class="popup" id="socialPopup">
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=" alt="چتاختصاصی" /></a>
+
+    </div>
+
+<script>
+    // همان اسکریپت‌های تغییر تم و منو
+    (function() {
+        const toggleBtn = document.getElementById('toggleBtn');
+        const iconSpan = document.getElementById('themeIcon');
+        const saved = localStorage.getItem('theme') || 'light';
+        if (saved === 'dark') { document.body.classList.add('dark-mode'); iconSpan.textContent = '☀'; }
+        else { iconSpan.textContent = '☽'; }
+        toggleBtn.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            iconSpan.textContent = isDark ? '☀' : '☽';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    })();
+
+    function toggleElement(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.classList.contains('show')) { el.classList.remove('show'); setTimeout(() => el.style.display = 'none', 250); }
+        else { el.style.display = 'block'; requestAnimationFrame(() => el.classList.add('show')); }
+    }
+    function togglePopup() { toggleElement('socialPopup'); }
+    function toggleMenu() { toggleElement('menuPopup'); }
+
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('menuPopup');
+        const hamburger = document.querySelector('.hamburger-menu');
+        const popup = document.getElementById('socialPopup');
+        const floatBtn = document.querySelector('.floating-button');
+        if (menu && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+            menu.classList.remove('show'); setTimeout(() => menu.style.display = 'none', 250);
+        }
+        if (popup && !popup.contains(e.target) && !floatBtn.contains(e.target)) {
+            popup.classList.remove('show'); setTimeout(() => popup.style.display = 'none', 250);
+        }
+    });
+</script>
+
+</body>
+</html>
