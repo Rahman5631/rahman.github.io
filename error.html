@@ -264,6 +264,54 @@
             .floating-button { width: 56px; height: 56px; bottom: 20px; right: 20px; }
             .popup { bottom: 88px; right: 20px; }
         }
+        
+        /* استایل کانتینر ایفریم */
+#chatIframeContainer {
+    display: none; /* در ابتدا پنهان است */
+    position: fixed;
+    bottom: 100px; /* فاصله از پایین - می‌توانید کم‌تر یا زیاد کنید */
+    right: 20px;
+    width: 350px;
+    height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+#chatIframeContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* دکمه بستن (ضربدر) */
+.close-chat-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    background: #ff4757;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+       width: 80%;
+    height: 80%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+    transition: 0.2s;
+}
+.close-chat-btn:hover {
+    background: #ff6b81;
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -292,7 +340,7 @@
         <a href="contact.html" onclick="toggleMenu()">📞 تماس با ما</a>
         <a href="blog.html" onclick="toggleMenu()">📝 وبلاگ</a>
         <a href="videos.html" onclick="toggleMenu()">🎥 ویدیوها</a>
-        <a href="gallery.html" onclick="toggleMenu()">🖼️ تصاویر</a>
+        <a href="images.html" onclick="toggleMenu()">🖼️ تصاویر</a>
         <a href="membership.html" onclick="toggleMenu()">📋 عضویت</a>
     </div>
 
@@ -303,7 +351,7 @@
         <a href="contact.html">تماس با ما</a>
         <a href="blog.html">وبلاگ</a>
         <a href="videos.html">ویدیوها</a>
-        <a href="gallery.html">گالری تصاویر</a>
+        <a href="images.html">گالری تصاویر</a>
         <a href="membership.html">عضویت</a>
     </nav>
 
@@ -322,30 +370,66 @@
 
     <!-- فوتر -->
     <footer>
-        <h2>راه‌های ارتباطی</h2>
+       <h2>راه‌های ارتباطی</h2>
         <div class="social-icons">
-            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
-            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
-            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
-            <a href="#"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%D9%BE%D8%A7%D8%B1%D8%A7%D8%AA%201.png?versionId=" alt="آپارات" /></a>
+            <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
+            <a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
+            <a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
         </div>
         <small>حق نشر محفوظ است / رحمان احمدی</small>
     </footer>
-
-    <!-- دکمه شناور ارتباط سریع -->
+ <!-- ===== دکمه شناور ===== -->
     <button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
-
-    <!-- پاپ‌آپ شبکه‌های اجتماعی -->
-  <div class="popup" id="socialPopup">
+<div class="popup" id="socialPopup">
     <a href="https://wa.me/989120996211" target="_blank">
-        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
-    <a href="https://t.me/@qRahman" target="_blank">
+        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" />  </a>
+    <a href="https://t.me/qRahman" target="_blank">
         <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
     <a href="tel:09120996211">
-        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /> </a>
-   <a href="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb&phone=02122170583">
-    <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=" alt="چتاختصاصی" /></a>
+        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
+    <a href="#" onclick="toggleChat(event)" id="chatToggleBtn">
+    <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=" alt="چتاختصاصی" /></a></div>
+<div id="chatIframeContainer" onclick="event.stopPropagation();">
+    <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
+    <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb" width="350px" height="600px"></iframe>
 </div>
+
+<script>
+// تابع باز و بسته کردن
+function toggleChat(event) {
+    event.preventDefault();
+    event.stopPropagation(); // جلوگیری از انتشار رویداد به document
+    var container = document.getElementById('chatIframeContainer');
+    if (container.style.display === 'block') {
+        container.style.display = 'none';
+    } else {
+        container.style.display = 'block';
+    }
+}
+
+// تابع بستن (برای دکمه ضربدر)
+function closeChat(event) {
+    event.stopPropagation(); // جلوگیری از بسته شدن بلافاصله توسط کلیک روی document
+    document.getElementById('chatIframeContainer').style.display = 'none';
+}
+
+// بستن چت با کلیک روی هر جای صفحه (به جز خود چت و دکمه بازکننده)
+document.addEventListener('click', function(event) {
+    var container = document.getElementById('chatIframeContainer');
+    var toggleBtn = document.getElementById('chatToggleBtn');
+    
+    // اگر پنجره باز است و کلیک روی خود چت یا دکمه بازکننده نبوده، ببند
+    if (container.style.display === 'block') {
+        // بررسی می‌کنیم که آیا کلیک روی خود کانتینر یا دکمه بازکننده بوده
+        if (!container.contains(event.target) && !toggleBtn.contains(event.target)) {
+            container.style.display = 'none';
+        }
+    }
+});
+</script>   <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
+        <a href="#" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=" alt="چت اختصاصی" /></a>
+    </div>
 
     <!-- اسکریپت‌ها -->
     <script>
