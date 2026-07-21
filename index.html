@@ -211,74 +211,48 @@
             background: rgba(108, 99, 255, 0.08);
         }
 
-        /* ===== بخش استوری‌ها ===== */
-        .header1 {
-            margin: 0 16px 20px;
+        /* ===== استوری‌ها: آیفریم (اصلاح‌شده) ===== */
+        .story-iframe-section {
+            max-height: 90px;
+            margin: 10px 16px 20px;
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 16px 8px;
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
+            overflow: hidden;            /* مهم: از بیرون‌زدگی wrapper جلوگیری می‌کند */
         }
 
-        .story-list {
-            display: flex;
-            overflow-x: auto;
-            gap: 14px;
-            padding: 8px 4px;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .story-list::-webkit-scrollbar {
-            display: none;
-        }
-
-        .story-item {
-            flex: 0 0 76px;
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            position: relative;
-            scroll-snap-align: start;
-            transition: transform 0.25s;
-            cursor: pointer;
-        }
-        .story-item:hover {
-            transform: scale(1.05);
-        }
-
-        .story-border {
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-            animation: spin 4s linear infinite;
-            z-index: 0;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .story-border-inner {
+        /* حالت عادی wrapper */
+        #storyWrapper {
             position: relative;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            background: var(--card-bg);
-            padding: 3px;
-            z-index: 1;
+            min-height: 60px;            /* ارتفاع حداقلی برای ردیف دایره‌ها */
+            height: auto;                /* به محتوای آیفریم اجازه می‌دهد ارتفاع بگیرد */
+            overflow: hidden;            /* اسکرول عمودی کاملاً حذف */
+            transition: all 0.3s ease;
         }
-        .story-border-inner img {
+
+        #storyWrapper iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
+            border: none;
+        }
+
+        /* حالت تمام‌صفحه شدن آیفریم */
+        #storyWrapper.fullscreen {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            height: 100dvh !important;   /* پشتیبانی از mobile viewport */
+            z-index: 10000 !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        #storyWrapper.fullscreen iframe {
+            border-radius: 0;
         }
 
         /* ===== تصویر شناور ===== */
@@ -503,22 +477,11 @@
             transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: 0 0 12px rgba(108, 99, 255, 0.2);
         }
-        /* رنگ‌های متفاوت برای هر نوار */
-        .chart-item:nth-child(1) .chart-bar-fill {
-            background: linear-gradient(90deg, #6C63FF, #00D2FF);
-        }
-        .chart-item:nth-child(2) .chart-bar-fill {
-            background: linear-gradient(90deg, #FF6584, #FFD93D);
-        }
-        .chart-item:nth-child(3) .chart-bar-fill {
-            background: linear-gradient(90deg, #6C63FF, #FF6584);
-        }
-        .chart-item:nth-child(4) .chart-bar-fill {
-            background: linear-gradient(90deg, #00D2FF, #6C63FF);
-        }
-        .chart-item:nth-child(5) .chart-bar-fill {
-            background: linear-gradient(90deg, #FFD93D, #FF6584);
-        }
+        .chart-item:nth-child(1) .chart-bar-fill { background: linear-gradient(90deg, #6C63FF, #00D2FF); }
+        .chart-item:nth-child(2) .chart-bar-fill { background: linear-gradient(90deg, #FF6584, #FFD93D); }
+        .chart-item:nth-child(3) .chart-bar-fill { background: linear-gradient(90deg, #6C63FF, #FF6584); }
+        .chart-item:nth-child(4) .chart-bar-fill { background: linear-gradient(90deg, #00D2FF, #6C63FF); }
+        .chart-item:nth-child(5) .chart-bar-fill { background: linear-gradient(90deg, #FFD93D, #FF6584); }
 
         .chart-value {
             width: 44px;
@@ -545,9 +508,7 @@
             border: 1px solid var(--glass-border);
             scrollbar-width: none;
         }
-        .imghsa::-webkit-scrollbar {
-            display: none;
-        }
+        .imghsa::-webkit-scrollbar { display: none; }
         .imghs {
             flex: 0 0 100px;
             height: 100px;
@@ -603,38 +564,59 @@
             margin-top: 8px;
         }
 
-        /* ===== دکمه شناور ===== */
-        .floating-button {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: var(--gradient-btn);
-            border: none;
-            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.4);
-            cursor: pointer;
-            transition: transform 0.25s, box-shadow 0.25s;
-            z-index: 998;
-            background-image: url('https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=');
-            background-size: 60%;
-            background-position: center;
-            background-repeat: no-repeat;
-            animation: pulse 2s infinite;
-        }
+      /* ===== دکمه شناور (دایره‌ای و واکنش‌گرا) ===== */
+.floating-button {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 60px;
+    height: 60px;               /* ارتفاع = عرض → دایره کامل */
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+    box-shadow: 0 8px 30px rgba(108, 99, 255, 0.4);
+    cursor: pointer;
+    z-index: 998;
+    animation: pulseCircle 2s ease-in-out infinite;
+    transition: box-shadow 0.25s ease;
+}
+
+/* آیکون داخل دکمه */
+.floating-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=') center / contain no-repeat;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* انیمیشن پالس (بزرگ و کوچک شدن دایره) */
+@keyframes pulseCircle {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* هاور */
+.floating-button:hover {
+    box-shadow: 0 12px 40px rgba(108, 99, 255, 0.7);
+}
+
+/* نسخه‌ی موبایل */
+@media (max-width: 768px) {
+    .floating-button {
+        width: 56px;
+        height: 56px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
         .floating-button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.5);
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                box-shadow: 0 8px 30px rgba(108, 99, 255, 0.4);
-            }
-            50% {
-                box-shadow: 0 8px 50px rgba(108, 99, 255, 0.7);
-            }
+            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.7);
         }
 
         /* ===== پاپ‌آپ شبکه‌های اجتماعی ===== */
@@ -665,9 +647,7 @@
             margin: 0 6px;
             transition: transform 0.2s;
         }
-        .popup a:hover {
-            transform: scale(1.1);
-        }
+        .popup a:hover { transform: scale(1.1); }
         .popup img {
             width: 44px;
             height: 44px;
@@ -675,189 +655,87 @@
             background: rgba(108, 99, 255, 0.06);
             padding: 4px;
         }
-        .close-popup {
+
+        /* ===== چت (بدون تغییر) ===== */
+        #chatIframeContainer {
             display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 80%;
+            height: 80%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 9999;
+            background: #fff;
+            border: 1px solid #e0e0e0;
         }
+        #chatIframeContainer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .close-chat-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 10;
+            background: #ff4757;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-chat-btn:hover { background: #ff6b81; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            body {
-                padding-top: 72px;
-            }
-            header {
-                padding: 10px 16px;
-            }
-            .title {
-                font-size: 1rem;
-            }
-            .logo {
-                width: 50px;
-                height: 50px;
-            }
-            #toggleBtn {
-                width: 38px;
-                height: 38px;
-                font-size: 20px;
-            }
-            .hamburger-menu {
-                display: flex;
-            }
-            nav {
-                display: none;
-            }
-            .menu-popup {
-                right: 12px;
-                left: 12px;
-                top: 76px;
-                min-width: unset;
-            }
-            .container {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .story-item {
-                flex: 0 0 64px;
-                width: 64px;
-                height: 64px;
-            }
-            .animated-image {
-                width: 80%;
-            }
-            .section {
-                padding: 18px 14px;
-            }
-            .rotate,
-            .rotat,
-            .rota {
-                width: 60px;
-            }
-            .imghs {
-                flex: 0 0 80px;
-                height: 80px;
-            }
-            footer {
-                padding: 16px 12px;
-            }
-            .social-icons img {
-                width: 38px;
-                height: 38px;
-            }
-            .floating-button {
-                width: 56px;
-                height: 56px;
-                bottom: 20px;
-                right: 20px;
-            }
-            .popup {
-                bottom: 88px;
-                right: 20px;
-                padding: 12px 14px;
-            }
-            .popup img {
-                width: 38px;
-                height: 38px;
-            }
-            .chart-label {
-                width: 70px;
-                font-size: 0.75rem;
-            }
-            .chart-value {
-                width: 34px;
-                font-size: 0.75rem;
-            }
-            .chart-item {
-                gap: 6px;
-                margin-bottom: 14px;
-            }
+            body { padding-top: 72px; }
+            header { padding: 10px 16px; }
+            .title { font-size: 1rem; }
+            .logo { width: 50px; height: 50px; }
+            #toggleBtn { width: 38px; height: 38px; font-size: 20px; }
+            .hamburger-menu { display: flex; }
+            nav { display: none; }
+            .menu-popup { right: 12px; left: 12px; top: 76px; min-width: unset; }
+            .container { grid-template-columns: 1fr; gap: 16px; }
+            .animated-image { width: 80%; }
+            .section { padding: 18px 14px; }
+            .rotate, .rotat, .rota { width: 60px; }
+            .imghs { flex: 0 0 80px; height: 80px; }
+            footer { padding: 16px 12px; }
+            .social-icons img { width: 38px; height: 38px; }
+            .floating-button { width: 56px; height: 56px; bottom: 20px; right: 20px; }
+            .popup { bottom: 88px; right: 20px; padding: 12px 14px; }
+            .popup img { width: 38px; height: 38px; }
+            .chart-label { width: 70px; font-size: 0.75rem; }
+            .chart-value { width: 34px; font-size: 0.75rem; }
+            #storyWrapper { min-height: 75px; }
         }
-
         @media (max-width: 480px) {
-            .title {
-                font-size: 0.85rem;
-            }
-            .header1 {
-                padding: 12px 4px;
-            }
-            .story-item {
-                flex: 0 0 56px;
-                width: 56px;
-                height: 56px;
-            }
-            .section ul li {
-                font-size: 0.85rem;
-            }
-            .bat {
-                font-size: 0.85rem;
-                padding: 10px 16px;
-            }
-            .chart-label {
-                width: 60px;
-                font-size: 0.7rem;
-            }
-            .chart-value {
-                width: 30px;
-                font-size: 0.7rem;
-            }
+            .title { font-size: 0.85rem; }
+            .section ul li { font-size: 0.85rem; }
+            .bat { font-size: 0.85rem; padding: 10px 16px; }
+            .chart-label { width: 60px; font-size: 0.7rem; }
+            .chart-value { width: 30px; font-size: 0.7rem; }
         }
-        
-        /* استایل کانتینر ایفریم */
-#chatIframeContainer {
-    display: none; /* در ابتدا پنهان است */
-    position: fixed;
-    bottom: 100px; /* فاصله از پایین - می‌توانید کم‌تر یا زیاد کنید */
-    right: 20px;
-    width: 80%;
-    height: 80%;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    z-index: 9999;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-}
-
-#chatIframeContainer iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* دکمه بستن (ضربدر) */
-.close-chat-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 10;
-    background: #ff4757;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-    transition: 0.2s;
-}
-.close-chat-btn:hover {
-    background: #ff6b81;
-    transform: scale(1.05);
-}
     </style>
 </head>
 <body>
     <!-- ===== HEADER ===== -->
     <header>
         <div class="container1">
-                            <img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگو" />
-
+            <img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگو" />
             <h1 class="title">خدمات فنی احمدی</h1>
             <div style="display: flex; align-items: center; gap: 12px;">
-                <!-- دکمه تغییر تم با ایموجی -->
                 <button id="toggleBtn" aria-label="تغییر تم">
                     <span id="themeIcon">☽</span>
                 </button>
@@ -870,9 +748,9 @@
         </div>
     </header>
 
-    <!-- ===== منوی همبرگری (موبایل) ===== -->
+    <!-- ===== منوی همبرگری ===== -->
     <div class="menu-popup" id="menuPopup">
-       <a href="index.html" onclick="toggleMenu()">🏠 خانه</a>
+        <a href="index.html" onclick="toggleMenu()">🏠 خانه</a>
         <a href="about.html" onclick="toggleMenu()">👤 درباره من</a>
         <a href="contact.html" onclick="toggleMenu()">📞 تماس با ما</a>
         <a href="blog.html" onclick="toggleMenu()">📝 وبلاگ</a>
@@ -883,7 +761,7 @@
 
     <!-- ===== NAV ===== -->
     <nav>
-       <a href="index.html">صفحه اصلی</a>
+        <a href="index.html">صفحه اصلی</a>
         <a href="about.html">درباره من</a>
         <a href="contact.html" class="active">تماس با ما</a>
         <a href="blog.html">وبلاگ</a>
@@ -892,45 +770,10 @@
         <a href="membership.html">عضویت</a>
     </nav>
 
-    <!-- ===== استوری‌ها ===== -->
-    <section class="header1">
-        <div class="story-list">
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%20%D8%A7%D8%B3%D8%AA%D9%88%D8%B1%DB%8C%20%2FInShot_%DB%B2%DB%B0%DB%B2%DB%B4%DB%B0%DB%B8%DB%B1%DB%B1_%DB%B2%DB%B0%DB%B2%DB%B1%DB%B0%DB%B6%DB%B5%DB%B1%DB%B2.jpg?versionId=" alt="استوری ۱" />
-                </div>
-            </a>
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D8%A7%D8%A8%D9%84%D9%88-%D8%A8%D8%B1%D9%82-%D9%81%D8%B4%D8%A7%D8%B1-%D9%82%D9%88%DB%8C-%DA%86%DB%8C%D8%B3%D8%AA-%D8%9F.jpg?versionId=" alt="استوری ۲" />
-                </div>
-            </a>
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://media.istockphoto.com/id/1218620568/vector/medical-cross-icon-vector-logo-template.jpg?s=612x612&w=0&k=20&c=SR5fEM-VNBYk031nwpiWnD0I4umrIumLAleHUL852GA=" alt="استوری ۳" />
-                </div>
-            </a>
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://media.istockphoto.com/id/1218620568/vector/medical-cross-icon-vector-logo-template.jpg?s=612x612&w=0&k=20&c=SR5fEM-VNBYk031nwpiWnD0I4umrIumLAleHUL852GA=" alt="استوری ۴" />
-                </div>
-            </a>
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://media.istockphoto.com/id/1218620568/vector/medical-cross-icon-vector-logo-template.jpg?s=612x612&w=0&k=20&c=SR5fEM-VNBYk031nwpiWnD0I4umrIumLAleHUL852GA=" alt="استوری ۵" />
-                </div>
-            </a>
-            <a href="#" class="story-item">
-                <div class="story-border"></div>
-                <div class="story-border-inner">
-                    <img src="https://media.istockphoto.com/id/1218620568/vector/medical-cross-icon-vector-logo-template.jpg?s=612x612&w=0&k=20&c=SR5fEM-VNBYk031nwpiWnD0I4umrIumLAleHUL852GA=" alt="استوری ۶" />
-                </div>
-            </a>
+    <!-- ===== بخش استوری‌ها (آیفریم هوشمند) ===== -->
+    <section class="story-iframe-section">
+        <div id="storyWrapper">
+            <iframe id="storyIframe" src="https://mywebsit.s3.ir-thr-at1.arvanstorage.ir/%D8%A7%D8%B3%D8%AA%D9%88%D8%B1%DB%8C%20%D8%A8%D8%A7%DA%A9%D8%B3%2Fstory.html?versionId=" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -949,95 +792,50 @@
     <!-- ===== کارت‌های خدمات ===== -->
     <div class="container">
         <div class="section">
-            <div class="center">
-                <img class="rotate" id="myImage" src="https://esmatools.com/wp-content/uploads/2025/08/IMG_1020.webp" alt="تاسیسات" />
-            </div>
+            <div class="center"><img class="rotate" src="https://esmatools.com/wp-content/uploads/2025/08/IMG_1020.webp" alt="تاسیسات" /></div>
             <h3>خدمات تاسیساتی ساختمان</h3>
             <ul>
-               <li><pre>    لوله‌کشی آب سرد و گرم و فاضلاب</pre></li>
-               <li><pre>   نصب وسرویس کولر آبی و اسپیلت</pre></li>
-                <li><pre>   نصب و راه‌اندازی موتورخانه و پکیج</pre></li>
-                <li><pre>   سرویس و تعمیرات پمپ آب</pre></li>
-                <li><pre>   جوشکاری و نصب شیرآلات</pre></li>
+                <li>لوله‌کشی آب سرد و گرم و فاضلاب</li>
+                <li>نصب وسرویس کولر آبی و اسپیلت</li>
+                <li>نصب و راه‌اندازی موتورخانه و پکیج</li>
+                <li>سرویس و تعمیرات پمپ آب</li>
+                <li>جوشکاری و نصب شیرآلات</li>
             </ul>
             <button class="bat" onclick="window.location.href='installation.html'">ادامه مطلب...</button>
         </div>
-
         <div class="section">
-            <div class="cente">
-                <img class="rotat" id="myImag" src="https://cdn.nody.ir/files/2021/10/12/nody-%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86-%D8%AD%D8%A7%D8%B4%DB%8C%D9%87-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%81%D8%AA%D9%88%D8%B4%D8%A7%D9%BE-1633987045.png" alt="برق" />
-            </div>
+            <div class="cente"><img class="rotat" src="https://cdn.nody.ir/files/2021/10/12/nody-%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86-%D8%AD%D8%A7%D8%B4%DB%8C%D9%87-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%81%D8%AA%D9%88%D8%B4%D8%A7%D9%BE-1633987045.png" alt="برق" /></div>
             <h3>برق‌کاری و سیم‌کشی</h3>
             <ul>
-                <li><pre>   برق کاری تک فاز و صنعتی </pre></li>
-                <li><pre>   برقکاری صفر تا صد و تعمیرات</pre></li>
-                <li><pre>   نصب لوستر و نورپردازی</pre></li>
-                <li><pre>   نصب آیفون تصویری و در باز کن</pre></li>
-                <li><pre>   نصب دوربین و دزد گیر</pre></li>
+                <li>برق کاری تک فاز و صنعتی</li>
+                <li>برقکاری صفر تا صد و تعمیرات</li>
+                <li>نصب لوستر و نورپردازی</li>
+                <li>نصب آیفون تصویری و در باز کن</li>
+                <li>نصب دوربین و دزد گیر</li>
             </ul>
             <button class="bat">ادامه مطلب...</button>
         </div>
-
         <div class="section">
-            <div class="cent">
-                <img class="rota" id="myIma" src="https://cdn.nody.ir/files/2024/08/21/nody-%DA%A9%D8%A7%D9%81%D9%87-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%A2%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86-%D9%85%D8%B3%DA%A9%D9%88%D9%86%DB%8C-%DA%86%D9%86%D8%AF-%D8%B7%D8%A8%D9%82%D9%87-%DA%A9%D8%B3%D8%A8-%DA%A9%D8%A7%D8%B1-%D8%B4%D9%87%D8%B1%DB%8C-%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86-%D8%AF%D8%A7%D8%AE%D9%84-%D9%85%D9%81%D9%87%D9%88%D9%85-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86-%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%D9%85%D8%B9%D9%85%D8%A7%D8%B1%DB%8C-%D9%85%D8%AF%D8%B1%D9%86-%D8%B3%D8%A8%DA%A9-%DA%A9%D8%A7%D8%B1%D8%AA%D9%88%D9%86%DB%8C--1724241863.webp" alt="بازسازی" />
-            </div>
+            <div class="cent"><img class="rota" src="https://cdn.nody.ir/files/2024/08/21/nody-%DA%A9%D8%A7%D9%81%D9%87-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%A2%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86-%D9%85%D8%B3%DA%A9%D9%88%D9%86%DB%8C-%DA%86%D9%86%D8%AF-%D8%B7%D8%A8%D9%82%D9%87-%DA%A9%D8%B3%D8%A8-%DA%A9%D8%A7%D8%B1-%D8%B4%D9%87%D8%B1%DB%8C-%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86-%D8%AF%D8%A7%D8%AE%D9%84-%D9%85%D9%81%D9%87%D9%88%D9%85-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86-%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%D9%85%D8%B9%D9%85%D8%A7%D8%B1%DB%8C-%D9%85%D8%AF%D8%B1%D9%86-%D8%B3%D8%A8%DA%A9-%DA%A9%D8%A7%D8%B1%D8%AA%D9%88%D9%86%DB%8C--1724241863.webp" alt="بازسازی" /></div>
             <h3>بازسازی ساختمان</h3>
             <ul>
-                <li><pre>   بازسازی آپارتمان، ویلا و ملک</pre></li>
-                <li><pre>   کیفیت عالی و نظارت کامل</pre></li>
-                <li><pre>   طراحی مدرن و اجرای حرفه‌ای</pre></li>
-                <li><pre>   بازسازی مسکونی و تجاری</pre></li>
+                <li>بازسازی آپارتمان، ویلا و ملک</li>
+                <li>کیفیت عالی و نظارت کامل</li>
+                <li>طراحی مدرن و اجرای حرفه‌ای</li>
+                <li>بازسازی مسکونی و تجاری</li>
             </ul>
             <button class="bat">ادامه مطلب...</button>
         </div>
     </div>
 
-    <!-- ===== نمودارهای میله‌ای افقی با انیمیشن ===== -->
+    <!-- ===== نمودارهای میله‌ای ===== -->
     <section class="chart-section" id="chartSection">
-        <div class="chart-title">
-            📊 <span>نمودار عملکرد خدمات</span>
-        </div>
-
-        <div class="chart-item">
-            <span class="chart-label">تاسیسات ساختمان</span>
-            <div class="chart-bar-bg">
-                <div class="chart-bar-fill" data-width="92%"></div>
-            </div>
-            <span class="chart-value">92%</span>
-        </div>
-
-        <div class="chart-item">
-            <span class="chart-label">برق‌کاری و سیم‌کشی</span>
-            <div class="chart-bar-bg">
-                <div class="chart-bar-fill" data-width="88%"></div>
-            </div>
-            <span class="chart-value">88%</span>
-        </div>
-
-        <div class="chart-item">
-            <span class="chart-label">بازسازی ساختمان</span>
-            <div class="chart-bar-bg">
-                <div class="chart-bar-fill" data-width="76%"></div>
-            </div>
-            <span class="chart-value">76%</span>
-        </div>
-
-        <div class="chart-item">
-            <span class="chart-label">لوله‌کشی و فاضلاب</span>
-            <div class="chart-bar-bg">
-                <div class="chart-bar-fill" data-width="85%"></div>
-            </div>
-            <span class="chart-value">85%</span>
-        </div>
-
-        <div class="chart-item">
-            <span class="chart-label">نصب و تعمیر پکیج</span>
-            <div class="chart-bar-bg">
-                <div class="chart-bar-fill" data-width="79%"></div>
-            </div>
-            <span class="chart-value">79%</span>
-        </div>
+        <div class="chart-title">📊 <span>نمودار عملکرد خدمات</span></div>
+        <div class="chart-item"><span class="chart-label">تاسیسات ساختمان</span><div class="chart-bar-bg"><div class="chart-bar-fill" data-width="92%"></div></div><span class="chart-value">92%</span></div>
+        <div class="chart-item"><span class="chart-label">برق‌کاری و سیم‌کشی</span><div class="chart-bar-bg"><div class="chart-bar-fill" data-width="88%"></div></div><span class="chart-value">88%</span></div>
+        <div class="chart-item"><span class="chart-label">بازسازی ساختمان</span><div class="chart-bar-bg"><div class="chart-bar-fill" data-width="76%"></div></div><span class="chart-value">76%</span></div>
+        <div class="chart-item"><span class="chart-label">لوله‌کشی و فاضلاب</span><div class="chart-bar-bg"><div class="chart-bar-fill" data-width="85%"></div></div><span class="chart-value">85%</span></div>
+        <div class="chart-item"><span class="chart-label">نصب و تعمیر پکیج</span><div class="chart-bar-bg"><div class="chart-bar-fill" data-width="79%"></div></div><span class="chart-value">79%</span></div>
     </section>
 
     <!-- ===== گالری تصاویر ===== -->
@@ -1061,73 +859,64 @@
         <small>حق نشر محفوظ است / رحمان احمدی</small>
     </footer>
 
-    <!-- ===== دکمه شناور ===== -->
+    <!-- ===== دکمه شناور و پاپ‌آپ ===== -->
     <button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
-<div class="popup" id="socialPopup">
-    <a href="https://wa.me/989120996211" target="_blank">
-        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" />  </a>
-    <a href="https://t.me/qRahman" target="_blank">
-        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
-    <a href="tel:09120996211">
-        <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
-    <a href="#" onclick="toggleChat(event)" id="chatToggleBtn">
-    <img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=" alt="چتاختصاصی" /></a></div>
-<div id="chatIframeContainer" onclick="event.stopPropagation();">
-    <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
-    <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb" width="350px" height="600px"></iframe>
-</div>
-
-<script>
-// تابع باز و بسته کردن
-function toggleChat(event) {
-    event.preventDefault();
-    event.stopPropagation(); // جلوگیری از انتشار رویداد به document
-    var container = document.getElementById('chatIframeContainer');
-    if (container.style.display === 'block') {
-        container.style.display = 'none';
-    } else {
-        container.style.display = 'block';
-    }
-}
-
-// تابع بستن (برای دکمه ضربدر)
-function closeChat(event) {
-    event.stopPropagation(); // جلوگیری از بسته شدن بلافاصله توسط کلیک روی document
-    document.getElementById('chatIframeContainer').style.display = 'none';
-}
-
-// بستن چت با کلیک روی هر جای صفحه (به جز خود چت و دکمه بازکننده)
-document.addEventListener('click', function(event) {
-    var container = document.getElementById('chatIframeContainer');
-    var toggleBtn = document.getElementById('chatToggleBtn');
-    
-    // اگر پنجره باز است و کلیک روی خود چت یا دکمه بازکننده نبوده، ببند
-    if (container.style.display === 'block') {
-        // بررسی می‌کنیم که آیا کلیک روی خود کانتینر یا دکمه بازکننده بوده
-        if (!container.contains(event.target) && !toggleBtn.contains(event.target)) {
-            container.style.display = 'none';
-        }
-    }
-});
-</script>
+    <div class="popup" id="socialPopup">
+        <a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
+        <a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
+        <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
+        <a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a>
+    </div>
+    <div id="chatIframeContainer" onclick="event.stopPropagation();">
+        <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
+        <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
+    </div>
 
     <!-- ===== اسکریپت‌ها ===== -->
     <script>
-        // =============================================
-        // 1. تغییر تم (روشن/تاریک) با ایموجی
-        // =============================================
+        // ===== ۱. دریافت پیام از صفحه استوری و تغییر اندازه آیفریم =====
+        window.addEventListener('message', function(event) {
+            // می‌توانید برای امنیت دامنه را بررسی کنید:
+            // if (event.origin !== window.location.origin) return;
+            
+            const wrapper = document.getElementById('storyWrapper');
+            if (!wrapper) return;
+
+            if (event.data === 'storyOpen') {
+                wrapper.classList.add('fullscreen');
+            } else if (event.data === 'storyClose') {
+                wrapper.classList.remove('fullscreen');
+            }
+        });
+
+        // ===== ۲. چت =====
+        function toggleChat(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            var container = document.getElementById('chatIframeContainer');
+            container.style.display = (container.style.display === 'block') ? 'none' : 'block';
+        }
+        document.addEventListener('click', function(event) {
+            var container = document.getElementById('chatIframeContainer');
+            var toggleBtn = document.getElementById('chatToggleBtn');
+            if (container.style.display === 'block') {
+                if (!container.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    container.style.display = 'none';
+                }
+            }
+        });
+
+        // ===== ۳. تغییر تم =====
         (function() {
             const toggleBtn = document.getElementById('toggleBtn');
             const iconSpan = document.getElementById('themeIcon');
             const saved = localStorage.getItem('theme') || 'light';
-
             if (saved === 'dark') {
                 document.body.classList.add('dark-mode');
                 iconSpan.textContent = '☀';
             } else {
                 iconSpan.textContent = '☽';
             }
-
             toggleBtn.addEventListener('click', function() {
                 document.body.classList.toggle('dark-mode');
                 const isDark = document.body.classList.contains('dark-mode');
@@ -1136,60 +925,39 @@ document.addEventListener('click', function(event) {
             });
         })();
 
-        // =============================================
-        // 2. چرخش تصاویر با Intersection Observer
-        // =============================================
+        // ===== ۴. چرخش تصاویر =====
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.rotate, .rotat, .rota');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('rotating');
-                    } else {
-                        entry.target.classList.remove('rotating');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('rotating');
+                    else entry.target.classList.remove('rotating');
                 });
             }, { threshold: 0.2 });
-
             images.forEach(img => observer.observe(img));
-
-            // کلیک برای چرخش دستی
-            images.forEach(img => {
-                img.addEventListener('click', () => {
-                    img.classList.toggle('rotating');
-                });
-            });
+            images.forEach(img => img.addEventListener('click', () => img.classList.toggle('rotating')));
         });
 
-        // =============================================
-        // 3. انیمیشن نمودارهای میله‌ای افقی
-        // =============================================
+        // ===== ۵. انیمیشن نمودارها =====
         document.addEventListener('DOMContentLoaded', function() {
             const chartSection = document.getElementById('chartSection');
             if (!chartSection) return;
-
             const fills = chartSection.querySelectorAll('.chart-bar-fill');
-
             const chartObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         fills.forEach((fill, index) => {
                             const targetWidth = fill.getAttribute('data-width');
-                            setTimeout(() => {
-                                fill.style.width = targetWidth;
-                            }, 150 * index);
+                            setTimeout(() => { fill.style.width = targetWidth; }, 150 * index);
                         });
                         chartObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.25 });
-
             chartObserver.observe(chartSection);
         });
 
-        // =============================================
-        // 4. توابع باز/بستن پاپ‌آپ و منو
-        // =============================================
+        // ===== ۶. منو و پاپ‌آپ =====
         function toggleElement(id) {
             const el = document.getElementById(id);
             if (!el) return;
@@ -1198,23 +966,12 @@ document.addEventListener('click', function(event) {
                 setTimeout(() => { el.style.display = 'none'; }, 250);
             } else {
                 el.style.display = 'block';
-                requestAnimationFrame(() => {
-                    el.classList.add('show');
-                });
+                requestAnimationFrame(() => { el.classList.add('show'); });
             }
         }
+        function togglePopup() { toggleElement('socialPopup'); }
+        function toggleMenu() { toggleElement('menuPopup'); }
 
-        function togglePopup() {
-            toggleElement('socialPopup');
-        }
-
-        function toggleMenu() {
-            toggleElement('menuPopup');
-        }
-
-        // =============================================
-        // 5. بستن با کلیک خارج
-        // =============================================
         document.addEventListener('click', function(e) {
             const menuPopup = document.getElementById('menuPopup');
             const hamburger = document.querySelector('.hamburger-menu');
@@ -1225,7 +982,6 @@ document.addEventListener('click', function(event) {
                 menuPopup.classList.remove('show');
                 setTimeout(() => { menuPopup.style.display = 'none'; }, 250);
             }
-
             if (popup && !popup.contains(e.target) && !floatBtn.contains(e.target)) {
                 popup.classList.remove('show');
                 setTimeout(() => { popup.style.display = 'none'; }, 250);
