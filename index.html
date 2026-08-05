@@ -213,7 +213,7 @@
 
         /* ===== استوری‌ها: آیفریم (اصلاح‌شده) ===== */
         .story-iframe-section {
-            max-height: 90px;
+            max-height: 80px;
             margin: 10px 16px 20px;
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -265,7 +265,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             border: 1px solid var(--glass-border);
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_3rj5sh-hCjNIXy86bUytgOvbHAetty7_xYE4fqZvWA&s=10');
+            background-image: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F1683298359_%D8%AC%D8%B3%D8%AA%D8%AC%D9%88%DB%8C-%D8%B3%D8%B1%DB%8C%D8%B9-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86-%D9%87%D8%A7-%D9%88-%D8%B4%D9%87%D8%B1%D8%B3%D8%AA%D8%A7%D9%86-%D9%87%D8%A7%DB%8C-%D8%AA%D9%87%D8%B1%D8%A7%D9%86-%D8%A8%D8%A7-%D9%87%D8%AF%D9%81-jpg.webp?versionId=');
            background-size: cover;
            background-repeat: no-repeat;
            background-position: center;
@@ -289,7 +289,7 @@
 
         /* ===== بخش محدوده خدماتی ===== */
         #home {
-           background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM_QWm7FM7xjNjJkyb-68BcbtNaUb15YChCzXcdnRAyGWk3AUuvBYXYigv&s=10');
+           background-image: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2Frwzneejdxyzs.jpeg?versionId=');
            background-size: cover;
            background-repeat: no-repeat;
            background-position: center;
@@ -390,7 +390,6 @@
             border-bottom: 1px solid rgba(108, 99, 255, 0.06);
         }
         .section ul li::before {
-            content: "✓";
             position: absolute;
             right: 0;
             color: var(--secondary);
@@ -565,7 +564,7 @@
         }
 
       /* ===== دکمه شناور (دایره‌ای و واکنش‌گرا) ===== */
-.floating-button {
+ .floating-button {
     position: fixed;
     bottom: 28px;
     right: 28px;
@@ -573,37 +572,23 @@
     height: 60px;               /* ارتفاع = عرض → دایره کامل */
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
-    box-shadow: 0 8px 30px rgba(108, 99, 255, 0.4);
-    cursor: pointer;
-    z-index: 998;
+    background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%283%29.png?versionId=') center / contain no-repeat;
     animation: pulseCircle 2s ease-in-out infinite;
     transition: box-shadow 0.25s ease;
 }
 
-/* آیکون داخل دکمه */
-.floating-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 90%;
-    background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86.png?versionId=') center / contain no-repeat;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
-}
+
 
 /* انیمیشن پالس (بزرگ و کوچک شدن دایره) */
 @keyframes pulseCircle {
     0%   { transform: scale(1); }
     50%  { transform: scale(1.12); }
-    100% { transform: scale(1); }
+    110% { transform: scale(1); }
 }
 
 /* هاور */
 .floating-button:hover {
-    box-shadow: 0 12px 40px rgba(108, 99, 255, 0.7);
+    box-shadow: 0 12px 40px rgba(107, 99, 255, 0);
 }
 
 /* نسخه‌ی موبایل */
@@ -616,37 +601,34 @@
     }
 }
         .floating-button:hover {
-            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.7);
+            box-shadow: 0 12px 40px rgba(107, 99, 255, 0);
         }
 
         /* ===== پاپ‌آپ شبکه‌های اجتماعی ===== */
         .popup {
             display: none;
             position: fixed;
-            bottom: 100px;
-            right: 28px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            bottom: 60px;
+            right: 15px;
+            background: rgba(245, 222, 179, 0);
             border-radius: var(--radius);
             padding: 16px 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--glass-border);
+            box-shadow: none;
             z-index: 999;
             opacity: 0;
             transition: opacity 0.25s ease, transform 0.25s ease;
             transform: translateY(10px);
         }
         .popup.show {
-            display: block;
+            display: flex;
             opacity: 1;
             transform: translateY(0);
         }
         .popup a {
-            display: inline-block;
-            margin: 0 6px;
+            display: block;      
+            margin: 4px 0;         
             transition: transform 0.2s;
-        }
+             }
         .popup a:hover { transform: scale(1.1); }
         .popup img {
             width: 44px;
@@ -734,7 +716,7 @@
     <header>
         <div class="container1">
             <img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگو" />
-            <h1 class="title">خدمات فنی احمدی</h1>
+            <h1 class="title">خدمات فنی احمدی </h1>
             <div style="display: flex; align-items: center; gap: 12px;">
                 <button id="toggleBtn" aria-label="تغییر تم">
                     <span id="themeIcon">☽</span>
@@ -746,6 +728,7 @@
                 </div>
             </div>
         </div>
+        
     </header>
 
     <!-- ===== منوی همبرگری ===== -->
@@ -769,6 +752,8 @@
         <a href="images.html">گالری تصاویر</a>
         <a href="membership.html">عضویت</a>
     </nav>
+
+   
 
     <!-- ===== بخش استوری‌ها (آیفریم هوشمند) ===== -->
     <section class="story-iframe-section">
@@ -795,11 +780,11 @@
             <div class="center"><img class="rotate" src="https://esmatools.com/wp-content/uploads/2025/08/IMG_1020.webp" alt="تاسیسات" /></div>
             <h3>خدمات تاسیساتی ساختمان</h3>
             <ul>
-                <li>لوله‌کشی آب سرد و گرم و فاضلاب</li>
-                <li>نصب وسرویس کولر آبی و اسپیلت</li>
-                <li>نصب و راه‌اندازی موتورخانه و پکیج</li>
-                <li>سرویس و تعمیرات پمپ آب</li>
-                <li>جوشکاری و نصب شیرآلات</li>
+                <li>✅  لوله‌کشی آب سرد و گرم</li>
+                <li>✅  نصب وسرویس کولر آبی و اسپیلت</li>
+                <li>✅  نصب و راه‌اندازی موتورخانه و پکیج</li>
+                <li>✅  سرویس و تعمیرات پمپ آب</li>
+                <li>✅  تعمیر و نصب شیرآلات</li>
             </ul>
             <button class="bat" onclick="window.location.href='installation.html'">ادامه مطلب...</button>
         </div>
@@ -807,11 +792,11 @@
             <div class="cente"><img class="rotat" src="https://cdn.nody.ir/files/2021/10/12/nody-%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86-%D8%AD%D8%A7%D8%B4%DB%8C%D9%87-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%81%D8%AA%D9%88%D8%B4%D8%A7%D9%BE-1633987045.png" alt="برق" /></div>
             <h3>برق‌کاری و سیم‌کشی</h3>
             <ul>
-                <li>برق کاری تک فاز و صنعتی</li>
-                <li>برقکاری صفر تا صد و تعمیرات</li>
-                <li>نصب لوستر و نورپردازی</li>
-                <li>نصب آیفون تصویری و در باز کن</li>
-                <li>نصب دوربین و دزد گیر</li>
+                <li>✅  برق کاری تک فاز و صنعتی</li>
+                <li>✅  برقکاری صفر تا صد و تعمیرات</li>
+                <li>✅  نصب لوستر و نورپردازی</li>
+                <li>✅  نصب آیفون تصویری و در باز کن</li>
+                <li>✅  نصب دوربین و دزد گیر</li>
             </ul>
             <button class="bat">ادامه مطلب...</button>
         </div>
@@ -819,10 +804,10 @@
             <div class="cent"><img class="rota" src="https://cdn.nody.ir/files/2024/08/21/nody-%DA%A9%D8%A7%D9%81%D9%87-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C-%D8%A2%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86-%D9%85%D8%B3%DA%A9%D9%88%D9%86%DB%8C-%DA%86%D9%86%D8%AF-%D8%B7%D8%A8%D9%82%D9%87-%DA%A9%D8%B3%D8%A8-%DA%A9%D8%A7%D8%B1-%D8%B4%D9%87%D8%B1%DB%8C-%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86-%D8%AF%D8%A7%D8%AE%D9%84-%D9%85%D9%81%D9%87%D9%88%D9%85-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86-%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%D9%85%D8%B9%D9%85%D8%A7%D8%B1%DB%8C-%D9%85%D8%AF%D8%B1%D9%86-%D8%B3%D8%A8%DA%A9-%DA%A9%D8%A7%D8%B1%D8%AA%D9%88%D9%86%DB%8C--1724241863.webp" alt="بازسازی" /></div>
             <h3>بازسازی ساختمان</h3>
             <ul>
-                <li>بازسازی آپارتمان، ویلا و ملک</li>
-                <li>کیفیت عالی و نظارت کامل</li>
-                <li>طراحی مدرن و اجرای حرفه‌ای</li>
-                <li>بازسازی مسکونی و تجاری</li>
+                <li>✅  بازسازی آپارتمان و ویلا</li>
+                <li>✅  کیفیت عالی و نظارت کامل</li>
+                <li>✅  طراحی مدرن و اجرای حرفه‌ای</li>
+                <li>✅  بازسازی مسکونی و تجاری</li>
             </ul>
             <button class="bat">ادامه مطلب...</button>
         </div>
@@ -850,7 +835,7 @@
 
     <!-- ===== فوتر ===== -->
     <footer>
- <p>بازدید از سایت</p>
+        <p>بازدید از سایت</p>
      <img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" 
      alt=" بازدید از سایت " decoding="async" style="border:0;max-width:100%;height:auto;" />
         <h2>راه‌های ارتباطی</h2>
