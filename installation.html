@@ -4,15 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     
-    <!-- سئو -->
-    <title> </title>
-    <meta name="description" content="با ۱۰ ایده خلاقانه و کم‌هزینه برای نورپردازی داخلی ساختمان آشنا شوید. از نورپردازی مخفی و خطی تا هوشمند، خانه خود را متحول کنید." />
+    <title>خدمات تاسیساتی ساختمان | خدمات فنی احمدی</title>
+    <meta name="description" content="خدمات تاسیساتی ساختمان شامل لوله‌کشی، نصب کولر آبی و اسپیلت، راه‌اندازی موتورخانه و پکیج، سرویس پمپ آب، نصب شیرآلات و جوشکاری تخصصی لوله‌های فلزی." />
     
-    <!-- فونت -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
     
-      <style>
-        /* ===== همان متغیرها و استایل‌های اصلی سایت ===== */
+    <style>
         :root {
             --primary: #6C63FF;
             --primary-dark: #5A52D5;
@@ -54,7 +51,6 @@
 
         a { text-decoration: none; color: inherit; }
 
-        /* ===== Header ===== */
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: var(--gradient-header); padding: 12px 20px;
@@ -87,6 +83,7 @@
             background: var(--card-bg); backdrop-filter: blur(20px); border-radius: var(--radius);
             padding: 20px; min-width: 200px; z-index: 999; opacity: 0;
             transition: all 0.3s; border: 1px solid var(--glass-border);
+            transform: translateY(-10px);
         }
         .menu-popup.show { display: block; opacity: 1; transform: translateY(0); }
         .menu-popup a {
@@ -108,7 +105,6 @@
         nav a:hover { color: var(--primary); background: rgba(108,99,255,0.08); }
         nav a.active { color: #fff; background: var(--primary); }
 
-        /* ===== صفحه مقاله ===== */
         .article-container {
             max-width: 860px; margin: 20px auto; padding: 0 16px;
             background: var(--card-bg); border-radius: var(--radius);
@@ -123,53 +119,31 @@
             font-size: 1.3rem; color: var(--primary-dark); margin: 32px 0 12px;
             border-right: 4px solid var(--secondary); padding-right: 12px;
         }
-        .article-container h3 {
-            font-size: 1.1rem; color: var(--primary); margin: 20px 0 10px;
-        }
         .article-container p {
             color: var(--text-light); margin-bottom: 16px; text-align: justify;
         }
-        .article-container ul, .article-container ol {
+        .article-container ul {
             margin-right: 24px; margin-bottom: 20px; color: var(--text-light);
         }
         .article-container li { margin-bottom: 8px; }
-
-        .spec-table {
-            width: 100%; border-collapse: collapse; margin: 24px 0;
-            background: var(--bg); border-radius: 12px; overflow: hidden;
-        }
-        .spec-table th, .spec-table td {
-            padding: 12px 16px; text-align: right; border-bottom: 1px solid var(--glass-border);
-        }
-        .spec-table th {
-            background: var(--gradient-header); color: #fff; font-weight: 700;
-        }
-        .spec-table td { color: var(--text-light); }
 
         .article-image {
             width: 100%; border-radius: 16px; margin: 20px 0;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        /* ===== فوتر ===== */
         footer {
             background: var(--card-bg); margin: 20px 16px; border-radius: var(--radius);
             padding: 20px; text-align: center; box-shadow: var(--shadow);
         }
         footer h2 { color: var(--primary); margin-bottom: 16px; }
         .social-icons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 20px; margin-bottom: 20px;
         }
         .social-icons img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(108, 99, 255, 0.08);
-            padding: 6px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(108, 99, 255, 0.08); padding: 6px;
             transition: transform 0.2s, background 0.2s;
         }
         .social-icons img:hover {
@@ -177,133 +151,107 @@
             background: rgba(108, 99, 255, 0.15);
         }
         footer small {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            display: block;
-            margin-top: 8px;
+            color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 8px;
         }
 
-            /* ===== دکمه شناور (دایره‌ای و واکنش‌گرا) ===== */
- .floating-button {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 60px;
-    height: 60px;               /* ارتفاع = عرض → دایره کامل */
-    border-radius: 50%;
-    border: none;
-    background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%283%29.png?versionId=') center / contain no-repeat;
-    animation: pulseCircle 2s ease-in-out infinite;
-    transition: box-shadow 0.25s ease;
-}
+        /* استایل دکمه bat */
+        .bat {
+            background: var(--gradient-btn);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.3);
+            transition: all 0.25s;
+            letter-spacing: 0.5px;
+        }
+        .bat:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
+        }
+        .bat:active {
+            transform: scale(0.97);
+        }
 
-
-
-/* انیمیشن پالس (بزرگ و کوچک شدن دایره) */
-@keyframes pulseCircle {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.12); }
-    110% { transform: scale(1); }
-}
-
-/* هاور */
-.floating-button:hover {
-    box-shadow: 0 12px 40px rgba(107, 99, 255, 0);
-}
-
-/* نسخه‌ی موبایل */
-@media (max-width: 768px) {
-    .floating-button {
-        width: 56px;
-        height: 56px;
-        bottom: 20px;
-        right: 20px;
-    }
-}
+        .floating-button {
+            position: fixed; bottom: 28px; right: 28px;
+            width: 60px; height: 60px;
+            border-radius: 50%; border: none;
+            background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%283%29.png?versionId=') center / contain no-repeat;
+            animation: pulseCircle 2s ease-in-out infinite;
+            transition: box-shadow 0.25s ease;
+            cursor: pointer;
+        }
+        @keyframes pulseCircle {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.12); }
+            100% { transform: scale(1); }
+        }
         .floating-button:hover {
             box-shadow: 0 12px 40px rgba(107, 99, 255, 0);
         }
 
-        /* ===== پاپ‌آپ شبکه‌های اجتماعی ===== */
         .popup {
-            display: none;
-            position: fixed;
-            bottom: 60px;
-            right: 15px;
+            display: none; position: fixed; bottom: 60px; right: 15px;
             background: rgba(245, 222, 179, 0);
             border-radius: var(--radius);
-            padding: 16px 20px;
-            box-shadow: none;
-            z-index: 999;
-            opacity: 0;
+            padding: 16px 20px; box-shadow: none;
+            z-index: 999; opacity: 0;
             transition: opacity 0.25s ease, transform 0.25s ease;
             transform: translateY(10px);
         }
         .popup.show {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
+            display: flex; opacity: 1; transform: translateY(0);
         }
         .popup a {
-            display: block;      
-            margin: 4px 0;         
+            display: block; margin: 4px 0;
             transition: transform 0.2s;
-             }
+        }
         .popup a:hover { transform: scale(1.1); }
         .popup img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(108, 99, 255, 0.06);
-            padding: 4px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(108, 99, 255, 0.06); padding: 4px;
         }
-        /* استایل کانتینر ایفریم */
-#chatIframeContainer {
-    display: none; /* در ابتدا پنهان است */
-    position: fixed;
-    bottom: 100px; /* فاصله از پایین - می‌توانید کم‌تر یا زیاد کنید */
-    right: 20px;
-    width: 80%;
-    height: 80%;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    z-index: 9999;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-}
 
-#chatIframeContainer iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+        #chatIframeContainer {
+            display: none; position: fixed;
+            bottom: 100px; right: 20px;
+            width: 80%; height: 80%;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 9999; background: #fff;
+            border: 1px solid #e0e0e0;
+        }
+        #chatIframeContainer iframe {
+            width: 100%; height: 100%; border: none;
+        }
+        .close-chat-btn {
+            position: absolute; top: 8px; right: 8px; z-index: 10;
+            background: #ff4757; color: #fff; border: none;
+            border-radius: 50%; width: 30px; height: 30px;
+            font-size: 18px; font-weight: bold; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+            transition: 0.2s;
+        }
+        .close-chat-btn:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
 
-/* دکمه بستن (ضربدر) */
-.close-chat-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 10;
-    background: #ff4757;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-    transition: 0.2s;
-}
-.close-chat-btn:hover {
-    background: #ff6b81;
-    transform: scale(1.05);
-}
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body { padding-top: 72px; }
+            .hamburger-menu { display: flex; }
+            nav { display: none; }
+            .menu-popup { right: 12px; left: 12px; top: 76px; min-width: unset; }
+            .article-container h1 { font-size: 1.4rem; }
+            .floating-button { width: 56px; height: 56px; bottom: 20px; right: 20px; }
+            .popup { bottom: 88px; right: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -322,6 +270,7 @@
     </div>
 </header>
 
+<!-- منوی همبرگری -->
 <div class="menu-popup" id="menuPopup">
     <a href="index.html">🏠 خانه</a>
     <a href="about.html">👤 درباره من</a>
@@ -332,6 +281,7 @@
     <a href="membership.html">📋 عضویت</a>
 </div>
 
+<!-- ناوبری دسکتاپ -->
 <nav>
     <a href="index.html">صفحه اصلی</a>
     <a href="about.html">درباره من</a>
@@ -342,148 +292,134 @@
     <a href="membership.html">عضویت</a>
 </nav>
 
-
+<!-- محتوای اصلی -->
 <main class="article-container">
+    <article>
+        <h1>خدمات تاسیساتی ساختمان</h1>
+        <p>
+            تیم تخصصی ما با بهره‌گیری از دانش فنی روز، ابزارهای پیشرفته و سال‌ها تجربه، کلیه خدمات تأسیساتی ساختمان شما را از طراحی و اجرا تا تعمیر و نگهداری بر عهده می‌گیرد. آنچه ما را متمایز می‌کند، ارائه راه‌حل‌های مهندسی‌شده، استفاده از متریال باکیفیت و پایبندی به زمان‌بندی تحویل پروژه است. در ادامه با جزئیات هر یک از خدمات تخصصی ما آشنا می‌شوید.
+        </p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaGCA0xivWb62yV-bwfbF_I7e4QTxAmdDB4CwjJNYhzg&s=10"خدمات تاسیساتی ساختمان" class="article-image" />
 
-<article>
-<h1>خدمات تاسیساتی ساختمان</h1>
-<p>
-    تیم تخصصی ما با بهره‌گیری از دانش فنی روز، ابزارهای پیشرفته و سال‌ها تجربه، کلیه خدمات تأسیساتی ساختمان شما را از طراحی و اجرا تا تعمیر و نگهداری بر عهده می‌گیرد. آنچه ما را متمایز می‌کند، ارائه راه‌حل‌های مهندسی‌شده، استفاده از متریال باکیفیت و پایبندی به زمان‌بندی تحویل پروژه است. در ادامه با جزئیات هر یک از خدمات تخصصی ما آشنا می‌شوید.
-</p>
+        <h2>۱. لوله‌کشی آب سرد و گرم و فاضلاب</h2>
+        <p>
+            لوله‌کشی استاندارد، شریان حیاتی هر ساختمان است. ما عملیات لوله‌کشی آب سرد و گرم مصرفی را با استفاده از لوله‌های پلیمری نسل جدید (PP-R و PEX) و سیستم‌های کلکتوری انجام می‌دهیم که علاوه بر حذف اتصالات دفنی، سرعت و دقت اجرا را چند برابر می‌کند. شبکه فاضلاب نیز با لوله‌های پوش‌فیت و پلیکا، با رعایت دقیق شیب‌بندی و اتصالات اصولی اجرا می‌شود. کلیه مسیرها پس از نصب، تحت تست فشار و تست نشتی استاندارد (مطابق مبحث ۱۶ مقررات ملی ساختمان) قرار می‌گیرند. چه برای یک واحد مسکونی نوساز و چه بازسازی یک ساختمان قدیمی با لوله‌های فلزی فرسوده، راه‌حل سریع، تمیز و بادوامی ارائه می‌دهیم.
+        </p>
+        <ul>
+            <li>لوله‌کشی آب گرم و سرد با سیستم کلکتوری و لوله‌های PEX پنج‌لایه</li>
+            <li>اجرای شبکه فاضلاب با شیب استاندارد و رعایت کامل هواکش‌ها</li>
+            <li>تست فشار و رفع کامل نشتی لوله‌های توکار و روکار</li>
+            <li>تعویض لوله‌های فلزی فرسوده (گالوانیزه) با لوله‌های پلیمری ضد رسوب</li>
+        </ul>
 
-<img src="placeholder-tasisat-1.jpg" alt="خدمات تاسیساتی ساختمان" class="article-image" />
+        <h2>۲. نصب و سرویس کولر آبی و اسپیلت</h2>
+        <p>
+            یک سیستم سرمایشی بد نصب شده، نه تنها خنک نمی‌کند، بلکه مصرف انرژی را بالا می‌برد و طول عمر دستگاه را کاهش می‌دهد. ما خدمات نصب اصولی کولرهای آبی (شامل نصب پمپ، شناور، تسمه، پوشال‌های سلولزی و کانال‌کشی) را با تنظیم دقیق دور موتور و زاویه پولی انجام می‌دهیم. در بخش اسپیلت نیز تیم ما نصب انواع مدل‌های دیواری، سقفی و کاستی را شامل پایه‌گذاری استاندارد، لوله‌کشی مسی، وکیوم کامل سیستم (با پمپ وکیوم) و شارژ گاز متناسب با کاتالوگ سازنده انجام می‌دهد. همچنین سرویس دوره‌ای فصلی و تعمیرات تخصصی انواع کولر آبی و گازی نیز با ضمانت ارائه می‌شود.
+        </p>
+        <ul>
+            <li>نصب و راه‌اندازی انواع کولر آبی (پرتابل، سلولزی، سنتی) با تنظیم کشش تسمه</li>
+            <li>نصب اسپیلت دیواری، سقفی و ایستاده با وکیوم اصولی و شارژ گاز استاندارد</li>
+            <li>سرویس و شستشوی فصلی کولر آبی و تعویض پوشال</li>
+            <li>تعمیر تخصصی برد الکترونیکی، موتور، فن و رفع نشتی گاز اسپیلت</li>
+        </ul>
 
-<h2>۱. لوله‌کشی آب سرد و گرم و فاضلاب</h2>
-<p>
-    لوله‌کشی استاندارد، شریان حیاتی هر ساختمان است. ما عملیات لوله‌کشی آب سرد و گرم مصرفی را با استفاده از لوله‌های پلیمری نسل جدید (PP-R و PEX) و سیستم‌های کلکتوری انجام می‌دهیم که علاوه بر حذف اتصالات دفنی، سرعت و دقت اجرا را چند برابر می‌کند. شبکه فاضلاب نیز با لوله‌های پوش‌فیت و پلیکا، با رعایت دقیق شیب‌بندی و اتصالات اصولی اجرا می‌شود. کلیه مسیرها پس از نصب، تحت تست فشار و تست نشتی استاندارد (مطابق مبحث ۱۶ مقررات ملی ساختمان) قرار می‌گیرند. چه برای یک واحد مسکونی نوساز و چه بازسازی یک ساختمان قدیمی با لوله‌های فلزی فرسوده، راه‌حل سریع، تمیز و بادوامی ارائه می‌دهیم.
-</p>
-<ul>
-    <li>لوله‌کشی آب گرم و سرد با سیستم کلکتوری و لوله‌های PEX پنج‌لایه</li>
-    <li>اجرای شبکه فاضلاب با شیب استاندارد و رعایت کامل هواکش‌ها</li>
-    <li>تست فشار و رفع کامل نشتی لوله‌های توکار و روکار</li>
-    <li>تعویض لوله‌های فلزی فرسوده (گالوانیزه) با لوله‌های پلیمری ضد رسوب</li>
-</ul>
+        <h2>۳. نصب و راه‌اندازی موتورخانه و پکیج</h2>
+        <p>
+            گرمایش مطمئن و ایمن در فصول سرد، نیازمند طراحی و اجرای دقیق سیستم‌های گرمایشی مرکزی یا مستقل است. تیم ما از طراحی نقشه اولیه موتورخانه گرفته تا نصب دیگ‌های چدنی و فولادی، مشعل گازی یا گازوئیلی، منبع دوجداره یا کویلدار، پمپ‌های سیرکولاتور و کلکتور رفت و برگشت، همه چیز را مطابق با محاسبات مهندسی بار حرارتی و استانداردهای نظام مهندسی اجرا می‌کند. همچنین نصب و راه‌اندازی پکیج دیواری (شامل لوله‌کشی گاز با شیلنگ فلکسیبل تاییدیه‌دار، دودکش استاندارد کلاف دوجداره و تنظیم شعله با دستگاه آنالایزر) با ارائه ضمانت معتبر انجام می‌شود.
+        </p>
+        <ul>
+            <li>طراحی و اجرای موتورخانه مرکزی (هتل، آپارتمان، مجتمع تجاری)</li>
+            <li>نصب دیگ چدنی، مشعل و منبع آب گرم با کلکتوربندی استاندارد</li>
+            <li>نصب و تنظیم پکیج دیواری با آنالایزر و ارائه ضمانت</li>
+            <li>عیب‌یابی و تعمیر برد الکترونیکی، پمپ، شیر سه‌طرفه و سنسورهای پکیج</li>
+        </ul>
 
-<h2>۲. نصب و سرویس کولر آبی و اسپیلت</h2>
-<p>
-    یک سیستم سرمایشی بد نصب شده، نه تنها خنک نمی‌کند، بلکه مصرف انرژی را بالا می‌برد و طول عمر دستگاه را کاهش می‌دهد. ما خدمات نصب اصولی کولرهای آبی (شامل نصب پمپ، شناور، تسمه، پوشال‌های سلولزی و کانال‌کشی) را با تنظیم دقیق دور موتور و زاویه پولی انجام می‌دهیم. در بخش اسپیلت نیز تیم ما نصب انواع مدل‌های دیواری، سقفی و کاستی را شامل پایه‌گذاری استاندارد، لوله‌کشی مسی، وکیوم کامل سیستم (با پمپ وکیوم) و شارژ گاز متناسب با کاتالوگ سازنده انجام می‌دهد. همچنین سرویس دوره‌ای فصلی و تعمیرات تخصصی انواع کولر آبی و گازی نیز با ضمانت ارائه می‌شود.
-</p>
-<ul>
-    <li>نصب و راه‌اندازی انواع کولر آبی (پرتابل، سلولزی، سنتی) با تنظیم کشش تسمه</li>
-    <li>نصب اسپیلت دیواری، سقفی و ایستاده با وکیوم اصولی و شارژ گاز استاندارد</li>
-    <li>سرویس و شستشوی فصلی کولر آبی و تعویض پوشال</li>
-    <li>تعمیر تخصصی برد الکترونیکی، موتور، فن و رفع نشتی گاز اسپیلت</li>
-</ul>
+        <h2>۴. سرویس و تعمیرات پمپ آب</h2>
+        <p>
+            پمپ آب قلب سیستم آبرسانی ساختمان‌های بلندمرتبه، ویلاها و واحدهای تجاری است. هرگونه خرابی در پمپ می‌تواند باعث قطع کامل آب، افت فشار شدید در طبقات بالا یا مصرف برق بی‌رویه شود. ما کلیه خدمات مرتبط با پمپ‌های خانگی و صنعتی را پوشش می‌دهیم: از نصب بوستر پمپ‌های چندتایی با کنترل هوشمند، تعمیر پمپ‌های سانتریفیوژ و بشقابی، تعویض پروانه و مکانیکال سیل، تعویض بلبرینگ و خازن راه‌انداز، تا تنظیم دقیق پرشر سوئیچ و شارژ باد منبع تحت فشار (مخزن دیافراگمی). هدف ما این است که همواره آب با فشار یکنواخت و بدون نوسان در تمام شیرهای ساختمان جریان داشته باشد.
+        </p>
+        <ul>
+            <li>نصب و راه‌اندازی انواع پمپ آب خانگی (بشقابی، سانتریفیوژ) و بوستر پمپ</li>
+            <li>تعمیر و تعویض قطعات داخلی (پروانه، بلبرینگ، مکانیکال سیل)</li>
+            <li>تنظیم و تعویض پرشر سوئیچ و شارژ منبع دیافراگمی</li>
+            <li>نصب سیستم‌های پمپاژ هوشمند با کنترل دور (اینورتر) برای کاهش مصرف برق</li>
+        </ul>
 
-<h2>۳. نصب و راه‌اندازی موتورخانه و پکیج</h2>
-<p>
-    گرمایش مطمئن و ایمن در فصول سرد، نیازمند طراحی و اجرای دقیق سیستم‌های گرمایشی مرکزی یا مستقل است. تیم ما از طراحی نقشه اولیه موتورخانه گرفته تا نصب دیگ‌های چدنی و فولادی، مشعل گازی یا گازوئیلی، منبع دوجداره یا کویلدار، پمپ‌های سیرکولاتور و کلکتور رفت و برگشت، همه چیز را مطابق با محاسبات مهندسی بار حرارتی و استانداردهای نظام مهندسی اجرا می‌کند. همچنین نصب و راه‌اندازی پکیج دیواری (شامل لوله‌کشی گاز با شیلنگ فلکسیبل تاییدیه‌دار، دودکش استاندارد کلاف دوجداره و تنظیم شعله با دستگاه آنالایزر) با ارائه ضمانت معتبر انجام می‌شود.
-</p>
-<ul>
-    <li>طراحی و اجرای موتورخانه مرکزی (هتل، آپارتمان، مجتمع تجاری)</li>
-    <li>نصب دیگ چدنی، مشعل و منبع آب گرم با کلکتوربندی استاندارد</li>
-    <li>نصب و تنظیم پکیج دیواری با آنالایزر و ارائه ضمانت</li>
-    <li>عیب‌یابی و تعمیر برد الکترونیکی، پمپ، شیر سه‌طرفه و سنسورهای پکیج</li>
-</ul>
+        <h2>۵. نصب و تعویض شیرآلات بهداشتی</h2>
+        <p>
+            نصب و تعویض شیرآلات ساختمانی (شامل شیرهای ورودی اصلی، شیرهای مخلوط حمام و دستشویی، شیرهای توکار دیواری، فلاش تانک و لوازم بهداشتی) باید با دقت بالا و استفاده از نوار آب‌بندی و واشرهای استاندارد انجام شود تا از نشتی‌های آزاردهنده و آسیب به کابینت‌ها جلوگیری گردد. ما انواع شیرآلات کلاسیک و مدرن (چشمی، لمسی) را با رعایت تراز دقیق و ارتفاع استاندارد نصب می‌کنیم و در صورت نیاز به تعویض، شیر قدیمی را بدون آسیب به بدنه سرامیک و دیوار باز می‌کنیم. کلیه اتصالات فلزی با نوار تفلون و خمیر آب‌بندی مخصوص، کاملاً سیل و آب‌بندی می‌شوند.
+        </p>
+        <ul>
+            <li>نصب و تعویض انواع شیرآلات بهداشتی (روشویی، توالت فرنگی و ایرانی، حمام)</li>
+            <li>نصب شیرآلات مدرن (چشمی، لمسی، ترموستاتیک) و فلاش تانک‌های توکار</li>
+            <li>آب‌بندی و رفع نم و نشتی شیرآلات و اتصالات</li>
+            <li>نصب شیر ورودی اصلی ساختمان (شیر توپی، شیر کشویی)</li>
+        </ul>
 
-<h2>۴. سرویس و تعمیرات پمپ آب</h2>
-<p>
-    پمپ آب قلب سیستم آبرسانی ساختمان‌های بلندمرتبه، ویلاها و واحدهای تجاری است. هرگونه خرابی در پمپ می‌تواند باعث قطع کامل آب، افت فشار شدید در طبقات بالا یا مصرف برق بی‌رویه شود. ما کلیه خدمات مرتبط با پمپ‌های خانگی و صنعتی را پوشش می‌دهیم: از نصب بوستر پمپ‌های چندتایی با کنترل هوشمند، تعمیر پمپ‌های سانتریفیوژ و بشقابی، تعویض پروانه و مکانیکال سیل، تعویض بلبرینگ و خازن راه‌انداز، تا تنظیم دقیق پرشر سوئیچ و شارژ باد منبع تحت فشار (مخزن دیافراگمی). هدف ما این است که همواره آب با فشار یکنواخت و بدون نوسان در تمام شیرهای ساختمان جریان داشته باشد.
-</p>
-<ul>
-    <li>نصب و راه‌اندازی انواع پمپ آب خانگی (بشقابی، سانتریفیوژ) و بوستر پمپ</li>
-    <li>تعمیر و تعویض قطعات داخلی (پروانه، بلبرینگ، مکانیکال سیل)</li>
-    <li>تنظیم و تعویض پرشر سوئیچ و شارژ منبع دیافراگمی</li>
-    <li>نصب سیستم‌های پمپاژ هوشمند با کنترل دور (اینورتر) برای کاهش مصرف برق</li>
-</ul>
+        <h2>۶. جوشکاری تخصصی لوله‌های فلزی</h2>
+        <p>
+            در پروژه‌های تأسیساتی خاص و صنعتی، اتصال لوله‌های فلزی نیازمند جوشکاری دقیق و استاندارد است. تیم ما با بهره‌گیری از دستگاه‌های جوش آرگون (TIG) و اینورتر، خدمات جوشکاری لوله‌های مانیسمان، گالوانیزه، مس و استیل را در پروژه‌های زیر انجام می‌دهد: خطوط گازرسانی داخلی و روکار، لوله‌های شوفاژ و سیستم‌های گرمایشی مرکزی، رایزرهای اصلی آب و لوله‌های بخار. تمام جوش‌ها مطابق با استانداردهای ASME و IGS بازرسی چشمی شده و در صورت نیاز تست غیرمخرب (MT/PT) روی آن‌ها انجام می‌شود.
+        </p>
+        <ul>
+            <li>جوشکاری آرگون لوله‌های مسی (کولر گازی، اسپلیت و VRF)</li>
+            <li>جوشکاری لوله‌های گالوانیزه، مانیسمان و استیل (رایزر آب، گاز و شوفاژ)</li>
+            <li>رفع ترک و سوراخ در لوله‌های فلزی بدون نیاز به تعویض کامل</li>
+            <li>جوشکاری مخازن و منابع فلزی تأسیساتی</li>
+        </ul>
 
-<h2>۵. نصب و تعویض شیرآلات بهداشتی</h2>
-<p>
-    نصب و تعویض شیرآلات ساختمانی (شامل شیرهای ورودی اصلی، شیرهای مخلوط حمام و دستشویی، شیرهای توکار دیواری، فلاش تانک و لوازم بهداشتی) باید با دقت بالا و استفاده از نوار آب‌بندی و واشرهای استاندارد انجام شود تا از نشتی‌های آزاردهنده و آسیب به کابینت‌ها جلوگیری گردد. ما انواع شیرآلات کلاسیک و مدرن (چشمی، لمسی) را با رعایت تراز دقیق و ارتفاع استاندارد نصب می‌کنیم و در صورت نیاز به تعویض، شیر قدیمی را بدون آسیب به بدنه سرامیک و دیوار باز می‌کنیم. کلیه اتصالات فلزی با نوار تفلون و خمیر آب‌بندی مخصوص، کاملاً سیل و آب‌بندی می‌شوند.
-</p>
-<ul>
-    <li>نصب و تعویض انواع شیرآلات بهداشتی (روشویی، توالت فرنگی و ایرانی، حمام)</li>
-    <li>نصب شیرآلات مدرن (چشمی، لمسی، ترموستاتیک) و فلاش تانک‌های توکار</li>
-    <li>آب‌بندی و رفع نم و نشتی شیرآلات و اتصالات</li>
-    <li>نصب شیر ورودی اصلی ساختمان (شیر توپی، شیر کشویی)</li>
-</ul>
-
-<h2>۶. جوشکاری تخصصی لوله‌های فلزی</h2>
-<p>
-    در پروژه‌های تأسیساتی خاص و صنعتی، اتصال لوله‌های فلزی نیازمند جوشکاری دقیق و استاندارد است. تیم ما با بهره‌گیری از دستگاه‌های جوش آرگون (TIG) و اینورتر، خدمات جوشکاری لوله‌های مانیسمان، گالوانیزه، مس و استیل را در پروژه‌های زیر انجام می‌دهد: خطوط گازرسانی داخلی و روکار، لوله‌های شوفاژ و سیستم‌های گرمایشی مرکزی، رایزرهای اصلی آب و لوله‌های بخار. تمام جوش‌ها مطابق با استانداردهای ASME و IGS بازرسی چشمی شده و در صورت نیاز تست غیرمخرب (MT/PT) روی آن‌ها انجام می‌شود.
-</p>
-<ul>
-    <li>جوشکاری آرگون لوله‌های مسی (کولر گازی، اسپلیت و VRF)</li>
-    <li>جوشکاری لوله‌های گالوانیزه، مانیسمان و استیل (رایزر آب، گاز و شوفاژ)</li>
-    <li>رفع ترک و سوراخ در لوله‌های فلزی بدون نیاز به تعویض کامل</li>
-    <li>جوشکاری مخازن و منابع فلزی تأسیساتی</li>
-</ul>
-
-<a href="contact.html" class="bat" style="display:block; text-align:center; width:fit-content; margin:32px auto 0;">📞 دریافت مشاوره و قیمت</a>
-</article>
+        <a href="contact.html" class="bat" style="display:block; text-align:center; width:fit-content; margin:32px auto 0;">📞 دریافت مشاوره و قیمت</a>
+    </article>
 </main>
-    <!-- ===== فوتر ===== -->
-    <footer>
-        <p>بازدید از سایت</p>
-     <img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" 
-     alt=" بازدید از سایت " decoding="async" style="border:0;max-width:100%;height:auto;" />
-        <h2>راه‌های ارتباطی</h2>
-        <div class="social-icons">
-            <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
-            <a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
-            <a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
-        </div>
-        <small>حق نشر محفوظ است / رحمان احمدی</small>
-    </footer>
 
-    <!-- ===== دکمه شناور و پاپ‌آپ ===== -->
-    <button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
-    <div class="popup" id="socialPopup">
-        <a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
-        <a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
-        <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
-        <a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a>
+<!-- فوتر -->
+<footer>
+    <p>بازدید از سایت</p>
+    <img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" 
+         alt=" بازدید از سایت " decoding="async" style="border:0;max-width:100%;height:auto;" />
+    <h2>راه‌های ارتباطی</h2>
+    <div class="social-icons">
+        <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
+        <a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
+        <a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
     </div>
-    <div id="chatIframeContainer" onclick="event.stopPropagation();">
-        <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
-        <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
-    </div>
+    <small>حق نشر محفوظ است / رحمان احمدی</small>
+</footer>
+
+<!-- دکمه شناور و پاپ‌آپ -->
+<button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
+<div class="popup" id="socialPopup">
+    <a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
+    <a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
+    <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
+    <a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a>
+</div>
+<div id="chatIframeContainer" onclick="event.stopPropagation();">
+    <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
+    <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
+</div>
 
 <script>
-// تابع باز و بسته کردن
-function toggleChat(event) {
-    event.preventDefault();
-    event.stopPropagation(); // جلوگیری از انتشار رویداد به document
-    var container = document.getElementById('chatIframeContainer');
-    if (container.style.display === 'block') {
-        container.style.display = 'none';
-    } else {
-        container.style.display = 'block';
-    }
-}
-
-// تابع بستن (برای دکمه ضربدر)
-function closeChat(event) {
-    event.stopPropagation(); // جلوگیری از بسته شدن بلافاصله توسط کلیک روی document
-    document.getElementById('chatIframeContainer').style.display = 'none';
-}
-
-// بستن چت با کلیک روی هر جای صفحه (به جز خود چت و دکمه بازکننده)
-document.addEventListener('click', function(event) {
-    var container = document.getElementById('chatIframeContainer');
-    var toggleBtn = document.getElementById('chatToggleBtn');
-    
-    // اگر پنجره باز است و کلیک روی خود چت یا دکمه بازکننده نبوده، ببند
-    if (container.style.display === 'block') {
-        // بررسی می‌کنیم که آیا کلیک روی خود کانتینر یا دکمه بازکننده بوده
-        if (!container.contains(event.target) && !toggleBtn.contains(event.target)) {
+    function toggleChat(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var container = document.getElementById('chatIframeContainer');
+        if (container.style.display === 'block') {
             container.style.display = 'none';
+        } else {
+            container.style.display = 'block';
         }
     }
-});
-</script>
-<script>
-    // همان اسکریپت‌های تغییر تم و منو
+
+    document.addEventListener('click', function(event) {
+        var container = document.getElementById('chatIframeContainer');
+        var toggleBtn = document.getElementById('chatToggleBtn');
+        if (container.style.display === 'block') {
+            if (!container.contains(event.target) && !toggleBtn.contains(event.target)) {
+                container.style.display = 'none';
+            }
+        }
+    });
+
     (function() {
         const toggleBtn = document.getElementById('toggleBtn');
         const iconSpan = document.getElementById('themeIcon');
