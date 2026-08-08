@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    
-    <title>خدمات تاسیساتی ساختمان | خدمات فنی احمدی</title>
-    <meta name="description" content="خدمات تاسیساتی ساختمان شامل لوله‌کشی، نصب کولر آبی و اسپیلت، راه‌اندازی موتورخانه و پکیج، سرویس پمپ آب، نصب شیرآلات و جوشکاری تخصصی لوله‌های فلزی." />
-    
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-    
-    <style>
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" /><title>خدمات تاسیساتی ساختمان در تهران | لوله‌کش، تعمیر پکیج و کولر | احمدی</title><meta name="description" content="خدمات تخصصی تأسیسات ساختمان در تهران؛ لوله‌کشی آب و فاضلاب، نصب و تعمیر پکیج، سرویس کولر آبی و اسپلیت، تعمیر پمپ آب و نصب شیرآلات با ۲۰ سال تجربه. اعزام فوری." /><meta name="robots" content="index, follow" /><link rel="canonical" href="https://www.ahmadiservices.ir/installation.html" /><meta property="og:title" content="خدمات تاسیساتی ساختمان در تهران | لوله‌کش، تعمیر پکیج و کولر | احمدی" /><meta property="og:description" content="لوله‌کشی، نصب پکیج، تعمیر کولر آبی و سرویس پمپ آب در تهران با اعزام فوری و قیمت منصفانه. ۲۰ سال تجربه." /><meta property="og:url" content="https://www.ahmadiservices.ir/installation.html" /><meta property="og:type" content="website" /><meta property="og:image" content="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" /><link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" /><link rel="icon" type="image/png" href="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" /> <style>
         :root {
             --primary: #6C63FF;
             --primary-dark: #5A52D5;
@@ -154,7 +143,6 @@
             color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 8px;
         }
 
-        /* استایل دکمه bat */
         .bat {
             background: var(--gradient-btn);
             border: none;
@@ -190,9 +178,6 @@
             50%  { transform: scale(1.12); }
             100% { transform: scale(1); }
         }
-        .floating-button:hover {
-            box-shadow: 0 12px 40px rgba(107, 99, 255, 0);
-        }
 
         .popup {
             display: none; position: fixed; bottom: 60px; right: 15px;
@@ -203,13 +188,8 @@
             transition: opacity 0.25s ease, transform 0.25s ease;
             transform: translateY(10px);
         }
-        .popup.show {
-            display: flex; opacity: 1; transform: translateY(0);
-        }
-        .popup a {
-            display: block; margin: 4px 0;
-            transition: transform 0.2s;
-        }
+        .popup.show { display: flex; opacity: 1; transform: translateY(0); }
+        .popup a { display: block; margin: 4px 0; transition: transform 0.2s; }
         .popup a:hover { transform: scale(1.1); }
         .popup img {
             width: 44px; height: 44px; border-radius: 50%;
@@ -225,24 +205,16 @@
             z-index: 9999; background: #fff;
             border: 1px solid #e0e0e0;
         }
-        #chatIframeContainer iframe {
-            width: 100%; height: 100%; border: none;
-        }
+        #chatIframeContainer iframe { width: 100%; height: 100%; border: none; }
         .close-chat-btn {
             position: absolute; top: 8px; right: 8px; z-index: 10;
             background: #ff4757; color: #fff; border: none;
             border-radius: 50%; width: 30px; height: 30px;
             font-size: 18px; font-weight: bold; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-            transition: 0.2s;
         }
-        .close-chat-btn:hover {
-            background: #ff6b81;
-            transform: scale(1.05);
-        }
+        .close-chat-btn:hover { background: #ff6b81; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             body { padding-top: 72px; }
             .hamburger-menu { display: flex; }
@@ -252,164 +224,14 @@
             .floating-button { width: 56px; height: 56px; bottom: 20px; right: 20px; }
             .popup { bottom: 88px; right: 20px; }
         }
-    </style>
-</head>
-<body>
-
-<!-- HEADER -->
-<header>
-    <div class="container1">
-        <img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگو" />
-        <h1 class="title">خدمات فنی احمدی</h1>
-        <div style="display:flex; gap:12px;">
-            <button id="toggleBtn"><span id="themeIcon">☽</span></button>
-            <div class="hamburger-menu" onclick="toggleMenu()">
-                <div class="hamburger"></div><div class="hamburger"></div><div class="hamburger"></div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- منوی همبرگری -->
-<div class="menu-popup" id="menuPopup">
-    <a href="index.html">🏠 خانه</a>
-    <a href="about.html">👤 درباره من</a>
-    <a href="contact.html">📞 تماس با ما</a>
-    <a href="blog.html">📝 وبلاگ</a>
-    <a href="videos.html">🎥 ویدیوها</a>
-    <a href="images.html">🖼️ تصاویر</a>
-    <a href="membership.html">📋 عضویت</a>
-</div>
-
-<!-- ناوبری دسکتاپ -->
-<nav>
-    <a href="index.html">صفحه اصلی</a>
-    <a href="about.html">درباره من</a>
-    <a href="contact.html">تماس با ما</a>
-    <a href="blog.html">وبلاگ</a>
-    <a href="videos.html">ویدیوها</a>
-    <a href="images.html">گالری تصاویر</a>
-    <a href="membership.html">عضویت</a>
-</nav>
-
-<!-- محتوای اصلی -->
-<main class="article-container">
-    <article>
-        <h1>خدمات تاسیساتی ساختمان</h1>
-        <p>
-            تیم تخصصی ما با بهره‌گیری از دانش فنی روز، ابزارهای پیشرفته و سال‌ها تجربه، کلیه خدمات تأسیساتی ساختمان شما را از طراحی و اجرا تا تعمیر و نگهداری بر عهده می‌گیرد. آنچه ما را متمایز می‌کند، ارائه راه‌حل‌های مهندسی‌شده، استفاده از متریال باکیفیت و پایبندی به زمان‌بندی تحویل پروژه است. در ادامه با جزئیات هر یک از خدمات تخصصی ما آشنا می‌شوید.
-        </p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaGCA0xivWb62yV-bwfbF_I7e4QTxAmdDB4CwjJNYhzg&s=10"خدمات تاسیساتی ساختمان" class="article-image" />
-
-        <h2>۱. لوله‌کشی آب سرد و گرم و فاضلاب</h2>
-        <p>
-            لوله‌کشی استاندارد، شریان حیاتی هر ساختمان است. ما عملیات لوله‌کشی آب سرد و گرم مصرفی را با استفاده از لوله‌های پلیمری نسل جدید (PP-R و PEX) و سیستم‌های کلکتوری انجام می‌دهیم که علاوه بر حذف اتصالات دفنی، سرعت و دقت اجرا را چند برابر می‌کند. شبکه فاضلاب نیز با لوله‌های پوش‌فیت و پلیکا، با رعایت دقیق شیب‌بندی و اتصالات اصولی اجرا می‌شود. کلیه مسیرها پس از نصب، تحت تست فشار و تست نشتی استاندارد (مطابق مبحث ۱۶ مقررات ملی ساختمان) قرار می‌گیرند. چه برای یک واحد مسکونی نوساز و چه بازسازی یک ساختمان قدیمی با لوله‌های فلزی فرسوده، راه‌حل سریع، تمیز و بادوامی ارائه می‌دهیم.
-        </p>
-        <ul>
-            <li>لوله‌کشی آب گرم و سرد با سیستم کلکتوری و لوله‌های PEX پنج‌لایه</li>
-            <li>اجرای شبکه فاضلاب با شیب استاندارد و رعایت کامل هواکش‌ها</li>
-            <li>تست فشار و رفع کامل نشتی لوله‌های توکار و روکار</li>
-            <li>تعویض لوله‌های فلزی فرسوده (گالوانیزه) با لوله‌های پلیمری ضد رسوب</li>
-        </ul>
-
-        <h2>۲. نصب و سرویس کولر آبی و اسپیلت</h2>
-        <p>
-            یک سیستم سرمایشی بد نصب شده، نه تنها خنک نمی‌کند، بلکه مصرف انرژی را بالا می‌برد و طول عمر دستگاه را کاهش می‌دهد. ما خدمات نصب اصولی کولرهای آبی (شامل نصب پمپ، شناور، تسمه، پوشال‌های سلولزی و کانال‌کشی) را با تنظیم دقیق دور موتور و زاویه پولی انجام می‌دهیم. در بخش اسپیلت نیز تیم ما نصب انواع مدل‌های دیواری، سقفی و کاستی را شامل پایه‌گذاری استاندارد، لوله‌کشی مسی، وکیوم کامل سیستم (با پمپ وکیوم) و شارژ گاز متناسب با کاتالوگ سازنده انجام می‌دهد. همچنین سرویس دوره‌ای فصلی و تعمیرات تخصصی انواع کولر آبی و گازی نیز با ضمانت ارائه می‌شود.
-        </p>
-        <ul>
-            <li>نصب و راه‌اندازی انواع کولر آبی (پرتابل، سلولزی، سنتی) با تنظیم کشش تسمه</li>
-            <li>نصب اسپیلت دیواری، سقفی و ایستاده با وکیوم اصولی و شارژ گاز استاندارد</li>
-            <li>سرویس و شستشوی فصلی کولر آبی و تعویض پوشال</li>
-            <li>تعمیر تخصصی برد الکترونیکی، موتور، فن و رفع نشتی گاز اسپیلت</li>
-        </ul>
-
-        <h2>۳. نصب و راه‌اندازی موتورخانه و پکیج</h2>
-        <p>
-            گرمایش مطمئن و ایمن در فصول سرد، نیازمند طراحی و اجرای دقیق سیستم‌های گرمایشی مرکزی یا مستقل است. تیم ما از طراحی نقشه اولیه موتورخانه گرفته تا نصب دیگ‌های چدنی و فولادی، مشعل گازی یا گازوئیلی، منبع دوجداره یا کویلدار، پمپ‌های سیرکولاتور و کلکتور رفت و برگشت، همه چیز را مطابق با محاسبات مهندسی بار حرارتی و استانداردهای نظام مهندسی اجرا می‌کند. همچنین نصب و راه‌اندازی پکیج دیواری (شامل لوله‌کشی گاز با شیلنگ فلکسیبل تاییدیه‌دار، دودکش استاندارد کلاف دوجداره و تنظیم شعله با دستگاه آنالایزر) با ارائه ضمانت معتبر انجام می‌شود.
-        </p>
-        <ul>
-            <li>طراحی و اجرای موتورخانه مرکزی (هتل، آپارتمان، مجتمع تجاری)</li>
-            <li>نصب دیگ چدنی، مشعل و منبع آب گرم با کلکتوربندی استاندارد</li>
-            <li>نصب و تنظیم پکیج دیواری با آنالایزر و ارائه ضمانت</li>
-            <li>عیب‌یابی و تعمیر برد الکترونیکی، پمپ، شیر سه‌طرفه و سنسورهای پکیج</li>
-        </ul>
-
-        <h2>۴. سرویس و تعمیرات پمپ آب</h2>
-        <p>
-            پمپ آب قلب سیستم آبرسانی ساختمان‌های بلندمرتبه، ویلاها و واحدهای تجاری است. هرگونه خرابی در پمپ می‌تواند باعث قطع کامل آب، افت فشار شدید در طبقات بالا یا مصرف برق بی‌رویه شود. ما کلیه خدمات مرتبط با پمپ‌های خانگی و صنعتی را پوشش می‌دهیم: از نصب بوستر پمپ‌های چندتایی با کنترل هوشمند، تعمیر پمپ‌های سانتریفیوژ و بشقابی، تعویض پروانه و مکانیکال سیل، تعویض بلبرینگ و خازن راه‌انداز، تا تنظیم دقیق پرشر سوئیچ و شارژ باد منبع تحت فشار (مخزن دیافراگمی). هدف ما این است که همواره آب با فشار یکنواخت و بدون نوسان در تمام شیرهای ساختمان جریان داشته باشد.
-        </p>
-        <ul>
-            <li>نصب و راه‌اندازی انواع پمپ آب خانگی (بشقابی، سانتریفیوژ) و بوستر پمپ</li>
-            <li>تعمیر و تعویض قطعات داخلی (پروانه، بلبرینگ، مکانیکال سیل)</li>
-            <li>تنظیم و تعویض پرشر سوئیچ و شارژ منبع دیافراگمی</li>
-            <li>نصب سیستم‌های پمپاژ هوشمند با کنترل دور (اینورتر) برای کاهش مصرف برق</li>
-        </ul>
-
-        <h2>۵. نصب و تعویض شیرآلات بهداشتی</h2>
-        <p>
-            نصب و تعویض شیرآلات ساختمانی (شامل شیرهای ورودی اصلی، شیرهای مخلوط حمام و دستشویی، شیرهای توکار دیواری، فلاش تانک و لوازم بهداشتی) باید با دقت بالا و استفاده از نوار آب‌بندی و واشرهای استاندارد انجام شود تا از نشتی‌های آزاردهنده و آسیب به کابینت‌ها جلوگیری گردد. ما انواع شیرآلات کلاسیک و مدرن (چشمی، لمسی) را با رعایت تراز دقیق و ارتفاع استاندارد نصب می‌کنیم و در صورت نیاز به تعویض، شیر قدیمی را بدون آسیب به بدنه سرامیک و دیوار باز می‌کنیم. کلیه اتصالات فلزی با نوار تفلون و خمیر آب‌بندی مخصوص، کاملاً سیل و آب‌بندی می‌شوند.
-        </p>
-        <ul>
-            <li>نصب و تعویض انواع شیرآلات بهداشتی (روشویی، توالت فرنگی و ایرانی، حمام)</li>
-            <li>نصب شیرآلات مدرن (چشمی، لمسی، ترموستاتیک) و فلاش تانک‌های توکار</li>
-            <li>آب‌بندی و رفع نم و نشتی شیرآلات و اتصالات</li>
-            <li>نصب شیر ورودی اصلی ساختمان (شیر توپی، شیر کشویی)</li>
-        </ul>
-
-        <h2>۶. جوشکاری تخصصی لوله‌های فلزی</h2>
-        <p>
-            در پروژه‌های تأسیساتی خاص و صنعتی، اتصال لوله‌های فلزی نیازمند جوشکاری دقیق و استاندارد است. تیم ما با بهره‌گیری از دستگاه‌های جوش آرگون (TIG) و اینورتر، خدمات جوشکاری لوله‌های مانیسمان، گالوانیزه، مس و استیل را در پروژه‌های زیر انجام می‌دهد: خطوط گازرسانی داخلی و روکار، لوله‌های شوفاژ و سیستم‌های گرمایشی مرکزی، رایزرهای اصلی آب و لوله‌های بخار. تمام جوش‌ها مطابق با استانداردهای ASME و IGS بازرسی چشمی شده و در صورت نیاز تست غیرمخرب (MT/PT) روی آن‌ها انجام می‌شود.
-        </p>
-        <ul>
-            <li>جوشکاری آرگون لوله‌های مسی (کولر گازی، اسپلیت و VRF)</li>
-            <li>جوشکاری لوله‌های گالوانیزه، مانیسمان و استیل (رایزر آب، گاز و شوفاژ)</li>
-            <li>رفع ترک و سوراخ در لوله‌های فلزی بدون نیاز به تعویض کامل</li>
-            <li>جوشکاری مخازن و منابع فلزی تأسیساتی</li>
-        </ul>
-
-        <a href="contact.html" class="bat" style="display:block; text-align:center; width:fit-content; margin:32px auto 0;">📞 دریافت مشاوره و قیمت</a>
-    </article>
-</main>
-
-<!-- فوتر -->
-<footer>
-    <p>بازدید از سایت</p>
-    <img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" 
-         alt=" بازدید از سایت " decoding="async" style="border:0;max-width:100%;height:auto;" />
-    <h2>راه‌های ارتباطی</h2>
-    <div class="social-icons">
-        <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
-        <a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
-        <a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
-    </div>
-    <small>حق نشر محفوظ است / رحمان احمدی</small>
-</footer>
-
-<!-- دکمه شناور و پاپ‌آپ -->
-<button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
-<div class="popup" id="socialPopup">
-    <a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
-    <a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
-    <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
-    <a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a>
-</div>
-<div id="chatIframeContainer" onclick="event.stopPropagation();">
-    <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
-    <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
-</div>
-
-<script>
+    </style> </head><body><header><div class="container1"><img class="logo" src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/pinc10-%281%29.png?versionId=" alt="لوگوی خدمات فنی احمدی" /><h1 class="title">خدمات فنی احمدی</h1><div style="display:flex; gap:12px;"><button id="toggleBtn"><span id="themeIcon">☽</span></button><div class="hamburger-menu" onclick="toggleMenu()"><div class="hamburger"></div><div class="hamburger"></div><div class="hamburger"></div></div></div></div></header><div class="menu-popup" id="menuPopup"><a href="index.html">🏠 خانه</a><a href="about.html">👤 درباره من</a><a href="contact.html">📞 تماس با ما</a><a href="blog.html">📝 وبلاگ</a><a href="videos.html">🎥 ویدیوها</a><a href="images.html">🖼️ تصاویر</a><a href="membership.html">📋 عضویت</a></div><nav><a href="index.html">صفحه اصلی</a><a href="about.html">درباره من</a><a href="contact.html">تماس با ما</a><a href="blog.html">وبلاگ</a><a href="videos.html">ویدیوها</a><a href="images.html">گالری تصاویر</a><a href="membership.html">عضویت</a></nav><main class="article-container"><article><h1>خدمات تخصصی تاسیسات ساختمان در تهران</h1><p> سیستم تأسیسات هر ساختمان نقش حیاتی در آسایش و رفاه ساکنان دارد. تیم <strong>خدمات فنی احمدی</strong> با بیش از ۲۰ سال تجربه در <strong>تهران</strong>، کلیه خدمات تاسیساتی ساختمان، از <strong>لوله‌کشی</strong> استاندارد و <strong>نصب پکیج</strong> گرفته تا <strong>سرویس کولر آبی</strong> و <strong>تعمیر پمپ آب</strong> را با اعزام فوری و قیمت مناسب ارائه می‌دهد. </p><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/عکسهای%20صفحات/لوله-کشی-ساختمان-تهران.webp?versionId=" alt="لوله‌کشی آب سرد و گرم ساختمان در تهران" loading="lazy" style="width:100%; height:auto; aspect-ratio:16/9;"><h2>✅ لوله‌کشی آب سرد و گرم تهران</h2><p><strong>لوله‌کشی استاندارد</strong> مهم‌ترین بخش تأسیسات هر ساختمان است. ما عملیات <strong>لوله‌کشی آب سرد و گرم</strong> و فاضلاب را با متدهای نوین و بهترین متریال روز اجرا می‌کنیم. اگر به دنبال یک <strong>لوله‌کش فوری تهران</strong> هستید که کار را تمیز و اصولی انجام دهد، ما در خدمت شما هستیم. </p><ul><li>اجرای لوله‌کشی آب سرد و گرم و فاضلاب</li><li>لوله‌کشی ساختمان نوساز و بازسازی واحدهای قدیمی</li><li>لوله‌کشی پنج لایه و پلی‌پروپیلن</li><li>رفع نشتی آب و تعویض لوله‌های فرسوده</li><li>نصب رایزر ساختمان</li></ul><h2>✅ نصب و سرویس کولر آبی و اسپلیت</h2><p> با فرا رسیدن فصل گرما، <strong>سرویس کولر آبی</strong> و <strong>نصب اسپلیت</strong> از ضروری‌ترین خدمات است. تیم ما با ارائه کامل‌ترین خدمات سرمایشی، از <strong>نصب کولر آبی</strong> و گازی گرفته تا <strong>شارژ گاز اسپلیت</strong> و شست‌وشوی پنل، تضمین می‌کند که تابستانی خنک و بی‌دردسر داشته باشید. </p><ul><li>نصب و راه‌اندازی انواع کولر آبی و اسپلیت</li><li>سرویس کامل کولر آبی و تعویض پوشال</li><li>شست‌وشوی پنل و شارژ گاز کولر گازی</li><li>تعمیر کولر آبی و گازی و رفع نشتی آب</li></ul><h2>✅ نصب و راه‌اندازی موتورخانه و پکیج</h2><p> یک سیستم گرمایشی استاندارد، تضمین‌کننده آسایش شما در زمستان است. ما خدمات <strong>نصب پکیج دیواری</strong>، <strong>تعمیر پکیج</strong> و <strong>راه‌اندازی موتورخانه</strong> را برای تمامی برندهای ایرانی و خارجی ارائه می‌دهیم. اگر پکیج شما ارور می‌دهد، فقط کافیست با ما تماس بگیرید. </p><ul><li>نصب و تعمیر انواع پکیج دیواری</li><li>راه‌اندازی موتورخانه و نصب رادیاتور</li><li>سرویس سالیانه پکیج و رفع ارور</li><li>هواگیری و تنظیم فشار مدار گرمایش</li></ul><h2>✅ سرویس و تعمیرات پمپ آب</h2><p><strong>افت فشار آب</strong> یکی از معضلات رایج طبقات بالاست که معمولاً با <strong>تعمیر پمپ آب</strong> یا تنظیم منبع تحت فشار حل می‌شود. تیم تخصصی ما در کمترین زمان ممکن، <strong>نصب پمپ آب خانگی</strong> و <strong>رفع صدای پمپ</strong> را برای شما انجام می‌دهد. </p><ul><li>نصب و تعمیر انواع پمپ آب خانگی</li><li>تعویض ست کنترل و کلید اتوماتیک</li><li>رفع یکسره کار کردن و صدای زیاد پمپ</li><li>تنظیم باد منبع تحت فشار</li></ul><h2>✅ تعمیر و نصب شیرآلات</h2><p><strong>نصب شیرآلات</strong> و <strong>تعمیر شیر اهرمی</strong> اگر با دقت و توسط افراد متخصص انجام نشود، منجر به نشتی و هدررفت آب خواهد شد. ما کلیه خدمات مربوط به شیرآلات کلاسیک و مدرن را با ضمانت انجام می‌دهیم. </p><ul><li>نصب و تعویض انواع شیر روشویی، ظرفشویی و حمام</li><li>تعمیر شیر اهرمی و تعویض کارتریج</li><li>رفع چکه کردن شیر و نشتی اتصالات</li></ul><h2>چرا خدمات فنی احمدی؟</h2><ul><li>✔ بیش از ۱۵ سال تجربه در تأسیسات ساختمان</li><li>✔ <strong>لوله‌کش فوری تهران</strong> با اعزام سریع</li><li>✔ استفاده از تجهیزات و اتصالات استاندارد</li><li>✔ قیمت‌گذاری شفاف و منصفانه</li><li>✔ ارائه ضمانت کیفیت خدمات</li><li>✔ پشتیبانی و مشاوره تخصصی رایگان</li></ul><h2>سفارش خدمات تأسیسات ساختمان</h2><p> اگر به دنبال یک <strong>متخصص تأسیسات در تهران</strong> هستید که کار را سریع، تمیز و با قیمت مناسب انجام دهد، همین الان با <strong>خدمات فنی احمدی</strong> تماس بگیرید. ما آماده‌ایم تا بهترین خدمات <strong>لوله‌کشی</strong>، <strong>نصب پکیج</strong>، <strong>سرویس کولر</strong>،<strong>تعمیر پمپ</strong><strong>و...</strong> را به شما ارائه دهیم. </p><a href="contact.html" class="bat" style="display:block; text-align:center; width:fit-content; margin:32px auto 0;">📞 دریافت مشاوره و قیمت</a></article></main><footer><p>بازدید از سایت</p><img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" alt=" بازدید از سایت " decoding="async" style="border:0;max-width:100%;height:auto;" /><h2>راه‌های ارتباطی</h2><div class="social-icons"><a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a><a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a><a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a></div><small>حق نشر محفوظ است / رحمان احمدی</small></footer><button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button><div class="popup" id="socialPopup"><a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a><a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a><a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a><a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a></div><div id="chatIframeContainer" onclick="event.stopPropagation();"><button class="close-chat-btn" onclick="toggleChat(event)">✕</button><iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe></div> <script>
     function toggleChat(event) {
         event.preventDefault();
         event.stopPropagation();
         var container = document.getElementById('chatIframeContainer');
-        if (container.style.display === 'block') {
-            container.style.display = 'none';
-        } else {
-            container.style.display = 'block';
-        }
+        if (container.style.display === 'block') { container.style.display = 'none'; }
+        else { container.style.display = 'block'; }
     }
-
     document.addEventListener('click', function(event) {
         var container = document.getElementById('chatIframeContainer');
         var toggleBtn = document.getElementById('chatToggleBtn');
@@ -419,7 +241,6 @@
             }
         }
     });
-
     (function() {
         const toggleBtn = document.getElementById('toggleBtn');
         const iconSpan = document.getElementById('themeIcon');
@@ -433,7 +254,6 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     })();
-
     function toggleElement(id) {
         const el = document.getElementById(id);
         if (!el) return;
@@ -442,7 +262,6 @@
     }
     function togglePopup() { toggleElement('socialPopup'); }
     function toggleMenu() { toggleElement('menuPopup'); }
-
     document.addEventListener('click', function(e) {
         const menu = document.getElementById('menuPopup');
         const hamburger = document.querySelector('.hamburger-menu');
@@ -455,7 +274,63 @@
             popup.classList.remove('show'); setTimeout(() => popup.style.display = 'none', 250);
         }
     });
-</script>
-
-</body>
-</html>
+</script> <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "خدمات تاسیساتی ساختمان",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "خدمات فنی احمدی",
+    "telephone": "09120996211",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "تهران",
+      "addressCountry": "IR"
+    }
+  },
+  "areaServed": "تهران",
+  "description": "خدمات تخصصی تأسیسات ساختمان شامل لوله‌کشی، نصب و تعمیر پکیج، سرویس کولر آبی و اسپلیت، تعمیر پمپ آب و نصب شیرآلات در تهران.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "خدمات تأسیساتی",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "لوله‌کشی ساختمان"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "نصب و سرویس کولر آبی و اسپلیت"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "نصب و تعمیر پکیج و موتورخانه"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "تعمیر و سرویس پمپ آب"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "نصب و تعمیر شیرآلات"
+        }
+      }
+    ]
+  }
+}
+</script> </body></html>
