@@ -1,21 +1,53 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>پیام شما ارسال شد | خدمات فنی احمدی</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <style>
-        body { font-family: 'Vazirmatn', sans-serif; background: #bfcdf7; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .msg { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 12px 30px rgba(108,99,255,0.15); }
-        a { color: #6C63FF; text-decoration: none; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <div class="msg">
-        <h2>✅ پیام شما با موفقیت ارسال شد!</h2>
-        <p>به زودی با شما تماس می‌گیریم. سپاس از اعتماد شما 🙏</p>
-        <p><a href="index.html">🏠 بازگشت به صفحه اصلی</a></p>
-    </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>عملیات موفق | خدمات فنی احمدی</title><link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"> <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #bfcdf7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #1e1e2f;
+        }
+        .msg {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(108,99,255,0.15);
+            max-width: 450px;
+            width: 90%;
+        }
+        .icon { font-size: 4rem; margin-bottom: 20px; }
+        h2 { color: #6C63FF; margin-bottom: 10px; }
+        p { color: #555; margin-bottom: 30px; line-height: 1.8; }
+        a {
+            display: inline-block;
+            background: linear-gradient(135deg, #6C63FF, #00D2FF);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        a:hover { transform: scale(1.05); }
+    </style> </head><body><div class="msg"><div class="icon" id="msgIcon">✅</div><h2 id="msgTitle">عملیات با موفقیت انجام شد</h2><p id="msgText">به زودی با شما تماس می‌گیریم. سپاس از اعتماد شما 🙏</p><p><a href="index.html">🏠 بازگشت به صفحه اصلی</a></p></div> <script>
+        // تشخیص اینکه از کدام فرم آمده
+        const params = new URLSearchParams(window.location.search);
+        const from = params.get('from');
+
+        if (from === 'membership') {
+            // عضویت موفق
+            document.getElementById('msgIcon').textContent = '🎉';
+            document.getElementById('msgTitle').textContent = 'عضویت شما با موفقیت انجام شد!';
+            document.getElementById('msgText').textContent = 'اکنون عضو ویژه خدمات فنی احمدی هستید. از تخفیف‌ها و خدمات اختصاصی ما لذت ببرید.';
+            
+            // ذخیره عضویت در localStorage تا در بازدیدهای بعدی هم مشخص باشد
+            localStorage.setItem('ahmadi_member', 'true');
+        } else if (from === 'contact') {
+            document.getElementById('msgIcon').textContent = '✅';
+            document.getElementById('msgTitle').textContent = 'پیام شما با موفقیت ارسال شد!';
+            document.getElementById('msgText').textContent = 'به زودی با شما تماس می‌گیریم. سپاس از اعتماد شما 🙏';
+        }
+    </script> </body></html>
