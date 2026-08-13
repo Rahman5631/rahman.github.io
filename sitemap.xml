@@ -1,80 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
+
     <!-- صفحه اصلی -->
     <url>
-        <loc>https://ahmadiservices.ir/index.html</loc>
+        <loc>https://www.ahmadiservice.ir/index.html</loc>
+        <lastmod>2025-08-13</lastmod>
         <priority>1.0</priority>
     </url>
-    
-    <!-- صفحات اصلی -->
+
+    <!-- صفحات اصلی سایت -->
     <url>
-        <loc>https://ahmadiservices.ir/about.html</loc>
+        <loc>https://www.ahmadiservice.ir/about.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/contact.html</loc>
+        <loc>https://www.ahmadiservice.ir/contact.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/blog.html</loc>
+        <loc>https://www.ahmadiservice.ir/blog.html</loc>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/videos.html</loc>
+        <loc>https://www.ahmadiservice.ir/videos.html</loc>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/images.html</loc>
+        <loc>https://www.ahmadiservice.ir/images.html</loc>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/membership.html</loc>
-        <priority>0.7</priority>
+        <loc>https://www.ahmadiservice.ir/membership.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.ahmadiservice.ir/privacy.html</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://www.ahmadiservice.ir/thanks.html</loc>
+        <priority>0.2</priority>
     </url>
 
-    <!-- صفحات خدمات -->
+    <!-- صفحات خدمات تخصصی -->
     <url>
-        <loc>https://ahmadiservices.ir/installation.html</loc>
+        <loc>https://www.ahmadiservice.ir/installation.html</loc>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/electrical%20work%20and%20wiring.html</loc>
+        <loc>https://www.ahmadiservice.ir/electrical%20work%20and%20wiring.html</loc>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/Building%20renovation.html</loc>
+        <loc>https://www.ahmadiservice.ir/Building%20renovation.html</loc>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- صفحات فرود لوله‌کش محلات -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/plumber-saadatabad.html</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.ahmadiservice.ir/plumber-amirabad.html</loc>
         <priority>0.9</priority>
     </url>
 
     <!-- مقالات وبلاگ -->
     <url>
-        <loc>https://ahmadiservices.ir/post1.html</loc>
+        <loc>https://www.ahmadiservice.ir/post1.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post2.html</loc>
+        <loc>https://www.ahmadiservice.ir/post2.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post3.html</loc>
+        <loc>https://www.ahmadiservice.ir/post3.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post4.html</loc>
+        <loc>https://www.ahmadiservice.ir/post4.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post5.html</loc>
+        <loc>https://www.ahmadiservice.ir/post5.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post6.html</loc>
+        <loc>https://www.ahmadiservice.ir/post6.html</loc>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ahmadiservices.ir/post7.html</loc>
+        <loc>https://www.ahmadiservice.ir/post7.html</loc>
         <priority>0.8</priority>
+    </url>
+
+    <!-- صفحه خطا -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/error.html</loc>
+        <priority>0.1</priority>
     </url>
 
 </urlset>
