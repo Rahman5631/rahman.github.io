@@ -1,105 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- ============================================================= -->
+    <!--                   صفحات اصلی (صفحات ثابت)                       -->
+    <!-- ============================================================= -->
 
     <!-- صفحه اصلی -->
     <url>
-        <loc>https://www.ahmadiservice.ir/index.html</loc>
-        <lastmod>2025-08-13</lastmod>
-        <priority>1.0</priority>
+        <loc>https://www.ahmadiservice.ir/</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+        <xhtml:link rel="alternate" hreflang="fa" href="https://www.ahmadiservice.ir/"/>
     </url>
 
-    <!-- صفحات اصلی سایت -->
+    <!-- درباره ما -->
     <url>
         <loc>https://www.ahmadiservice.ir/about.html</loc>
-        <priority>0.8</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
     </url>
+
+    <!-- تماس با ما -->
     <url>
         <loc>https://www.ahmadiservice.ir/contact.html</loc>
-        <priority>0.8</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
     </url>
+
+    <!-- وبلاگ -->
     <url>
         <loc>https://www.ahmadiservice.ir/blog.html</loc>
-        <priority>0.9</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
     </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/videos.html</loc>
-        <priority>0.7</priority>
-    </url>
+
+    <!-- گالری تصاویر -->
     <url>
         <loc>https://www.ahmadiservice.ir/images.html</loc>
-        <priority>0.7</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
     </url>
+
+    <!-- ویدیوها -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/videos.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- عضویت -->
     <url>
         <loc>https://www.ahmadiservice.ir/membership.html</loc>
-        <priority>0.8</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
     </url>
+
+    <!-- نظرات مشتریان -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/reviews.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- قوانین و مقررات -->
     <url>
         <loc>https://www.ahmadiservice.ir/privacy.html</loc>
-        <priority>0.4</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/thanks.html</loc>
-        <priority>0.2</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.40</priority>
     </url>
 
-    <!-- صفحات خدمات تخصصی -->
+
+    <!-- ============================================================= -->
+    <!--               صفحات خدمات تخصصی                                -->
+    <!-- ============================================================= -->
+
+    <!-- خدمات تاسیساتی -->
     <url>
         <loc>https://www.ahmadiservice.ir/installation.html</loc>
-        <priority>0.9</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
     </url>
+
+    <!-- برقکاری و سیم‌کشی -->
     <url>
         <loc>https://www.ahmadiservice.ir/electrical%20work%20and%20wiring.html</loc>
-        <priority>0.9</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
     </url>
+
+    <!-- بازسازی ساختمان -->
     <url>
         <loc>https://www.ahmadiservice.ir/Building%20renovation.html</loc>
-        <priority>0.9</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
     </url>
 
-    <!-- صفحات فرود لوله‌کش محلات -->
-    <url>
-        <loc>https://www.ahmadiservice.ir/plumber-saadatabad.html</loc>
-        <priority>0.9</priority>
-    </url>
+
+    <!-- ============================================================= -->
+    <!--               صفحات خدماتی بر اساس منطقه                        -->
+    <!-- ============================================================= -->
+
+    <!-- لوله‌کش در امیرآباد -->
     <url>
         <loc>https://www.ahmadiservice.ir/plumber-amirabad.html</loc>
-        <priority>0.9</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.60</priority>
     </url>
 
-    <!-- مقالات وبلاگ -->
+    <!-- لوله‌کش در سعادت‌آباد -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/plumber-saadatabad.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.60</priority>
+    </url>
+
+
+    <!-- ============================================================= -->
+    <!--               مقالات وبلاگ (پست‌های وبلاگ)                      -->
+    <!-- ============================================================= -->
+
+    <!-- مقاله 1: تابلو برق فشار قوی -->
     <url>
         <loc>https://www.ahmadiservice.ir/post1.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post2.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post3.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post4.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post5.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post6.html</loc>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.ahmadiservice.ir/post7.html</loc>
-        <priority>0.8</priority>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+        <news:news>
+            <news:publication>
+                <news:name>خدمات فنی احمدی</news:name>
+                <news:language>fa</news:language>
+            </news:publication>
+            <news:publication_date>2026-08-19</news:publication_date>
+            <news:title>تابلو برق فشار قوی چیست؟</news:title>
+        </news:news>
     </url>
 
-    <!-- صفحه خطا -->
+    <!-- مقاله 2: نورپردازی داخلی -->
     <url>
-        <loc>https://www.ahmadiservice.ir/error.html</loc>
-        <priority>0.1</priority>
+        <loc>https://www.ahmadiservice.ir/post2.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 3: بازسازی حمام -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post3.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 4: کاهش فشار آب -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post4.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 5: خنک نکردن کولر -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post5.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 6: بوی بد کولر -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post6.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 7: کلید محافظ جان -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post7.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+    <!-- مقاله 8: بازسازی آشپزخانه -->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post8.html</loc>
+        <lastmod>2026-08-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
     </url>
 
 </urlset>
