@@ -1,1054 +1,297 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    
-    <title>عضویت در خدمات فنی احمدی | ثبت‌نام رایگان و مزایای اعضا</title>
-    <meta name="description" content="همین حالا عضو شوید و از تخفیف ۱۵٪، پشتیبانی اختصاصی و خدمات اعزام فوری بهره‌مند شوید. عضویت رایگان و سریع." />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.ahmadiservice.ir/membership.html" />
-    
-    <meta property="og:title" content="عضویت در خدمات فنی احمدی | ثبت‌نام رایگان" />
-    <meta property="og:description" content="با عضویت رایگان از تخفیف‌ها و خدمات ویژه اعضا بهره‌مند شوید." />
-    <meta property="og:url" content="https://www.ahmadiservice.ir/membership.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId=" />
-    
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId=" />
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <style>
-        :root {
-            --primary: #B03A2E;
-            --primary-dark: #8B2C23;
-            --secondary: #D4A373;
-            --accent: #E67E22;
-            --bg: #f5ede3;
-            --card-bg: #faf5f0;
-            --text: #2c1e16;
-            --text-light: #6b5040;
-            --shadow: 0 12px 30px rgba(176,58,46,0.12);
-            --radius: 20px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --gradient-header: linear-gradient(135deg, #B03A2E 0%, #D35400 100%);
-            --gradient-btn: linear-gradient(135deg, #B03A2E, #E67E22);
-            --glass-bg: rgba(255, 248, 240, 0.25);
-            --glass-border: rgba(176,58,46,0.15);
-        }
-
-        body.dark-mode {
-            --bg: #1e1410;
-            --card-bg: #2a1d17;
-            --text: #f5ede3;
-            --text-light: #c9a896;
-            --shadow: 0 12px 30px rgba(0,0,0,0.5);
-            --glass-bg: rgba(30,20,15,0.6);
-            --glass-border: rgba(176,58,46,0.3);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color var(--transition), color var(--transition);
-            padding-top: 80px;
-            line-height: 1.8;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        header {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: var(--gradient-header); padding: 12px 20px;
-            box-shadow: 0 4px 20px rgba(176,58,46,0.3);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-        }
-        .container1 {
-            display: flex; align-items: center; justify-content: space-between;
-            max-width: 1200px; margin: 0 auto; gap: 10px;
-        }
-        .brand-link { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0); padding: 4px; }
-        .title { font-size: 1.3rem; font-weight: 700; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2); letter-spacing: 1px; }
-        #toggleBtn { background: rgba(255,255,255,0); border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 24px; cursor: pointer; color: #fff; }
-        .hamburger-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .hamburger { width: 28px; height: 3px; background: #fff; border-radius: 6px; }
-
-        .menu-popup {
-            display: none; position: fixed; top: 80px; right: 16px;
-            background: var(--card-bg); backdrop-filter: blur(20px);
-            border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 16px;
-            min-width: 200px; z-index: 999; opacity: 0;
-            transition: opacity 0.25s ease, transform 0.25s ease; transform: translateY(-10px);
-            border: 1px solid var(--glass-border);
-        }
-        .menu-popup.show { display: block; opacity: 1; transform: translateY(0); }
-        .menu-popup a { display: block; padding: 10px 12px; margin: 4px 0; border-radius: 12px; font-weight: 600; color: var(--text); }
-        .menu-popup a:hover { background: var(--primary); color: #fff; }
-
-        nav {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px;
-            padding: 16px 20px; background: var(--card-bg); margin: 8px 16px 0;
-            border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--glass-border);
-        }
-        nav a { font-weight: 600; color: var(--text-light); padding: 6px 12px; border-radius: 30px; transition: all 0.2s; font-size: 0.95rem; }
-        nav a:hover { color: var(--primary); background: rgba(176,58,46,0.08); }
-        nav a.active { color: #fff; background: var(--primary); }
-
-        .page-content { max-width: 900px; margin: 20px auto; padding: 0 16px; }
-        .card {
-            background: var(--card-bg); border-radius: var(--radius);
-            padding: 28px 24px; box-shadow: var(--shadow); border: 1px solid var(--glass-border); margin-bottom: 20px;
-        }
-        .card h3 { color: var(--primary); font-size: 1.4rem; text-align: center; margin-bottom: 20px; }
-
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text); }
-        .form-group input {
-            width: 100%; padding: 12px 14px; border-radius: 12px;
-            border: 1px solid var(--glass-border); background: var(--bg);
-            color: var(--text); font-family: inherit; font-size: 0.95rem; outline: none;
-        }
-        .form-group input:focus { border-color: var(--primary); }
-        .checkbox-group { display: flex; align-items: center; gap: 8px; margin: 20px 0; }
-        .checkbox-group input { width: auto; accent-color: var(--primary); }
-        .submit-btn {
-            width: 100%; padding: 14px; border: none; border-radius: 40px;
-            background: var(--gradient-btn); color: #fff; font-weight: 700;
-            font-size: 1rem; cursor: pointer; box-shadow: 0 6px 20px rgba(176,58,46,0.3);
-        }
-        .submit-btn:hover { transform: scale(1.02); }
-        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-        .toggle-link {
-            display: block; text-align: center; margin-top: 12px;
-            color: var(--primary); font-weight: 600; cursor: pointer; font-size: 0.9rem;
-        }
-
-        .benefits-list { list-style: none; padding: 0; }
-        .benefits-list li {
-            display: flex; align-items: center; gap: 12px;
-            padding: 14px 0; border-bottom: 1px solid rgba(176,58,46,0.08);
-            font-size: 0.95rem; color: var(--text-light);
-        }
-        .benefits-list li:last-child { border-bottom: none; }
-        .benefit-icon { width: 40px; height: 40px; background: rgba(176,58,46,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-
-        .welcome-message { text-align: center; padding: 10px 0; }
-        .welcome-message .icon { font-size: 3rem; margin-bottom: 10px; }
-        .welcome-message h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 8px; }
-        .welcome-message p { color: var(--text-light); margin-bottom: 20px; }
-        .btn-group { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-        .btn-group .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: fit-content;
-        }
-        .btn-group .btn-secondary:hover { background: var(--primary); color: #fff; }
-
-        .invoice-list { margin-top: 20px; }
-        .invoice-item {
-            background: var(--bg);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .invoice-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(176,58,46,0.15);
-            border-color: var(--primary);
-        }
-        .invoice-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed rgba(176,58,46,0.2);
-        }
-        .invoice-number {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-        .invoice-date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        .invoice-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .status-paid { background: #10b981; color: white; }
-        .status-unpaid { background: #ef4444; color: white; }
-        .invoice-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .invoice-amount {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--accent);
-        }
-        .invoice-actions { display: flex; gap: 10px; }
-        .invoice-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-        .view-btn { background: var(--primary); color: white; }
-        .view-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
-        .no-invoices {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .no-invoices .icon { font-size: 3rem; margin-bottom: 15px; opacity: 0.6; }
-        .loading-invoices { text-align: center; padding: 30px; color: var(--text-light); }
-        .error-message {
-            text-align: center;
-            padding: 20px;
-            color: #ef4444;
-            background: rgba(239,68,68,0.1);
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-        .retry-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.9rem;
-        }
-        .phone-display {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            direction: ltr;
-        }
-        .phone-display strong { color: var(--primary); }
-        .email-display {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .email-display strong { color: var(--primary); }
-        .debug-code {
-            display: none;
-            text-align: center;
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-weight: bold;
-            color: #B03A2E;
-        }
-        .countdown { color: var(--text-light); font-size: 0.9rem; }
-
-        footer {
-            background: var(--card-bg); margin: 20px 16px; border-radius: var(--radius);
-            padding: 20px; text-align: center; box-shadow: var(--shadow);
-        }
-        footer h2 { color: var(--primary); margin-bottom: 16px; }
-        .social-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; }
-        .social-icons img { width: 44px; height: 44px; border-radius: 50%; background: rgba(176,58,46,0.08); padding: 6px; }
-        footer small { color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 8px; }
-
-        .floating-button {
-            position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px;
-            border-radius: 50%; border: none;
-            background: url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%283%29.png?versionId=') center / contain no-repeat;
-            animation: pulseCircle 2s ease-in-out infinite; cursor: pointer;
-            transition: box-shadow 0.25s ease;
-        }
-        .floating-button:hover { box-shadow: 0 12px 40px rgba(176,58,46,0.4); }
-        @keyframes pulseCircle {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-            100% { transform: scale(1); }
-        }
-
-        .member-badge-wrapper {
-            position: fixed;
-            bottom: 2px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1000;
-        }
-        #memberBadge {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 15px;
-            margin-right: 12px;
-            display: inline-block;
-            animation: pulseCircle 2s ease-in-out infinite;
-        }
-        #memberBadge.visible { display: inline-block; }
-        #memberBadge:not(.visible) { display: none; }
-
-        .popup {
-            display: none; position: fixed; bottom: 60px; right: 15px;
-            background: rgba(245,222,179,0); border-radius: var(--radius);
-            padding: 16px 20px; z-index: 999; opacity: 0; transition: opacity 0.25s ease;
-        }
-        .popup.show { display: flex; opacity: 1; }
-        .popup a { display: block; margin: 4px 0; transition: transform 0.2s; }
-        .popup a:hover { transform: scale(1.1); }
-        .popup img { width: 44px; height: 44px; border-radius: 50%; background: rgba(176,58,46,0.06); padding: 4px; }
-
-        #chatIframeContainer {
-            display: none; position: fixed; bottom: 100px; right: 20px;
-            width: 80%; height: 80%; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 9999; background: #fff; border: 1px solid #e0e0e0;
-        }
-        #chatIframeContainer iframe { width: 100%; height: 100%; border: none; }
-        .close-chat-btn {
-            position: absolute; top: 8px; right: 8px; background: #B03A2E; color: #fff;
-            border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            body { padding-top: 72px; }
-            .hamburger-menu { display: flex; }
-            nav { display: none; }
-            .menu-popup { right: 12px; left: 12px; top: 76px; min-width: unset; }
-            .floating-button { width: 56px; height: 56px; bottom: 20px; right: 20px; }
-            .popup { bottom: 88px; right: 20px; }
-            .member-badge-wrapper { bottom: 2px; right: 10px; }
-            #memberBadge { font-size: 12px; padding: 3px 10px; }
-        }
-        @media (max-width: 480px) {
-            #memberBadge { font-size: 11px; padding: 2px 8px; }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+<title>عضویت در خدمات فنی احمدی | ثبت‌نام رایگان و مزایای اعضا</title>
+<meta name="description" content="همین حالا عضو شوید و از تخفیف ۱۵٪، پشتیبانی اختصاصی و خدمات اعزام فوری بهره‌مند شوید. عضویت رایگان و سریع."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://www.ahmadiservice.ir/membership.html"/>
+<meta property="og:title" content="عضویت در خدمات فنی احمدی | ثبت‌نام رایگان"/>
+<meta property="og:description" content="با عضویت رایگان از تخفیف‌ها و خدمات ویژه اعضا بهره‌مند شوید."/>
+<meta property="og:url" content="https://www.ahmadiservice.ir/membership.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId="/>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId="/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--primary:#B03A2E;--primary-dark:#8B2C23;--secondary:#D4A373;--accent:#E67E22;--bg:#f5ede3;--card-bg:#faf5f0;--text:#2c1e16;--text-light:#6b5040;--shadow:0 12px 30px rgba(176,58,46,0.12);--radius:20px;--transition:0.3s cubic-bezier(0.4,0,0.2,1);--gradient-header:linear-gradient(135deg,#B03A2E 0%,#D35400 100%);--gradient-btn:linear-gradient(135deg,#B03A2E,#E67E22);--glass-bg:rgba(255,248,240,0.25);--glass-border:rgba(176,58,46,0.15);}
+body.dark-mode{--bg:#1e1410;--card-bg:#2a1d17;--text:#f5ede3;--text-light:#c9a896;--shadow:0 12px 30px rgba(0,0,0,0.5);--glass-bg:rgba(30,20,15,0.6);--glass-border:rgba(176,58,46,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Vazirmatn',sans-serif;background-color:var(--bg);color:var(--text);transition:background-color var(--transition),color var(--transition);padding-top:80px;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--gradient-header);padding:12px 20px;box-shadow:0 4px 20px rgba(176,58,46,0.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.container1{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;gap:10px;}
+.brand-link{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.logo{width:48px;height:48px;object-fit:contain;border-radius:50%;background:rgba(255,255,255,0);padding:4px;}
+.title{font-size:1.3rem;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.2);letter-spacing:1px;}
+#toggleBtn{background:rgba(255,255,255,0);border:none;border-radius:50%;width:44px;height:44px;font-size:24px;cursor:pointer;color:#fff;}
+.hamburger-menu{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger{width:28px;height:3px;background:#fff;border-radius:6px;}
+.menu-popup{display:none;position:fixed;top:80px;right:16px;background:var(--card-bg);backdrop-filter:blur(20px);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 16px;min-width:200px;z-index:999;opacity:0;transition:opacity 0.25s ease,transform 0.25s ease;transform:translateY(-10px);border:1px solid var(--glass-border);}
+.menu-popup.show{display:block;opacity:1;transform:translateY(0);}
+.menu-popup a{display:block;padding:10px 12px;margin:4px 0;border-radius:12px;font-weight:600;color:var(--text);}
+.menu-popup a:hover{background:var(--primary);color:#fff;}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 20px;padding:16px 20px;background:var(--card-bg);margin:8px 16px 0;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--glass-border);}
+nav a{font-weight:600;color:var(--text-light);padding:6px 12px;border-radius:30px;transition:all 0.2s;font-size:0.95rem;}
+nav a:hover{color:var(--primary);background:rgba(176,58,46,0.08);}
+nav a.active{color:#fff;background:var(--primary);}
+.page-content{max-width:900px;margin:20px auto;padding:0 16px;}
+.card{background:var(--card-bg);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);border:1px solid var(--glass-border);margin-bottom:20px;}
+.card h3{color:var(--primary);font-size:1.4rem;text-align:center;margin-bottom:20px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;margin-bottom:6px;font-weight:600;color:var(--text);}
+.form-group input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--glass-border);background:var(--bg);color:var(--text);font-family:inherit;font-size:0.95rem;outline:none;}
+.form-group input:focus{border-color:var(--primary);}
+.checkbox-group{display:flex;align-items:center;gap:8px;margin:20px 0;}
+.checkbox-group input{width:auto;accent-color:var(--primary);}
+.submit-btn{width:100%;padding:14px;border:none;border-radius:40px;background:var(--gradient-btn);color:#fff;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 20px rgba(176,58,46,0.3);}
+.submit-btn:hover{transform:scale(1.02);}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.toggle-link{display:block;text-align:center;margin-top:12px;color:var(--primary);font-weight:600;cursor:pointer;font-size:0.9rem;}
+.benefits-list{list-style:none;padding:0;}
+.benefits-list li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(176,58,46,0.08);font-size:0.95rem;color:var(--text-light);}
+.benefits-list li:last-child{border-bottom:none;}
+.benefit-icon{width:40px;height:40px;background:rgba(176,58,46,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.welcome-message{text-align:center;padding:10px 0;}
+.welcome-message .icon{font-size:3rem;margin-bottom:10px;}
+.welcome-message h2{color:var(--primary);font-size:1.5rem;margin-bottom:8px;}
+.welcome-message p{color:var(--text-light);margin-bottom:20px;}
+.btn-group{display:flex;flex-direction:column;gap:12px;align-items:center;}
+.btn-group .btn-secondary{background:transparent;border:2px solid var(--primary);color:var(--primary);padding:12px 28px;border-radius:40px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s;width:fit-content;}
+.btn-group .btn-secondary:hover{background:var(--primary);color:#fff;}
+.invoice-list{margin-top:20px;}
+.invoice-item{background:var(--bg);border-radius:15px;padding:20px;margin-bottom:15px;border:1px solid var(--glass-border);transition:all 0.3s ease;position:relative;overflow:hidden;}
+.invoice-item:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(176,58,46,0.15);border-color:var(--primary);}
+.invoice-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:15px;padding-bottom:12px;border-bottom:1px dashed rgba(176,58,46,0.2);}
+.invoice-number{font-weight:700;color:var(--primary);font-size:1.1rem;}
+.invoice-date{color:var(--text-light);font-size:0.9rem;}
+.invoice-status{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;}
+.status-paid{background:#10b981;color:white;}
+.status-unpaid{background:#ef4444;color:white;}
+.invoice-details{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.invoice-amount{font-weight:700;font-size:1.2rem;color:var(--accent);}
+.invoice-actions{display:flex;gap:10px;}
+.invoice-btn{display:inline-block;padding:8px 16px;border-radius:25px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-family:inherit;}
+.view-btn{background:var(--primary);color:white;}
+.view-btn:hover{background:var(--primary-dark);transform:translateY(-2px);}
+.no-invoices{text-align:center;padding:40px 20px;color:var(--text-light);font-size:1.1rem;}
+.no-invoices .icon{font-size:3rem;margin-bottom:15px;opacity:0.6;}
+.loading-invoices{text-align:center;padding:30px;color:var(--text-light);}
+.error-message{text-align:center;padding:20px;color:#ef4444;background:rgba(239,68,68,0.1);border-radius:10px;margin:10px 0;}
+.retry-btn{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--primary);color:white;border:none;border-radius:20px;cursor:pointer;font-family:inherit;font-size:0.9rem;}
+.phone-display{text-align:center;color:var(--text-light);margin-bottom:20px;font-size:0.95rem;direction:ltr;}
+.phone-display strong{color:var(--primary);}
+.email-display{text-align:center;color:var(--text-light);margin-bottom:20px;font-size:0.95rem;}
+.email-display strong{color:var(--primary);}
+.debug-code{display:none;text-align:center;background:#f0f0f0;padding:10px;border-radius:8px;margin:10px 0;font-weight:bold;color:#B03A2E;}
+.countdown{color:var(--text-light);font-size:0.9rem;}
+footer{background:var(--card-bg);margin:20px 16px;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);}
+footer h2{color:var(--primary);margin-bottom:16px;}
+.social-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-bottom:20px;}
+.social-icons img{width:44px;height:44px;border-radius:50%;background:rgba(176,58,46,0.08);padding:6px;}
+footer small{color:var(--text-light);font-size:0.85rem;display:block;margin-top:8px;}
+.floating-button{position:fixed;bottom:28px;right:28px;width:60px;height:60px;border-radius:50%;border:none;background:url('https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%283%29.png?versionId=') center / contain no-repeat;animation:pulseCircle 2s ease-in-out infinite;cursor:pointer;transition:box-shadow 0.25s ease;}
+.floating-button:hover{box-shadow:0 12px 40px rgba(176,58,46,0.4);}
+@keyframes pulseCircle{0%{transform:scale(1);}50%{transform:scale(1.12);}100%{transform:scale(1);}}
+.member-badge-wrapper{position:fixed;bottom:2px;right:10px;display:flex;flex-direction:column;align-items:center;z-index:1000;}
+#memberBadge{color:var(--primary);font-weight:bold;font-size:15px;margin-right:12px;display:inline-block;animation:pulseCircle 2s ease-in-out infinite;}
+#memberBadge.visible{display:inline-block;}
+#memberBadge:not(.visible){display:none;}
+.popup{display:none;position:fixed;bottom:60px;right:15px;background:rgba(245,222,179,0);border-radius:var(--radius);padding:16px 20px;z-index:999;opacity:0;transition:opacity 0.25s ease;}
+.popup.show{display:flex;opacity:1;}
+.popup a{display:block;margin:4px 0;transition:transform 0.2s;}
+.popup a:hover{transform:scale(1.1);}
+.popup img{width:44px;height:44px;border-radius:50%;background:rgba(176,58,46,0.06);padding:4px;}
+#chatIframeContainer{display:none;position:fixed;bottom:100px;right:20px;width:80%;height:80%;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:9999;background:#fff;border:1px solid #e0e0e0;}
+#chatIframeContainer iframe{width:100%;height:100%;border:none;}
+.close-chat-btn{position:absolute;top:8px;right:8px;background:#B03A2E;color:#fff;border:none;border-radius:50%;width:30px;height:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+@media (max-width:768px){body{padding-top:72px;}.hamburger-menu{display:flex;}nav{display:none;}.menu-popup{right:12px;left:12px;top:76px;min-width:unset;}.floating-button{width:56px;height:56px;bottom:20px;right:20px;}.popup{bottom:88px;right:20px;}.member-badge-wrapper{bottom:2px;right:10px;}#memberBadge{font-size:12px;padding:3px 10px;}}
+@media (max-width:480px){#memberBadge{font-size:11px;padding:2px 8px;}}
+</style>
 </head>
 <body>
-
 <header>
-    <div class="container1">
-        <a href="index.html" class="brand-link" title="بازگشت به صفحه اصلی">
-            <img class="logo" src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId=" alt="لوگو" />
-            <h1 class="title">خدمات فنی احمدی</h1>
-        </a>
-        <div style="display:flex; align-items:center; gap:12px;">
-            <button id="toggleBtn"><span id="themeIcon">☽</span></button>
-            <div class="hamburger-menu" onclick="toggleMenu()">
-                <div class="hamburger"></div><div class="hamburger"></div><div class="hamburger"></div>
-            </div>
-        </div>
-    </div>
+<div class="container1">
+<a href="index.html" class="brand-link" title="بازگشت به صفحه اصلی">
+<img class="logo" src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%81%D9%86%DB%8C%20%D8%A7%D8%AD%D9%85%D8%AF%DB%8C.png?versionId=" alt="لوگو"/>
+<h1 class="title">خدمات فنی احمدی</h1>
+</a>
+<div style="display:flex;align-items:center;gap:12px;">
+<button id="toggleBtn"><span id="themeIcon">☽</span></button>
+<div class="hamburger-menu" onclick="toggleMenu()">
+<div class="hamburger"></div><div class="hamburger"></div><div class="hamburger"></div>
+</div>
+</div>
+</div>
 </header>
-
 <div class="menu-popup" id="menuPopup">
-    <a href="index.html">🏠 خانه</a>
-    <a href="about.html">👤 درباره من</a>
-    <a href="contact.html">📞 تماس با ما</a>
-    <a href="blog.html">📝 وبلاگ</a>
-    <a href="videos.html">🎥 ویدیوها</a>
-    <a href="images.html">🖼️ تصاویر</a>
-    <a href="membership.html">📋 عضویت</a>
-    <a href="reviews.html">⭐ نظرات مشتریان</a>
+<a href="index.html">🏠 خانه</a>
+<a href="about.html">👤 درباره من</a>
+<a href="contact.html">📞 تماس با ما</a>
+<a href="blog.html">📝 وبلاگ</a>
+<a href="videos.html">🎥 ویدیوها</a>
+<a href="images.html">🖼️ تصاویر</a>
+<a href="membership.html">📋 عضویت</a>
+<a href="reviews.html">⭐ نظرات مشتریان</a>
 </div>
-
 <nav>
-    <a href="index.html">صفحه اصلی</a>
-    <a href="about.html">درباره من</a>
-    <a href="contact.html">تماس با ما</a>
-    <a href="blog.html">وبلاگ</a>
-    <a href="videos.html">ویدیوها</a>
-    <a href="images.html">گالری تصاویر</a>
-    <a href="membership.html" class="active">عضویت</a>
-    <a href="reviews.html">نظرات مشتریان</a>
+<a href="index.html">صفحه اصلی</a>
+<a href="about.html">درباره من</a>
+<a href="contact.html">تماس با ما</a>
+<a href="blog.html">وبلاگ</a>
+<a href="videos.html">ویدیوها</a>
+<a href="images.html">گالری تصاویر</a>
+<a href="membership.html" class="active">عضویت</a>
+<a href="reviews.html">نظرات مشتریان</a>
 </nav>
-
 <main class="page-content">
-
-    <!-- انتخاب نوع ورود -->
-    <div class="card" id="choicePanel">
-        <h3>🔐 حساب کاربری</h3>
-        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
-            <button class="submit-btn" onclick="showRegister()">🔹 می‌خواهم عضو شوم</button>
-            <button class="submit-btn" onclick="showCheck()" style="background: linear-gradient(135deg, #8B2C23, #B03A2E);">🔸 عضو هستم</button>
-        </div>
-    </div>
-
-    <!-- خوش‌آمدگویی اعضا -->
-    <div class="card" id="memberWelcome" style="display:none;">
-        <div class="welcome-message">
-            <div class="icon">🎖️</div>
-            <h2>شما عضو مجموعه هستید</h2>
-            <p>خوش آمدید! شما در خدمات فنی احمدی ثبت‌نام کرده‌اید و از تمام مزایای اعضا بهره‌مند هستید.</p>
-            <div class="email-display">ایمیل: <strong id="displayEmail"></strong></div>
-            <div class="phone-display">شماره تماس: <strong id="displayPhone"></strong></div>
-            <div class="btn-group">
-                <button class="btn-secondary" onclick="toggleInvoices()">📋 مشاهده فاکتورهای من</button>
-                <a href="index.html" class="submit-btn" style="display:inline-block; text-align:center; width:fit-content; padding:12px 28px; text-decoration:none;">🏠 بازگشت به صفحه اصلی</a>
-                <button class="btn-secondary" onclick="logout()">🚪 خروج از حساب</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- لیست فاکتورها -->
-    <div class="card" id="invoicesPanel" style="display:none;">
-        <h3>📋 فاکتورهای من</h3>
-        <div id="invoicesList"></div>
-        <div style="text-align: center; margin-top: 20px;">
-            <button class="btn-secondary" onclick="toggleInvoices()">🔙 بازگشت</button>
-        </div>
-    </div>
-
-    <!-- فرم ثبت‌نام -->
-    <div class="card" id="registerPanel" style="display:none;">
-        <h3>📋 عضویت جدید</h3>
-        <form id="membershipForm">
-            <input type="hidden" name="secret" value="hgoiuybvnhdk13245hfukdp559898ffddssazxzxzcvcvcnSASATYTT" />
-            
-            <div class="form-group">
-                <label for="fullname">نام و نام خانوادگی <span style="color:red;">*</span></label>
-                <input type="text" id="fullname" name="name" placeholder="مثال: علی محمدی" required />
-            </div>
-            
-            <!-- بخش اطلاعات تماس -->
-            <div id="phoneSection">
-                <div class="form-group">
-                    <label for="regEmail">ایمیل <span style="color:red;">*</span></label>
-                    <input type="email" id="regEmail" name="email" placeholder="example@domain.com" required />
-                </div>
-                
-                <div class="form-group">
-                    <label for="regPhone">شماره تماس <span style="color:red;">*</span></label>
-                    <input type="tel" id="regPhone" name="phone" placeholder="مثلاً ۰۹۱۲۳۴۵۶۷۸۹" maxlength="11" required />
-                </div>
-                
-                <button type="button" id="sendCodeBtn" class="submit-btn" onclick="sendVerificationCode()" style="margin-bottom: 15px;">
-                    📧 ارسال کد تایید به ایمیل
-                </button>
-            </div>
-            
-            <!-- بخش کد تایید -->
-            <div id="codeSection" style="display:none;">
-                <p style="text-align:center; margin-bottom: 10px;">
-                    کد تایید به ایمیل <strong id="verificationEmail"></strong> ارسال شد
-                </p>
-                <div id="debugCodeDisplay" class="debug-code"></div>
-                <div class="form-group">
-                    <label for="verificationCode">کد تایید ۶ رقمی</label>
-                    <input type="text" id="verificationCode" placeholder="کد ۶ رقمی" maxlength="6" pattern="[0-9]*" inputmode="numeric" required />
-                </div>
-                <div style="text-align:center; margin: 10px 0;">
-                    <span id="countdown" class="countdown"></span>
-                    <button type="button" id="resendCodeBtn" class="btn-secondary" onclick="sendVerificationCode()" style="display: block; margin: 10px auto; font-size: 0.85rem; padding: 8px 16px; opacity: 0.5;" disabled>
-                        🔄 ارسال مجدد کد
-                    </button>
-                </div>
-            </div>
-            
-            <div class="checkbox-group">
-                <input type="checkbox" id="agree" required />
-                <label for="agree">با <a href="privacy.html" style="color: var(--primary);">قوانین و مقررات</a> موافقم.</label>
-            </div>
-            
-            <button type="submit" class="submit-btn">🚀 ثبت‌نام نهایی</button>
-        </form>
-        <a href="#" class="toggle-link" onclick="event.preventDefault(); showChoice();">بازگشت به انتخاب</a>
-    </div>
-
-    <!-- بررسی عضویت -->
-    <div class="card" id="checkPanel" style="display:none;">
-        <h3>🔎 ورود اعضا</h3>
-        <p style="text-align:center; color:var(--text-light); margin-bottom:20px;">
-            ایمیل یا شماره موبایل خود را وارد کنید
-        </p>
-        <div class="form-group">
-            <input type="text" id="checkInput" placeholder="ایمیل یا شماره موبایل" required />
-        </div>
-        <button class="submit-btn" onclick="confirmMembership()">تایید</button>
-        <a href="#" class="toggle-link" onclick="event.preventDefault(); showChoice();">بازگشت به انتخاب</a>
-    </div>
-
-    <!-- مزایای عضویت -->
-    <div class="card">
-        <h3>🎁 مزایای عضویت</h3>
-        <ul class="benefits-list">
-            <li><span class="benefit-icon">🏷️</span><span><strong>۱۰-۱۵ % تخفیف</strong> اولین سفارش خدمات فنی</span></li>
-            <li><span class="benefit-icon">📅</span><span>اولویت‌بندی نوبت و ارسال سریع‌تر تکنسین</span></li>
-            <li><span class="benefit-icon">🔔</span><span>اطلاع از جدیدترین مقالات آموزشی و نکات فنی</span></li>
-            <li><span class="benefit-icon">🛠️</span><span>دسترسی به پیشنهادهای ویژه فصلی و جشنواره‌ها</span></li>
-            <li><span class="benefit-icon">📞</span><span>پشتیبانی اختصاصی و مشاوره رایگان تلفنی</span></li>
-            <li><span class="benefit-icon">🧾</span><span>دسترسی آسان و کامل به صورت حسابها</span></li>
-        </ul>
-    </div>
+<div class="card" id="choicePanel">
+<h3>🔐 حساب کاربری</h3>
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:20px;">
+<button class="submit-btn" onclick="showRegister()">🔹 می‌خواهم عضو شوم</button>
+<button class="submit-btn" onclick="showCheck()" style="background:linear-gradient(135deg,#8B2C23,#B03A2E);">🔸 عضو هستم</button>
+</div>
+</div>
+<div class="card" id="memberWelcome" style="display:none;">
+<div class="welcome-message">
+<div class="icon">🎖️</div>
+<h2>شما عضو مجموعه هستید</h2>
+<p>خوش آمدید! شما در خدمات فنی احمدی ثبت‌نام کرده‌اید و از تمام مزایای اعضا بهره‌مند هستید.</p>
+<div class="email-display">ایمیل: <strong id="displayEmail"></strong></div>
+<div class="phone-display">شماره تماس: <strong id="displayPhone"></strong></div>
+<div class="btn-group">
+<button class="btn-secondary" onclick="toggleInvoices()">📋 مشاهده فاکتورهای من</button>
+<a href="index.html" class="submit-btn" style="display:inline-block;text-align:center;width:fit-content;padding:12px 28px;text-decoration:none;">🏠 بازگشت به صفحه اصلی</a>
+<button class="btn-secondary" onclick="logout()">🚪 خروج از حساب</button>
+</div>
+</div>
+</div>
+<div class="card" id="invoicesPanel" style="display:none;">
+<h3>📋 فاکتورهای من</h3>
+<div id="invoicesList"></div>
+<div style="text-align:center;margin-top:20px;">
+<button class="btn-secondary" onclick="toggleInvoices()">🔙 بازگشت</button>
+</div>
+</div>
+<div class="card" id="registerPanel" style="display:none;">
+<h3>📋 عضویت جدید</h3>
+<form id="membershipForm">
+<input type="hidden" name="secret" value="hgoiuybvnhdk13245hfukdp559898ffddssazxzxzcvcvcnSASATYTT"/>
+<div class="form-group">
+<label for="fullname">نام و نام خانوادگی <span style="color:red;">*</span></label>
+<input type="text" id="fullname" name="name" placeholder="مثال: علی محمدی" required/>
+</div>
+<div id="phoneSection">
+<div class="form-group">
+<label for="regEmail">ایمیل <span style="color:red;">*</span></label>
+<input type="email" id="regEmail" name="email" placeholder="example@domain.com" required/>
+</div>
+<div class="form-group">
+<label for="regPhone">شماره تماس <span style="color:red;">*</span></label>
+<input type="tel" id="regPhone" name="phone" placeholder="مثلاً ۰۹۱۲۳۴۵۶۷۸۹" maxlength="11" required/>
+</div>
+<button type="button" id="sendCodeBtn" class="submit-btn" onclick="sendVerificationCode()" style="margin-bottom:15px;">📧 ارسال کد تایید به ایمیل</button>
+</div>
+<div id="codeSection" style="display:none;">
+<p style="text-align:center;margin-bottom:10px;">کد تایید به ایمیل <strong id="verificationEmail"></strong> ارسال شد</p>
+<div id="debugCodeDisplay" class="debug-code"></div>
+<div class="form-group">
+<label for="verificationCode">کد تایید ۶ رقمی</label>
+<input type="text" id="verificationCode" placeholder="کد ۶ رقمی" maxlength="6" pattern="[0-9]*" inputmode="numeric" required/>
+</div>
+<div style="text-align:center;margin:10px 0;">
+<span id="countdown" class="countdown"></span>
+<button type="button" id="resendCodeBtn" class="btn-secondary" onclick="sendVerificationCode()" style="display:block;margin:10px auto;font-size:0.85rem;padding:8px 16px;opacity:0.5;" disabled>🔄 ارسال مجدد کد</button>
+</div>
+</div>
+<div class="checkbox-group">
+<input type="checkbox" id="agree" required/>
+<label for="agree">با <a href="privacy.html" style="color:var(--primary);">قوانین و مقررات</a> موافقم.</label>
+</div>
+<button type="submit" class="submit-btn">🚀 ثبت‌نام نهایی</button>
+</form>
+<a href="#" class="toggle-link" onclick="event.preventDefault(); showChoice();">بازگشت به انتخاب</a>
+</div>
+<div class="card" id="checkPanel" style="display:none;">
+<h3>🔎 ورود اعضا</h3>
+<p style="text-align:center;color:var(--text-light);margin-bottom:20px;">ایمیل یا شماره موبایل خود را وارد کنید</p>
+<div class="form-group">
+<input type="text" id="checkInput" placeholder="ایمیل یا شماره موبایل" required/>
+</div>
+<button class="submit-btn" onclick="confirmMembership()">تایید</button>
+<a href="#" class="toggle-link" onclick="event.preventDefault(); showChoice();">بازگشت به انتخاب</a>
+</div>
+<div class="card">
+<h3>🎁 مزایای عضویت</h3>
+<ul class="benefits-list">
+<li><span class="benefit-icon">🏷️</span><span><strong>۱۰-۱۵ % تخفیف</strong> اولین سفارش خدمات فنی</span></li>
+<li><span class="benefit-icon">📅</span><span>اولویت‌بندی نوبت و ارسال سریع‌تر تکنسین</span></li>
+<li><span class="benefit-icon">🔔</span><span>اطلاع از جدیدترین مقالات آموزشی و نکات فنی</span></li>
+<li><span class="benefit-icon">🛠️</span><span>دسترسی به پیشنهادهای ویژه فصلی و جشنواره‌ها</span></li>
+<li><span class="benefit-icon">📞</span><span>پشتیبانی اختصاصی و مشاوره رایگان تلفنی</span></li>
+<li><span class="benefit-icon">🧾</span><span>دسترسی آسان و کامل به صورت حسابها</span></li>
+</ul>
+</div>
 </main>
-
 <footer>
-    <p>بازدید از سایت</p>
-    <img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" alt="شمارنده بازدید" style="border:0;max-width:100%;height:auto;" />
-    <h2>راه‌های ارتباطی</h2>
-    <div class="social-icons">
-        <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس" /></a>
-        <a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ" /></a>
-        <a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام" /></a>
-    </div>
-    <small>حق نشر محفوظ است / رحمان احمدی</small>
+<p>بازدید از سایت</p>
+<img src="https://www.hitwebcounter.com/counter/counter.php?page=21511063&amp;style=0005&amp;nbdigits=5&amp;type=page" alt="شمارنده بازدید" style="border:0;max-width:100%;height:auto;"/>
+<h2>راه‌های ارتباطی</h2>
+<div class="social-icons">
+<a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B31.png?versionId=" alt="تماس"/></a>
+<a href="https://wa.me/989120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE.png?versionId=" alt="واتساپ"/></a>
+<a href="https://t.me/qRahman"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%851%20.png?versionId=" alt="تلگرام"/></a>
+</div>
+<small>حق نشر محفوظ است / رحمان احمدی</small>
 </footer>
-
 <div class="member-badge-wrapper">
-    <button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
-    <span id="memberBadge">🎖️ شما عضو مجموعه هستید</span>
+<button class="floating-button" onclick="togglePopup()" aria-label="ارتباط سریع"></button>
+<span id="memberBadge">🎖️ شما عضو مجموعه هستید</span>
 </div>
-
 <div class="popup" id="socialPopup">
-    <a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ" /></a>
-    <a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام" /></a>
-    <a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس" /></a>
-    <a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت" /></a>
+<a href="https://wa.me/989120996211" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D9%BE1.png?versionId=" alt="واتساپ"/></a>
+<a href="https://t.me/qRahman" target="_blank"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%A2%DB%8C%DA%A9%D9%86%2F%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85%20.png?versionId=" alt="تلگرام"/></a>
+<a href="tel:09120996211"><img src="https://ahmadiservices.s3.ir-thr-at1.arvanstorage.ir/%D8%B9%DA%A9%D8%B3%D9%87%D8%A7%2065989%2F%D8%AA%D9%85%D8%A7%D8%B3.png?versionId=" alt="تماس"/></a>
+<a href="#" onclick="toggleChat(event)" id="chatToggleBtn"><img src="https://webphoto.s3.ir-thr-at1.arvanstorage.ir/%D8%A2%DB%8C%DA%A9%D9%88%D9%86%D9%87%D8%A7%2F%DA%AF%D9%81%D8%AA%DA%AF%D9%88%20%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86%20%282%29.png?versionId=" alt="چت"/></a>
 </div>
-
 <div id="chatIframeContainer" onclick="event.stopPropagation();">
-    <button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
-    <iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
+<button class="close-chat-btn" onclick="toggleChat(event)">✕</button>
+<iframe src="https://go.crisp.chat/chat/embed/?website_id=f1a719b1-9a4c-47d3-8fb2-c474d923c0eb"></iframe>
 </div>
-
 <script>
-    // ===== URL جدید Members =====
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyvhU7Z2gNO1D1OJkLpjjy_6n40dDzYLAllsT8M4g0szwiO8ARRO531aytBGBIwVY4/exec';
-    const SECRET_KEY = 'hgoiuybvnhdk13245hfukdp559898ffddssazxzxzcvcvcnSASATYTT';
-
-    // ===== Supabase Config =====
-    const SUPABASE_URL = 'https://ickaegfpirbbboscbjqk.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_HlZbFClIH5Ub4-vayCL9TA_v5aLvqOU';
-    let supabaseClient;
-
-    if (typeof supabase !== 'undefined') {
-        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    }
-
-    // ===== نرمالایز کردن شماره تلفن =====
-    function normalizePhone(phone) {
-        if (!phone) return '';
-        let normalized = String(phone);
-        normalized = normalized.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
-        normalized = normalized.replace(/\D/g, '');
-        if (normalized.startsWith('0')) {
-            normalized = normalized.substring(1);
-        }
-        if (normalized.startsWith('98')) {
-            normalized = normalized.substring(2);
-        }
-        return normalized;
-    }
-
-    // ===== فرمت شماره برای نمایش =====
-    function formatPhoneForDisplay(phone) {
-        if (!phone) return '---';
-        const normalized = normalizePhone(phone);
-        if (normalized.length === 10) {
-            return '0' + normalized;
-        }
-        return normalized;
-    }
-
-    // ===== بررسی ایمیل =====
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // ===== بررسی شماره تلفن =====
-    function isValidIranianPhone(phone) {
-        const normalized = normalizePhone(phone);
-        return /^9\d{9}$/.test(normalized);
-    }
-
-    // ===== بررسی عضویت =====
-    async function checkMembershipStatus() {
-        const badge = document.getElementById('memberBadge');
-        const savedEmail = localStorage.getItem('ahmadi_email');
-        const savedPhone = localStorage.getItem('ahmadi_phone');
-
-        if (!savedEmail && !savedPhone) {
-            badge.classList.remove('visible');
-            badge.textContent = '';
-            return false;
-        }
-
-        try {
-            let url;
-            if (savedEmail) {
-                url = `${APPS_SCRIPT_URL}?action=checkByEmail&email=${encodeURIComponent(savedEmail)}`;
-            } else if (savedPhone) {
-                const normalizedPhone = normalizePhone(savedPhone);
-                url = `${APPS_SCRIPT_URL}?action=check&phone=${encodeURIComponent(normalizedPhone)}`;
-            } else {
-                return false;
-            }
-            
-            const res = await fetch(url);
-            const data = await res.json();
-
-            if (data.isMember === true) {
-                badge.textContent = '🎖️ شما عضو مجموعه هستید';
-                badge.classList.add('visible');
-                localStorage.setItem('ahmadi_member', 'true');
-                if (data.member) {
-                    if (data.member.email) {
-                        localStorage.setItem('ahmadi_email', String(data.member.email).toLowerCase().trim());
-                    }
-                    if (data.member.phone) {
-                        localStorage.setItem('ahmadi_phone', String(data.member.phone));
-                    }
-                }
-                return true;
-            } else {
-                badge.classList.remove('visible');
-                badge.textContent = '';
-                localStorage.removeItem('ahmadi_member');
-                return false;
-            }
-        } catch (error) {
-            console.error('خطا در بررسی عضویت:', error);
-            badge.classList.remove('visible');
-            badge.textContent = '';
-            return false;
-        }
-    }
-
-    // ===== دریافت لیست فاکتورها =====
-    async function loadUserInvoices() {
-        const invoicesList = document.getElementById('invoicesList');
-        const savedPhone = localStorage.getItem('ahmadi_phone');
-        
-        if (!savedPhone) {
-            invoicesList.innerHTML = '<div class="error-message">⛔ شماره تماس یافت نشد. لطفاً دوباره وارد شوید.</div>';
-            return;
-        }
-
-        const normalizedPhone = normalizePhone(savedPhone);
-        
-        invoicesList.innerHTML = '<div class="loading-invoices">⏳ در حال بارگذاری فاکتورها...</div>';
-
-        if (!supabaseClient) {
-            invoicesList.innerHTML = '<div class="error-message">❌ خطا در اتصال به دیتابیس</div>';
-            return;
-        }
-
-        try {
-            const { data: invoices, error } = await supabaseClient
-                .from('invoices')
-                .select('*')
-                .or(`customer_phone.eq.${normalizedPhone},customer_phone.eq.0${normalizedPhone},customer_mobile.eq.${normalizedPhone},customer_mobile.eq.0${normalizedPhone}`)
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                console.error('خطا در دریافت فاکتورها:', error);
-                invoicesList.innerHTML = `
-                    <div class="error-message">
-                        ❌ خطا در دریافت فاکتورها
-                        <br>
-                        <button class="retry-btn" onclick="loadUserInvoices()">🔄 تلاش مجدد</button>
-                    </div>
-                `;
-                return;
-            }
-
-            if (!invoices || invoices.length === 0) {
-                invoicesList.innerHTML = `
-                    <div class="no-invoices">
-                        <div class="icon">📄</div>
-                        <p>شما هنوز فاکتوری ندارید</p>
-                        <p style="font-size:0.9rem; margin-top:10px;">پس از اولین استفاده از خدمات، فاکتورهای شما اینجا نمایش داده می‌شود.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            let invoicesHtml = '';
-            invoices.forEach(inv => {
-                const isPaid = inv.paid === true || inv.paid === 'true' || inv.paid === 1;
-                const statusClass = isPaid ? 'status-paid' : 'status-unpaid';
-                const statusText = isPaid ? 'پرداخت شده' : 'در انتظار پرداخت';
-                const finalAmount = inv.final_amount || 0;
-                const invoiceDate = inv.date || inv.created_at || '';
-                const invoiceNumber = inv.invoice_number || 'بدون شماره';
-                const publicToken = inv.public_token || '';
-                
-                const invoiceUrl = `https://generalmanager.s3.ir-thr-at1.arvanstorage.ir/view-invoice.html?versionId=&token=${publicToken}`;
-
-                invoicesHtml += `
-                    <div class="invoice-item">
-                        <div class="invoice-header">
-                            <span class="invoice-number">📋 ${invoiceNumber}</span>
-                            <span class="invoice-date">${invoiceDate}</span>
-                            <span class="invoice-status ${statusClass}">${statusText}</span>
-                        </div>
-                        <div class="invoice-details">
-                            <span class="invoice-amount">${Number(finalAmount).toLocaleString('fa-IR')} ریال</span>
-                            <div class="invoice-actions">
-                                ${publicToken ? `<a href="${invoiceUrl}" target="_blank" class="invoice-btn view-btn">👁️ مشاهده فاکتور</a>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-
-            invoicesList.innerHTML = invoicesHtml;
-        } catch (error) {
-            console.error('خطا در دریافت فاکتورها:', error);
-            invoicesList.innerHTML = `
-                <div class="error-message">
-                    ❌ خطا در دریافت فاکتورها
-                    <br>
-                    <button class="retry-btn" onclick="loadUserInvoices()">🔄 تلاش مجدد</button>
-                </div>
-            `;
-        }
-    }
-
-    // ===== نمایش/پنهان کردن لیست فاکتورها =====
-    function toggleInvoices() {
-        const welcomePanel = document.getElementById('memberWelcome');
-        const invoicesPanel = document.getElementById('invoicesPanel');
-        
-        if (invoicesPanel.style.display === 'none' || invoicesPanel.style.display === '') {
-            welcomePanel.style.display = 'none';
-            invoicesPanel.style.display = 'block';
-            loadUserInvoices();
-        } else {
-            invoicesPanel.style.display = 'none';
-            welcomePanel.style.display = 'block';
-        }
-    }
-
-    // ===== ارسال کد تایید =====
-    async function sendVerificationCode() {
-        const emailInput = document.getElementById('regEmail');
-        const phoneInput = document.getElementById('regPhone');
-        const email = emailInput.value.trim();
-        const phone = phoneInput.value.trim();
-        
-        if (!isValidEmail(email)) {
-            alert('لطفاً یک ایمیل معتبر وارد کنید');
-            emailInput.focus();
-            return;
-        }
-        
-        if (!isValidIranianPhone(phone)) {
-            alert('لطفاً یک شماره موبایل معتبر وارد کنید');
-            phoneInput.focus();
-            return;
-        }
-        
-        const normalizedPhone = normalizePhone(phone);
-        
-        const sendCodeBtn = document.getElementById('sendCodeBtn');
-        sendCodeBtn.disabled = true;
-        sendCodeBtn.textContent = '⏳ در حال ارسال...';
-        
-        try {
-            const url = `${APPS_SCRIPT_URL}?action=sendCode&secret=${SECRET_KEY}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(normalizedPhone)}`;
-            const res = await fetch(url);
-            const data = await res.json();
-            
-            if (data.success) {
-                document.getElementById('phoneSection').style.display = 'none';
-                document.getElementById('codeSection').style.display = 'block';
-                document.getElementById('verificationEmail').textContent = email;
-                
-                if (data.debug_code) {
-                    console.log('کد تایید (فقط برای تست):', data.debug_code);
-                    document.getElementById('debugCodeDisplay').textContent = `کد تست: ${data.debug_code}`;
-                    document.getElementById('debugCodeDisplay').style.display = 'block';
-                }
-                
-                startCountdown();
-                
-                alert('کد تایید به ایمیل شما ارسال شد ✅');
-            } else {
-                alert(data.error || 'خطا در ارسال کد تایید. لطفاً دوباره تلاش کنید.');
-            }
-        } catch (error) {
-            console.error('خطا:', error);
-            alert('خطا در ارتباط با سرور');
-        } finally {
-            sendCodeBtn.disabled = false;
-            sendCodeBtn.textContent = '📧 ارسال کد تایید به ایمیل';
-        }
-    }
-
-    // ===== شروع تایمر =====
-    function startCountdown() {
-        let seconds = 120;
-        const countdownElement = document.getElementById('countdown');
-        const resendBtn = document.getElementById('resendCodeBtn');
-        
-        resendBtn.disabled = true;
-        resendBtn.style.opacity = '0.5';
-        
-        if (window.countdownInterval) clearInterval(window.countdownInterval);
-        
-        window.countdownInterval = setInterval(() => {
-            seconds--;
-            
-            if (seconds <= 0) {
-                clearInterval(window.countdownInterval);
-                countdownElement.textContent = '';
-                resendBtn.disabled = false;
-                resendBtn.style.opacity = '1';
-            } else {
-                const minutes = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                countdownElement.textContent = `ارسال مجدد کد تا ${minutes}:${secs.toString().padStart(2, '0')} دیگر`;
-            }
-        }, 1000);
-    }
-
-    // ===== نمایش پنل‌ها =====
-    function showChoice() {
-        hideAllPanels();
-        document.getElementById('choicePanel').style.display = 'block';
-    }
-    function showRegister() {
-        hideAllPanels();
-        document.getElementById('registerPanel').style.display = 'block';
-        document.getElementById('membershipForm').reset();
-        document.getElementById('phoneSection').style.display = 'block';
-        document.getElementById('codeSection').style.display = 'none';
-        document.getElementById('debugCodeDisplay').style.display = 'none';
-        if (window.countdownInterval) clearInterval(window.countdownInterval);
-    }
-    function showCheck() {
-        hideAllPanels();
-        document.getElementById('checkPanel').style.display = 'block';
-    }
-    function showWelcome() {
-        hideAllPanels();
-        document.getElementById('memberWelcome').style.display = 'block';
-        const savedEmail = localStorage.getItem('ahmadi_email');
-        const savedPhone = localStorage.getItem('ahmadi_phone');
-        
-        document.getElementById('displayEmail').textContent = savedEmail || '---';
-        document.getElementById('displayPhone').textContent = formatPhoneForDisplay(savedPhone);
-        
-        checkMembershipStatus();
-    }
-    function hideAllPanels() {
-        document.getElementById('choicePanel').style.display = 'none';
-        document.getElementById('registerPanel').style.display = 'none';
-        document.getElementById('checkPanel').style.display = 'none';
-        document.getElementById('memberWelcome').style.display = 'none';
-        document.getElementById('invoicesPanel').style.display = 'none';
-    }
-
-    // ===== ورود اعضا =====
-    async function confirmMembership() {
-        const input = document.getElementById('checkInput');
-        const value = input.value.trim();
-
-        if (!value) {
-            alert('لطفاً ایمیل یا شماره موبایل را وارد کنید');
-            return;
-        }
-
-        try {
-            let url;
-            if (isValidEmail(value)) {
-                url = `${APPS_SCRIPT_URL}?action=checkByEmail&email=${encodeURIComponent(value.toLowerCase().trim())}`;
-            } else if (isValidIranianPhone(value)) {
-                const normalizedPhone = normalizePhone(value);
-                url = `${APPS_SCRIPT_URL}?action=check&phone=${encodeURIComponent(normalizedPhone)}`;
-            } else {
-                alert('لطفاً ایمیل یا شماره موبایل معتبر وارد کنید');
-                return;
-            }
-
-            const res = await fetch(url);
-            const data = await res.json();
-
-            if (data.isMember && data.member) {
-                localStorage.setItem('ahmadi_member', 'true');
-                if (data.member.phone) {
-                    localStorage.setItem('ahmadi_phone', String(data.member.phone));
-                }
-                if (data.member.email) {
-                    localStorage.setItem('ahmadi_email', String(data.member.email).toLowerCase().trim());
-                }
-                showWelcome();
-            } else {
-                alert('شما هنوز عضو نیستید، لطفاً ثبت‌نام کنید.');
-                showRegister();
-            }
-        } catch (error) {
-            console.error('خطا:', error);
-            alert('خطا در ارتباط با سرور');
-        }
-    }
-
-    // ===== ثبت‌نام نهایی =====
-    document.getElementById('membershipForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('fullname').value.trim();
-        const phone = document.getElementById('regPhone').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const code = document.getElementById('verificationCode').value.trim();
-        
-        if (!name) { alert('نام را وارد کنید'); return; }
-        if (!isValidEmail(email)) { alert('ایمیل معتبر نیست'); return; }
-        if (!isValidIranianPhone(phone)) { alert('شماره موبایل معتبر نیست'); return; }
-        if (!code || code.length !== 6) { alert('کد تایید ۶ رقمی را وارد کنید'); return; }
-        
-        const normalizedPhone = normalizePhone(phone);
-        
-        const formData = new FormData();
-        formData.append('secret', SECRET_KEY);
-        formData.append('action', 'register');
-        formData.append('name', name);
-        formData.append('phone', normalizedPhone);
-        formData.append('email', email.toLowerCase().trim());
-        formData.append('code', code);
-        
-        try {
-            const res = await fetch(APPS_SCRIPT_URL, {
-                method: 'POST',
-                body: formData
-            });
-            const result = await res.json();
-            
-            if (result.success) {
-                localStorage.setItem('ahmadi_member', 'true');
-                localStorage.setItem('ahmadi_phone', normalizedPhone);
-                localStorage.setItem('ahmadi_email', email.toLowerCase().trim());
-                alert('عضویت شما با موفقیت انجام شد ✅');
-                showWelcome();
-                checkMembershipStatus();
-            } else {
-                alert(result.error || 'خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.');
-            }
-        } catch (error) {
-            console.error('خطا:', error);
-            alert('خطا در ارسال اطلاعات');
-        }
-    });
-
-    // ===== خروج =====
-    function logout() {
-        localStorage.removeItem('ahmadi_member');
-        localStorage.removeItem('ahmadi_phone');
-        localStorage.removeItem('ahmadi_email');
-        showChoice();
-        const badge = document.getElementById('memberBadge');
-        badge.classList.remove('visible');
-        badge.textContent = '';
-        alert('با موفقیت از حساب خارج شدید ✅');
-    }
-
-    // ===== بارگذاری اولیه =====
-    (async function init() {
-        const isMember = localStorage.getItem('ahmadi_member');
-        const savedEmail = localStorage.getItem('ahmadi_email');
-        const savedPhone = localStorage.getItem('ahmadi_phone');
-
-        if (isMember === 'true' && (savedEmail || savedPhone)) {
-            const verified = await checkMembershipStatus();
-            if (verified) {
-                showWelcome();
-            } else {
-                showChoice();
-            }
-        } else {
-            showChoice();
-        }
-    })();
-
-    // ===== کنترل چت =====
-    function toggleChat(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        const c = document.getElementById('chatIframeContainer');
-        c.style.display = (c.style.display === 'block') ? 'none' : 'block';
-    }
-    document.addEventListener('click', function(event) {
-        const c = document.getElementById('chatIframeContainer');
-        const t = document.getElementById('chatToggleBtn');
-        if (c.style.display === 'block' && !c.contains(event.target) && !t.contains(event.target)) c.style.display = 'none';
-    });
-
-    // ===== تغییر تم =====
-    (function() {
-        const b = document.getElementById('toggleBtn');
-        const i = document.getElementById('themeIcon');
-        const s = localStorage.getItem('theme') || 'light';
-        if (s === 'dark') { document.body.classList.add('dark-mode'); i.textContent = '☀'; } else i.textContent = '☽';
-        b.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const d = document.body.classList.contains('dark-mode');
-            i.textContent = d ? '☀' : '☽';
-            localStorage.setItem('theme', d ? 'dark' : 'light');
-        });
-    })();
-
-    // ===== منو و پاپ‌آپ =====
-    function toggleElement(id) {
-        const e = document.getElementById(id);
-        if (!e) return;
-        if (e.classList.contains('show')) {
-            e.classList.remove('show'); setTimeout(() => e.style.display = 'none', 250);
-        } else {
-            e.style.display = 'block'; requestAnimationFrame(() => e.classList.add('show'));
-        }
-    }
-    function togglePopup() { toggleElement('socialPopup'); }
-    function toggleMenu() { toggleElement('menuPopup'); }
-    document.addEventListener('click', function(e) {
-        const m = document.getElementById('menuPopup');
-        const h = document.querySelector('.hamburger-menu');
-        const p = document.getElementById('socialPopup');
-        const f = document.querySelector('.floating-button');
-        if (m && !m.contains(e.target) && !h.contains(e.target)) { m.classList.remove('show'); setTimeout(() => m.style.display = 'none', 250); }
-        if (p && !p.contains(e.target) && !f.contains(e.target)) { p.classList.remove('show'); setTimeout(() => p.style.display = 'none', 250); }
-    });
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyvhU7Z2gNO1D1OJkLpjjy_6n40dDzYLAllsT8M4g0szwiO8ARRO531aytBGBIwVY4/exec';
+const SECRET_KEY='hgoiuybvnhdk13245hfukdp559898ffddssazxzxzcvcvcnSASATYTT';
+const SUPABASE_URL='https://ickaegfpirbbboscbjqk.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_HlZbFClIH5Ub4-vayCL9TA_v5aLvqOU';
+let supabaseClient;
+if(typeof supabase!=='undefined'){supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);}
+function normalizePhone(phone){if(!phone)return '';let normalized=String(phone);normalized=normalized.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));normalized=normalized.replace(/\D/g,'');if(normalized.startsWith('0')){normalized=normalized.substring(1);}if(normalized.startsWith('98')){normalized=normalized.substring(2);}return normalized;}
+function formatPhoneForDisplay(phone){if(!phone)return '---';const normalized=normalizePhone(phone);if(normalized.length===10){return '0'+normalized;}return normalized;}
+function isValidEmail(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);}
+function isValidIranianPhone(phone){const normalized=normalizePhone(phone);return /^9\d{9}$/.test(normalized);}
+async function checkMembershipStatus(){const badge=document.getElementById('memberBadge');const savedEmail=localStorage.getItem('ahmadi_email');const savedPhone=localStorage.getItem('ahmadi_phone');if(!savedEmail&&!savedPhone){badge.classList.remove('visible');badge.textContent='';return false;}try{let url;if(savedEmail){url=`${APPS_SCRIPT_URL}?action=checkByEmail&email=${encodeURIComponent(savedEmail)}`;}else if(savedPhone){const normalizedPhone=normalizePhone(savedPhone);url=`${APPS_SCRIPT_URL}?action=check&phone=${encodeURIComponent(normalizedPhone)}`;}else{return false;}const res=await fetch(url);const data=await res.json();if(data.isMember===true){badge.textContent='🎖️ شما عضو مجموعه هستید';badge.classList.add('visible');localStorage.setItem('ahmadi_member','true');if(data.member){if(data.member.email){localStorage.setItem('ahmadi_email',String(data.member.email).toLowerCase().trim());}if(data.member.phone){localStorage.setItem('ahmadi_phone',String(data.member.phone));}}return true;}else{badge.classList.remove('visible');badge.textContent='';localStorage.removeItem('ahmadi_member');return false;}}catch(error){console.error('خطا در بررسی عضویت:',error);badge.classList.remove('visible');badge.textContent='';return false;}}
+async function loadUserInvoices(){const invoicesList=document.getElementById('invoicesList');const savedPhone=localStorage.getItem('ahmadi_phone');if(!savedPhone){invoicesList.innerHTML='<div class="error-message">⛔ شماره تماس یافت نشد. لطفاً دوباره وارد شوید.</div>';return;}const normalizedPhone=normalizePhone(savedPhone);invoicesList.innerHTML='<div class="loading-invoices">⏳ در حال بارگذاری فاکتورها...</div>';if(!supabaseClient){invoicesList.innerHTML='<div class="error-message">❌ خطا در اتصال به دیتابیس</div>';return;}try{const {data:invoices,error}=await supabaseClient.from('invoices').select('*').or(`customer_phone.eq.${normalizedPhone},customer_phone.eq.0${normalizedPhone},customer_mobile.eq.${normalizedPhone},customer_mobile.eq.0${normalizedPhone}`).order('created_at',{ascending:false});if(error){console.error('خطا در دریافت فاکتورها:',error);invoicesList.innerHTML=`<div class="error-message">❌ خطا در دریافت فاکتورها<br><button class="retry-btn" onclick="loadUserInvoices()">🔄 تلاش مجدد</button></div>`;return;}if(!invoices||invoices.length===0){invoicesList.innerHTML=`<div class="no-invoices"><div class="icon">📄</div><p>شما هنوز فاکتوری ندارید</p><p style="font-size:0.9rem;margin-top:10px;">پس از اولین استفاده از خدمات، فاکتورهای شما اینجا نمایش داده می‌شود.</p></div>`;return;}let invoicesHtml='';invoices.forEach(inv=>{const isPaid=inv.paid===true||inv.paid==='true'||inv.paid===1;const statusClass=isPaid?'status-paid':'status-unpaid';const statusText=isPaid?'پرداخت شده':'در انتظار پرداخت';const finalAmount=inv.final_amount||0;const invoiceDate=inv.date||inv.created_at||'';const invoiceNumber=inv.invoice_number||'بدون شماره';const publicToken=inv.public_token||'';const invoiceUrl=`https://generalmanager.s3.ir-thr-at1.arvanstorage.ir/view-invoice.html?versionId=&token=${publicToken}`;invoicesHtml+=`<div class="invoice-item"><div class="invoice-header"><span class="invoice-number">📋 ${invoiceNumber}</span><span class="invoice-date">${invoiceDate}</span><span class="invoice-status ${statusClass}">${statusText}</span></div><div class="invoice-details"><span class="invoice-amount">${Number(finalAmount).toLocaleString('fa-IR')} ریال</span><div class="invoice-actions">${publicToken?`<a href="${invoiceUrl}" target="_blank" class="invoice-btn view-btn">👁️ مشاهده فاکتور</a>`:''}</div></div></div>`;});invoicesList.innerHTML=invoicesHtml;}catch(error){console.error('خطا در دریافت فاکتورها:',error);invoicesList.innerHTML=`<div class="error-message">❌ خطا در دریافت فاکتورها<br><button class="retry-btn" onclick="loadUserInvoices()">🔄 تلاش مجدد</button></div>`;}}
+function toggleInvoices(){const welcomePanel=document.getElementById('memberWelcome');const invoicesPanel=document.getElementById('invoicesPanel');if(invoicesPanel.style.display==='none'||invoicesPanel.style.display===''){welcomePanel.style.display='none';invoicesPanel.style.display='block';loadUserInvoices();}else{invoicesPanel.style.display='none';welcomePanel.style.display='block';}}
+async function sendVerificationCode(){const emailInput=document.getElementById('regEmail');const phoneInput=document.getElementById('regPhone');const email=emailInput.value.trim();const phone=phoneInput.value.trim();if(!isValidEmail(email)){alert('لطفاً یک ایمیل معتبر وارد کنید');emailInput.focus();return;}if(!isValidIranianPhone(phone)){alert('لطفاً یک شماره موبایل معتبر وارد کنید');phoneInput.focus();return;}const normalizedPhone=normalizePhone(phone);const sendCodeBtn=document.getElementById('sendCodeBtn');sendCodeBtn.disabled=true;sendCodeBtn.textContent='⏳ در حال ارسال...';try{const url=`${APPS_SCRIPT_URL}?action=sendCode&secret=${SECRET_KEY}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(normalizedPhone)}`;const res=await fetch(url);const data=await res.json();if(data.success){document.getElementById('phoneSection').style.display='none';document.getElementById('codeSection').style.display='block';document.getElementById('verificationEmail').textContent=email;if(data.debug_code){console.log('کد تایید (فقط برای تست):',data.debug_code);document.getElementById('debugCodeDisplay').textContent=`کد تست: ${data.debug_code}`;document.getElementById('debugCodeDisplay').style.display='block';}startCountdown();alert('کد تایید به ایمیل شما ارسال شد ✅');}else{alert(data.error||'خطا در ارسال کد تایید. لطفاً دوباره تلاش کنید.');}}catch(error){console.error('خطا:',error);alert('خطا در ارتباط با سرور');}finally{sendCodeBtn.disabled=false;sendCodeBtn.textContent='📧 ارسال کد تایید به ایمیل';}}
+function startCountdown(){let seconds=120;const countdownElement=document.getElementById('countdown');const resendBtn=document.getElementById('resendCodeBtn');resendBtn.disabled=true;resendBtn.style.opacity='0.5';if(window.countdownInterval)clearInterval(window.countdownInterval);window.countdownInterval=setInterval(()=>{seconds--;if(seconds<=0){clearInterval(window.countdownInterval);countdownElement.textContent='';resendBtn.disabled=false;resendBtn.style.opacity='1';}else{const minutes=Math.floor(seconds/60);const secs=seconds%60;countdownElement.textContent=`ارسال مجدد کد تا ${minutes}:${secs.toString().padStart(2,'0')} دیگر`;}},1000);}
+function showChoice(){hideAllPanels();document.getElementById('choicePanel').style.display='block';}
+function showRegister(){hideAllPanels();document.getElementById('registerPanel').style.display='block';document.getElementById('membershipForm').reset();document.getElementById('phoneSection').style.display='block';document.getElementById('codeSection').style.display='none';document.getElementById('debugCodeDisplay').style.display='none';if(window.countdownInterval)clearInterval(window.countdownInterval);}
+function showCheck(){hideAllPanels();document.getElementById('checkPanel').style.display='block';}
+function showWelcome(){hideAllPanels();document.getElementById('memberWelcome').style.display='block';const savedEmail=localStorage.getItem('ahmadi_email');const savedPhone=localStorage.getItem('ahmadi_phone');document.getElementById('displayEmail').textContent=savedEmail||'---';document.getElementById('displayPhone').textContent=formatPhoneForDisplay(savedPhone);checkMembershipStatus();}
+function hideAllPanels(){document.getElementById('choicePanel').style.display='none';document.getElementById('registerPanel').style.display='none';document.getElementById('checkPanel').style.display='none';document.getElementById('memberWelcome').style.display='none';document.getElementById('invoicesPanel').style.display='none';}
+async function confirmMembership(){const input=document.getElementById('checkInput');const value=input.value.trim();if(!value){alert('لطفاً ایمیل یا شماره موبایل را وارد کنید');return;}try{let url;if(isValidEmail(value)){url=`${APPS_SCRIPT_URL}?action=checkByEmail&email=${encodeURIComponent(value.toLowerCase().trim())}`;}else if(isValidIranianPhone(value)){const normalizedPhone=normalizePhone(value);url=`${APPS_SCRIPT_URL}?action=check&phone=${encodeURIComponent(normalizedPhone)}`;}else{alert('لطفاً ایمیل یا شماره موبایل معتبر وارد کنید');return;}const res=await fetch(url);const data=await res.json();if(data.isMember&&data.member){localStorage.setItem('ahmadi_member','true');if(data.member.phone){localStorage.setItem('ahmadi_phone',String(data.member.phone));}if(data.member.email){localStorage.setItem('ahmadi_email',String(data.member.email).toLowerCase().trim());}showWelcome();}else{alert('شما هنوز عضو نیستید، لطفاً ثبت‌نام کنید.');showRegister();}}catch(error){console.error('خطا:',error);alert('خطا در ارتباط با سرور');}}
+document.getElementById('membershipForm').addEventListener('submit',async function(e){e.preventDefault();const name=document.getElementById('fullname').value.trim();const phone=document.getElementById('regPhone').value.trim();const email=document.getElementById('regEmail').value.trim();const code=document.getElementById('verificationCode').value.trim();if(!name){alert('نام را وارد کنید');return;}if(!isValidEmail(email)){alert('ایمیل معتبر نیست');return;}if(!isValidIranianPhone(phone)){alert('شماره موبایل معتبر نیست');return;}if(!code||code.length!==6){alert('کد تایید ۶ رقمی را وارد کنید');return;}const normalizedPhone=normalizePhone(phone);const formData=new FormData();formData.append('secret',SECRET_KEY);formData.append('action','register');formData.append('name',name);formData.append('phone',normalizedPhone);formData.append('email',email.toLowerCase().trim());formData.append('code',code);try{const res=await fetch(APPS_SCRIPT_URL,{method:'POST',body:formData});const result=await res.json();if(result.success){localStorage.setItem('ahmadi_member','true');localStorage.setItem('ahmadi_phone',normalizedPhone);localStorage.setItem('ahmadi_email',email.toLowerCase().trim());alert('عضویت شما با موفقیت انجام شد ✅');showWelcome();checkMembershipStatus();}else{alert(result.error||'خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.');}}catch(error){console.error('خطا:',error);alert('خطا در ارسال اطلاعات');}});
+function logout(){localStorage.removeItem('ahmadi_member');localStorage.removeItem('ahmadi_phone');localStorage.removeItem('ahmadi_email');showChoice();const badge=document.getElementById('memberBadge');badge.classList.remove('visible');badge.textContent='';alert('با موفقیت از حساب خارج شدید ✅');}
+(async function init(){const isMember=localStorage.getItem('ahmadi_member');const savedEmail=localStorage.getItem('ahmadi_email');const savedPhone=localStorage.getItem('ahmadi_phone');if(isMember==='true'&&(savedEmail||savedPhone)){const verified=await checkMembershipStatus();if(verified){showWelcome();}else{showChoice();}}else{showChoice();}})();
+function toggleChat(event){event.preventDefault();event.stopPropagation();const c=document.getElementById('chatIframeContainer');c.style.display=(c.style.display==='block')?'none':'block';}
+document.addEventListener('click',function(event){const c=document.getElementById('chatIframeContainer');const t=document.getElementById('chatToggleBtn');if(c.style.display==='block'&&!c.contains(event.target)&&!t.contains(event.target))c.style.display='none';});
+(function(){const b=document.getElementById('toggleBtn');const i=document.getElementById('themeIcon');const s=localStorage.getItem('theme')||'light';if(s==='dark'){document.body.classList.add('dark-mode');i.textContent='☀';}else i.textContent='☽';b.addEventListener('click',()=>{document.body.classList.toggle('dark-mode');const d=document.body.classList.contains('dark-mode');i.textContent=d?'☀':'☽';localStorage.setItem('theme',d?'dark':'light');});})();
+function toggleElement(id){const e=document.getElementById(id);if(!e)return;if(e.classList.contains('show')){e.classList.remove('show');setTimeout(()=>e.style.display='none',250);}else{e.style.display='block';requestAnimationFrame(()=>e.classList.add('show'));}}
+function togglePopup(){toggleElement('socialPopup');}
+function toggleMenu(){toggleElement('menuPopup');}
+document.addEventListener('click',function(e){const m=document.getElementById('menuPopup');const h=document.querySelector('.hamburger-menu');const p=document.getElementById('socialPopup');const f=document.querySelector('.floating-button');if(m&&!m.contains(e.target)&&!h.contains(e.target)){m.classList.remove('show');setTimeout(()=>m.style.display='none',250);}if(p&&!p.contains(e.target)&&!f.contains(e.target)){p.classList.remove('show');setTimeout(()=>p.style.display='none',250);}});
 </script>
-
 </body>
 </html>
