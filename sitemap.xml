@@ -148,7 +148,7 @@
                 <news:name>خدمات فنی احمدی</news:name>
                 <news:language>fa</news:language>
             </news:publication>
-            <news:publication_date>2026-08-19</news:publication_date>
+            <news:publication_date>2025-10-17</news:publication_date>
             <news:title>تابلو برق فشار قوی چیست؟</news:title>
         </news:news>
     </url>
@@ -156,7 +156,7 @@
     <!-- مقاله 2: نورپردازی داخلی -->
     <url>
         <loc>https://www.ahmadiservice.ir/post2.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2025-06-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -164,7 +164,7 @@
     <!-- مقاله 3: بازسازی حمام -->
     <url>
         <loc>https://www.ahmadiservice.ir/post3.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2025-05-31</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -172,7 +172,7 @@
     <!-- مقاله 4: کاهش فشار آب -->
     <url>
         <loc>https://www.ahmadiservice.ir/post4.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2025-04-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -180,7 +180,7 @@
     <!-- مقاله 5: خنک نکردن کولر -->
     <url>
         <loc>https://www.ahmadiservice.ir/post5.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2026-06-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -188,7 +188,7 @@
     <!-- مقاله 6: بوی بد کولر -->
     <url>
         <loc>https://www.ahmadiservice.ir/post6.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2026-07-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -196,7 +196,7 @@
     <!-- مقاله 7: کلید محافظ جان -->
     <url>
         <loc>https://www.ahmadiservice.ir/post7.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2026-07-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
@@ -204,7 +204,15 @@
     <!-- مقاله 8: بازسازی آشپزخانه -->
     <url>
         <loc>https://www.ahmadiservice.ir/post8.html</loc>
-        <lastmod>2026-08-19</lastmod>
+        <lastmod>2026-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.65</priority>
+    </url>
+
+   <!--مقاله9: چک‌لیست پاییزی خانه-->
+    <url>
+        <loc>https://www.ahmadiservice.ir/post9.html</loc>
+        <lastmod>2026-09-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.65</priority>
     </url>
